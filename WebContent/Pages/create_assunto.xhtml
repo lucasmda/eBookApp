@@ -18,13 +18,12 @@
 				<h4 class="pink-text center thin">Cadastre um novo Assunto</h4>
 					<div class="input-field col s12">
 						<i class="fa fa-file-text prefix"></i> 
-						<h:inputText value="" id="assunto" required="true" />
+						<h:inputText value="#{assuntoBean.assunto.assunto}" id="assunto" required="true" />
 	          			<label for="assunto">Assunto</label>
 	        		</div>
-	        		
 	        		<div class="row">
 		        		<div class="col s12 m12 l12">
-		        			<h:commandButton class="waves-effect waves-light btn right pink" value="Registrar" />
+		        			<h:commandButton class="waves-effect waves-light btn right pink" value="Registrar" action="#{assuntoBean.cadastrarAssunto()}"/>
 		        		</div>
 		        	</div>
         		</div>

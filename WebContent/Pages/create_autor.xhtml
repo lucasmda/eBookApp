@@ -18,22 +18,22 @@
 				<h4 class="pink-text center thin">Cadastre um novo Autor</h4>
 					<div class="input-field col s12">
 						<i class="fa fa-user prefix"></i>
-						<h:inputText value="" id="nomeAutor" required="true" />
+						<h:inputText value="#{autorBean.autor.nome}" id="nomeAutor" required="true" />
 	          			<label for="nomeAutor">Nome do Autor</label>
 	        		</div>
 	        		<div class="input-field col s12 m12 l6">
 	        			<i class="fa fa-calendar prefix"></i>
-						<h:inputText value="" id="dataNascimento" required="true" />
-	          			<label for="dataNascimento">Data de Nascimento</label>
+						<h:inputText value="#{autorBean.autor.anoNascimento}" id="anoNascimento" required="true" />
+	          			<label for="anoNascimento">Ano de Nascimento</label>
 	        		</div>
 	        		<div class="input-field col s12 m12 l6">
 	        			<i class="fa fa-globe prefix"/>
-						<h:inputText value="" id="paisAutor" required="true" />
+						<h:inputText value="#{autorBean.autor.pais}" id="paisAutor" required="true" />
 	          			<label for="paisAutor">País do Autor</label>
 	        		</div>
 	        		<div class="row">
 		        		<div class="col s12 m12 l12">
-		        			<h:commandButton class="waves-effect waves-light btn right pink" value="Registrar" />
+		        			<h:commandButton class="waves-effect waves-light btn right pink" value="Registrar" action="#{autorBean.cadastrarAutor}"/>
 		        		</div>
 		        	</div>
         		</div>

@@ -2,28 +2,37 @@ package br.com.ebookapp.ManagedBeans;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.ebookapp.Models.Autor;
+
 @ManagedBean
 public class AutorBean {
-	private String nome;
-	private int idade;
-	private String pais;
+	private Autor autor = new Autor();
 	
-	public String getNome() {
-		return nome;
+	public Autor getAutor() {
+		return autor;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
 	}
-	public int getIdade() {
-		return idade;
+	
+	private String response = "";
+	private String error;
+	
+	public String getResponse() {
+		return response;
 	}
-	public void setIdade(int idade) {
-		this.idade = idade;
+
+	public String getError() {
+		return error;
 	}
-	public String getPais() {
-		return pais;
-	}
-	public void setPais(String pais) {
-		this.pais = pais;
+	
+	public String cadastrarAutor(){
+		try{
+			System.out.println(autor.getNome());
+			return response;
+		}catch(Exception e){
+			return error = e.getMessage();
+		}
 	}
 }

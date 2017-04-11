@@ -17,55 +17,76 @@
 				<div class="row">
 				<h4 class="pink-text center thin">Cadastre um novo Livro</h4>
 					<div class="input-field col s12">
-						<i class="fa fa-user prefix"></i>
+						<i class="fa fa-book prefix"></i>
+
 						<h:inputText value="" id="tituloLivro" required="true" />
 	          			<label for="tituloLivro">Titulo do Livro</label>
 	        		</div>
-	        		<div class="input-field col s12 m12 l6">
-	        			<i class="fa fa-address-card-o prefix"></i>
-						<h:inputText value="" id="descricaoLivro" required="true" />
-	          			<label for="descricaoLivro">Descricao do Livro</label>
-	        		</div>
+	        		
 	        		<div class="input-field col s12 m12 l6">
 	        			<i class="fa fa-lock prefix"></i>
 						<h:inputText value="" id="codigoLivro" required="true" />
 	          			<label for="codigoLivro">Codigo do Livro</label>
 	        		</div>
 	        		<div class="input-field col s12 m12 l6">
-	        			<i class="fa fa-lock prefix"></i>
+	        			<i class="fa fa-calendar prefix"></i>
+
 						<h:inputText value="" id="dataLancamento" required="true" />
 	          			<label for="dataLancamento">Data de Lancamento</label>
 	        		</div>
 	        		<div class="input-field col s12 m12 l6">
-	        			<i class="fa fa-lock prefix"></i>
+	        			<i class="fa fa-money prefix"></i>
+
 						<h:inputText value="" id="precoLivro" required="true" />
 	          			<label for="precoLivro">Preco do Livro</label>
 	        		</div>
+	        		
 	        		<div class="input-field col s12 m12 l6">
-	        			<i class="fa fa-lock prefix"></i>
-						<h:inputText value="" id="descontoLivro" required="true" />
-	          			<label for="descontoLivro">Desconto do Livro</label>
-	        		</div>
-	        		<div class="input-field col s12 m12 l6">
-	        			<i class="fa fa-lock prefix"></i>
+	        			<i class="fa fa-credit-card-alt prefix"></i>
+
 						<h:inputText value="" id="precoDesconto" required="true" />
 	          			<label for="precoDesconto">Preco do Desconto</label>
 	        		</div>
 	        		<div class="input-field col s12 m12 l6">
-	        			<i class="fa fa-lock prefix"></i>
+	        			<i class="fa fa-pencil-square prefix"></i>
+
+
 						<h:inputText value="" id="editoraLivro" required="true" />
 	          			<label for="editoraLivro">Editora do Livro</label>
 	        		</div>
 	        		<div class="input-field col s12 m12 l6">
-	        			<i class="fa fa-lock prefix"></i>
+	        			<i class="fa fa-user prefix"></i>
 						<h:inputText value="" id="autorLivro" required="true" />
 	          			<label for="autorLivro">Autor do Livro</label>
 	        		</div>
 	        		<div class="input-field col s12 m12 l6">
-	        			<i class="fa fa-lock prefix"></i>
+	        			<i class="fa fa-file-text-o prefix"></i>
+
 						<h:inputText value="" id="assuntoLivro" required="true" />
 	          			<label for="assuntoLivro">Assunto do Livro</label>
 	        		</div>
+	        		
+	        		<div class="input-field col s12 m12 l6">
+	        		<br></br>
+						<p>
+						<input name="groupDesconto" type="radio" id="descontoSim" />
+						<label for="descontoSim">Sim</label>
+						    
+						<input name="groupDesconto" type="radio" id="descontoNao" />
+						<label for="descontoNao">Não</label>
+						</p>
+	          			<label for="descontoLivro">O livro possui desconto?</label>
+	        		</div>
+	        		<div class="input-field col s12">
+	        			<i class="fa fa-pencil-square-o prefix"></i>     
+						<textarea id="descricaoLivro" class="materialize-textarea"></textarea>
+						<label for="descricaoLivro">Descricao do Livro</label>  
+	        		</div>
+	        		<div class="row">
+		        		<div class="col s12 m12 l12">
+		        			<h:commandButton class="waves-effect waves-light btn right pink" value="Registrar" />
+		        		</div>
+		        	</div>
         		</div>
 			</div>
 		</div>

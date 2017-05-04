@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+	<ui:composition template="../layout/app.xhtml">
+	<ui:define name = "content">
+		<div class="row">
+			<div class="col s12 m6 l6 offset-m3">
+				<div class="card">
+					<div class="content">
+						<div class="row">
+						<h4 class="pink-text center thin">Edite uma Editora</h4>
+							<div class="input-field col s12 m6 l6">
+								<i class="fa fa-user prefix"></i>
+								<h:inputText value="" id="nomeEditora" required="true" />
+			          			<label for="nomeEditora">Nome da Editora</label>
+			        		</div>
+			        		<div class="input-field col s12 m6 l6">
+			        			<i class="fa fa-address-card-o prefix"></i>
+								<h:inputText value="" id="descricaoEditora" required="true" />
+			          			<label for="descricaoEditora">Descricao Editora</label>
+			        		</div>
+			        		<div class="row">
+			        		<div class="col s12 m12 l12">
+			        			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" />
+			        		</div>
+			        	</div>
+		        		</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>		
+	</ui:composition>
+</h:body> 
+</html>

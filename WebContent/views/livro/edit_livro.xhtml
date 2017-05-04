@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+	<ui:composition template="../layout/app.xhtml">
+	<ui:define name = "content">
+		<div class="row">
+			<div class="col s12 m6 l6 offset-m3">
+					<div class="row">
+					<h4 class="pink-text center thin">Edite um Livro</h4>
+						<div class="input-field col s12">
+							<i class="fa fa-book prefix"></i>
+	
+							<h:inputText value="" id="tituloLivro" required="true" />
+		          			<label for="tituloLivro">Titulo do Livro</label>
+		        		</div>
+		        		<div class="input-field col s12 m12 l6">
+		        			<i class="fa fa-money prefix"></i>
+	
+							<h:inputText value="" id="precoLivro" required="true" />
+		          			<label for="precoLivro">Preco do Livro</label>
+		        		</div>
+		        		<div class="input-field col s12 m12 l6">
+		        			<i class="fa fa-credit-card-alt prefix"></i>
+	
+							<h:inputText value="" id="precoDesconto" required="true" />
+		          			<label for="precoDesconto">Preco do Desconto</label>
+		        		</div>
+		        		<div class="input-field col s12 m12 l6">
+		        			<i class="fa fa-archive prefix"></i>
+							<h:inputText value="" id="estoqueLivro" required="true" />
+		          			<label for="estoqueLivro">Estoque do Livro</label>
+		        		</div>
+		        		<div class="input-field col s12 m12 l6">
+		        			<i class="fa fa-pencil-square prefix"></i>
+							<h:inputText value="" id="edicaoLivro" required="true" />
+		          			<label for="edicaoLivro">Edição do Livro</label>
+		        		</div>
+		        		
+		        		<div class="input-field col s12">
+		        			<i class="fa fa-pencil-square-o prefix"></i>     
+							<textarea id="descricaoLivro" class="materialize-textarea"></textarea>
+							<label for="descricaoLivro">Descricao do Livro</label>  
+		        		</div>
+		        		<div class="row">
+			        		<div class="col s12 m12 l12">
+			        			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" />
+			        		</div>
+			        	</div>
+	        		</div>
+			</div>
+		</div>
+	</ui:define>		
+	</ui:composition>
+</h:body> 
+</html>

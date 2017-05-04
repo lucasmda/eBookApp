@@ -10,23 +10,19 @@
 	<ui:define name = "content">
 		<div class="row">
 			<div class="col s12 m6 l6 offset-m3">
-				<div class="card">
-					<div class="content">
-						<div class="row">
-						<h4 class="pink-text center thin">Cadastre um novo Autor</h4>
-							<div class="input-field col s12">
-								<i class="fa fa-user prefix"></i>
-								<h:inputText value="#{autorBean.autor.nome}" id="nomeAutor" required="true" />
-			          			<label for="nomeAutor">Nome do Autor</label>
-			        		</div>
-			        		<div class="row">
-				        		<div class="col s12 m12 l12">
-				        			<h:commandButton class="waves-effect waves-light btn right pink" value="Registrar" action="#{autorBean.cadastrarAutor}"/>
-				        		</div>
-				        	</div>
+				<div class="row">
+					<h4 class="pink-text center thin">Cadastre um novo Autor</h4>
+					<div class="input-field col s12">
+						<i class="fa fa-user prefix"></i>
+						<h:inputText value="#{autorBean.autor.nome}" id="nomeAutor" required="true" />
+	          			<label for="nomeAutor">Nome do Autor</label>
+	        		</div>
+	        		<div class="row">
+		        		<div class="col s12 m12 l12">
+		        			<h:commandButton class="waves-effect waves-light btn right pink" value="Registrar" action="#{autorBean.cadastrarAutor}"/>
 		        		</div>
-					</div>
-				</div>
+		        	</div>
+        		</div>
 			</div>
 		</div>
 	</ui:define>		

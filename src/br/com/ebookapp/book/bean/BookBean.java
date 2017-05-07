@@ -1,8 +1,8 @@
-package com.ebookapp.book.bean;
+package br.com.ebookapp.book.bean;
 
-import com.ebookapp.author.bean.AuthorBean;
-import com.ebookapp.publisher.bean.PublisherBean;
-import com.ebookapp.subject.bean.SubjectBean;
+import br.com.ebookapp.author.bean.AuthorBean;
+import br.com.ebookapp.publisher.bean.PublisherBean;
+import br.com.ebookapp.subject.bean.SubjectBean;
 
 public class BookBean {
 	private int book_id;

@@ -1,4 +1,4 @@
-package com.ebookapp.user.bean;
+package br.com.ebookapp.user.bean;
 
 public class UserBean {
 	private int user_id;

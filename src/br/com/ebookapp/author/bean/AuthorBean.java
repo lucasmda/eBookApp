@@ -1,4 +1,4 @@
-package com.ebookapp.author.bean;
+package br.com.ebookapp.author.bean;
 
 public class AuthorBean {
 	private int author_id;

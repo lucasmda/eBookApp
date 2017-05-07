@@ -1,4 +1,4 @@
-package com.ebookapp.subject.bean;
+package br.com.ebookapp.subject.bean;
 
 public class SubjectBean {
 	private int subject_id;

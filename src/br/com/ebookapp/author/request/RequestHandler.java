@@ -1,12 +1,12 @@
-package com.ebookapp.author.request;
+package br.com.ebookapp.author.request;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ebookapp.author.bean.AuthorBean;
-import com.ebookapp.database.RequestConnection;
+import br.com.ebookapp.author.bean.AuthorBean;
+import br.com.ebookapp.database.RequestConnection;
 
 public class RequestHandler {
 	private PreparedStatement preparedStatement = null;

@@ -1,10 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Lista de Assuntos - eBookApp</title>
+</h:head>
 <h:body>
 	<ui:composition template="../layout/app.xhtml">
 		<ui:define name="content">
@@ -25,12 +28,12 @@
 									<tr>
 										<td>#{s.name}</td>
 										<td>
-											<h:commandLink value="Editar" action="#{assuntoBean.editSubject()}">
+											<h:commandLink value="Editar" action="#{assuntoBean.editSubject}">
 												<f:setPropertyActionListener value="#{s.subject_id}" target="#{assuntoBean.subject.subject_id}" />
 											</h:commandLink>
 										</td>
 										<td>
-											<h:commandLink value="Excluir" action="#{assuntoBean.deleteSubject()}">
+											<h:commandLink value="Excluir" action="#{assuntoBean.deleteSubject}">
 												<f:setPropertyActionListener value="#{s.subject_id}" target="#{assuntoBean.subject.subject_id}" />
 											</h:commandLink>
 										</td>

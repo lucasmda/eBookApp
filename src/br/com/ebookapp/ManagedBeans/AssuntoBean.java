@@ -56,7 +56,7 @@ public class AssuntoBean {
 		return error;
 	}
 
-	public String cadastrarAssunto() {
+	public String registerNewSubject() {
 		try {
 			if (!HandlerHelper.isBlankOrNull(this.subject.getName())) {
 				boolean isSuccess = requestHandler.createSubject(this.subject);

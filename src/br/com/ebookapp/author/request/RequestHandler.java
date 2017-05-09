@@ -9,7 +9,6 @@ import br.com.ebookapp.author.bean.AuthorBean;
 import br.com.ebookapp.database.RequestConnection;
 
 public class RequestHandler {
-	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 	private String sql = "";
 	private List<AuthorBean> list = null;
@@ -19,10 +18,10 @@ public class RequestHandler {
 		this.sql = "INSERT 	INTO AUTHOR "
 				+ " VALUES(?, ?)";
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.preparedStatement.setInt(1, this.getIdFromLastIndex());
-			this.preparedStatement.setString(2, authorName);
-			return this.preparedStatement.execute();
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
+			preparedStatement.setInt(1, getIdFromLastIndex());
+			preparedStatement.setString(2, authorName);
+			return preparedStatement.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("CREATE AUTHOR " + e.getMessage());
 		}
@@ -34,8 +33,8 @@ public class RequestHandler {
 				+ "			author.name"
 				+ " FROM 	AUTHOR author";
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.resultSet = this.preparedStatement.executeQuery();
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
+			this.resultSet = preparedStatement.executeQuery();
 			this.list = new ArrayList<AuthorBean>();
 			while (this.resultSet.next()) {
 				this.author = new AuthorBean();
@@ -56,8 +55,8 @@ public class RequestHandler {
 				+ " FROM 	AUTHOR author"
 				+ "	WHERE 	author.author_id = " + id;
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.resultSet = this.preparedStatement.executeQuery();
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
+			this.resultSet = preparedStatement.executeQuery();
 			if (this.resultSet.next()) {
 				this.author = new AuthorBean();
 				this.author.setAuthor_id(this.resultSet.getInt(1));
@@ -74,9 +73,9 @@ public class RequestHandler {
 		this.sql = "UPDATE 	AUTHOR SET name = ?"
 				+ " WHERE 	author_id = " + id;
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.preparedStatement.setString(1, author.getName());
-			return this.preparedStatement.execute();
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
+			preparedStatement.setString(1, author.getName());
+			return preparedStatement.executeUpdate()==1;
 		} catch (Exception e) {	
 			System.out.println("UPDATE AUTHOR " + e.getMessage());
 		}
@@ -87,8 +86,8 @@ public class RequestHandler {
 		this.sql = "DELETE 	FROM AUTHOR"
 				+ " WHERE 	author_id = " + id;
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			return this.preparedStatement.execute();
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
+			return preparedStatement.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("DELETE AUTHOR " + e.getMessage());
 		}
@@ -96,10 +95,10 @@ public class RequestHandler {
 	}
 	
 	private int getIdFromLastIndex() {
-		this.sql = "SELECT MAX(author_id) FROM AUTHOR;";
+		String maxIndexQuery = "SELECT MAX(author_id) FROM AUTHOR;";
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.resultSet = this.preparedStatement.executeQuery();
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(maxIndexQuery);
+			this.resultSet = preparedStatement.executeQuery();
 			if (this.resultSet.next())
 				return this.resultSet.getInt(1);
 		} catch (Exception e) {

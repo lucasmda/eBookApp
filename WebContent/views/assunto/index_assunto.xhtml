@@ -11,16 +11,34 @@
 			<div class="row">
 				<h4 class="pink-text center thin">Lista de Assuntos</h4>
 				<div class="col 12 m6 l6 offset-m3">
-					<table class="table">
-					<thead>
-						<tr>
-							<td>Assunto</td>
-							<td>Editar</td>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-					</table>
+					<h:form>
+						<table class="table">
+							<thead>
+								<tr>
+									<td>Assunto</td>
+									<td>Editar</td>
+									<td>Excluir</td>
+								</tr>
+							</thead>
+							<tbody>
+								<ui:repeat var="s" value="#{assuntoBean.subjectList}">
+									<tr>
+										<td>#{s.name}</td>
+										<td>
+											<h:commandLink value="Editar" action="#{assuntoBean.editSubject()}">
+												<f:setPropertyActionListener value="#{s.subject_id}" target="#{assuntoBean.subject.subject_id}" />
+											</h:commandLink>
+										</td>
+										<td>
+											<h:commandLink value="Excluir" action="#{assuntoBean.deleteSubject()}">
+												<f:setPropertyActionListener value="#{s.subject_id}" target="#{assuntoBean.subject.subject_id}" />
+											</h:commandLink>
+										</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>
+					</h:form>
 				</div>
 			</div>
 		</ui:define>

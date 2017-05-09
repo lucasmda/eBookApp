@@ -100,7 +100,7 @@ public class RequestHandler {
 			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(maxIndexQuery);
 			this.resultSet = preparedStatement.executeQuery();
 			if (this.resultSet.next())
-				return this.resultSet.getInt(1);
+				return this.resultSet.getInt(1)+1;
 		} catch (Exception e) {
 			System.out.println("GET MAX INDEX " + e.getMessage());
 		}

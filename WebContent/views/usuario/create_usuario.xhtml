@@ -20,25 +20,24 @@
 									<h4 class="pink-text center thin">Cadastre um novo Usuario</h4>
 									<div class="input-field col s12">
 										<i class="fa fa-user prefix"></i>
-										<h:inputText value="#{usuarioBean.user.name}" id="name" required="true" />
-					          			<label for="name">Nome do Usuario</label>
+										<h:inputText value="#{usuarioBean.user.name}" id="userName" required="true" />
+					          			<label for="userName">Nome do Usuario</label>
 					        		</div>
 					        		<div class="input-field col s12 m12 l6">
 					        			<i class="fa fa-address-card-o prefix"></i>
-										<h:inputText value="#{usuarioBean.user.email}" id="email" type="email" required="true" />
-					          			<label for="email">Email do Usuario</label>
+										<h:inputText value="#{usuarioBean.user.email}" id="userEmail" type="email" required="true" />
+					          			<label for="userEmail">Email do Usuario</label>
 					        		</div>
 					        		<div class="input-field col s12 m12 l6">
 					        			<i class="fa fa-lock prefix"></i>
-					          			<h:inputSecret value="#{usuarioBean.user.password}" id="password" type="password" required="true"/>
-				         				<label for="password">Senha do Usuario</label>
+					          			<h:inputSecret value="#{usuarioBean.user.password}" id="userPassword" type="password" required="true"/>
+				         				<label for="userPassword">Senha do Usuario</label>
 					        		</div>
 					        		<div class="input-field col s12 m12 l6">
 					        			<i class="fa fa-map-marker prefix"></i>
-										<h:inputText value="#{usuarioBean.user.address}" id="address" required="true" />
-					          			<label for="address">Endereco do Usuario</label>
+										<h:inputText value="#{usuarioBean.user.address}" id="userAddress" required="true" />
+					          			<label for="userAddress">Endereco do Usuario</label>
 					        		</div>
-					        		
 					        		<div class="row">
 						        		<div class="col s12 m12 l12">
 						        			<h:commandButton class="waves-effect waves-light btn right pink" value="Registrar" type="submit" action="#{usuarioBean.registerNewUser}" />

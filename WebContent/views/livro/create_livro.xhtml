@@ -17,33 +17,33 @@
 							<h4 class="pink-text center thin">Cadastre um novo Livro</h4>
 							<div class="input-field col s12">
 								<i class="fa fa-book prefix"></i>
-								<h:inputText value="#{livroBean.book.name}" id="name" required="true" />
-			          			<label for="name">Titulo do Livro</label>
+								<h:inputText value="#{livroBean.book.name}" id="bookName" required="true" />
+			          			<label for="bookName">Titulo do Livro</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-money prefix"></i>
-								<h:inputText value="#{livroBean.book.price}" id="price" required="true" />
-			          			<label for=""price"">Preco do Livro</label>
+								<h:inputText value="#{livroBean.book.price}" id="bookPrice" required="true" />
+			          			<label for="bookPrice">Preco do Livro</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-credit-card-alt prefix"></i>
-								<h:inputText value="#{livroBean.book.discount}" id="discount" required="true" />
-			          			<label for="discount">Desconto (%)</label>
+								<h:inputText value="#{livroBean.book.discount}" id="bookDiscount" required="true" />
+			          			<label for="bookDiscount">Desconto (%)</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-archive prefix"></i>
-								<h:inputText value="#{livroBean.book.stock}" id="stock" required="true" />
-			          			<label for="stock">Estoque do Livro</label>
+								<h:inputText value="#{livroBean.book.stock}" id="bookStock" required="true" />
+			          			<label for="bookStock">Estoque do Livro</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-pencil-square prefix"></i>
-								<h:inputText value="#{livroBean.book.edition}" id="edition" required="true" />
-			          			<label for="edition">Edição do Livro</label>
+								<h:inputText value="#{livroBean.book.edition}" id="bookEdition" required="true" />
+			          			<label for="bookEdition">Edição do Livro</label>
 			        		</div>
 			        		<div class="input-field col s12">
 			        			<i class="fa fa-pencil-square-o prefix"></i>     
-								<textarea id="description" class="materialize-textarea">#{livroBean.book.description}</textarea>
-								<label for="description">Descricao do Livro</label>  
+								<h:inputTextarea value="#{livroBean.book.description}" id="bookDescription" class="materialize-textarea"/>
+								<label for="bookDescription">Descricao do Livro</label>  
 			        		</div>
 			        		<div class="row">
 				        		<div class="col s12 m12 l12">

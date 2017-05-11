@@ -9,7 +9,6 @@ import br.com.ebookapp.database.RequestConnection;
 import br.com.ebookapp.publisher.bean.PublisherBean;
 
 public class RequestHandler {
-	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 	private String sql = "";
 	private List<PublisherBean> list = null;
@@ -19,11 +18,11 @@ public class RequestHandler {
 		this.sql = "INSERT INTO PUBLISHER"
 				+ " VALUES (?, ?, ?)";
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.preparedStatement.setInt(1, this.getIdFromLastIndex());
-			this.preparedStatement.setString(1, publisher.getName());
-			this.preparedStatement.setString(2, publisher.getDescription());
-			return this.preparedStatement.execute();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			pstmt.setInt(1, getIdFromLastIndex());
+			pstmt.setString(2, publisher.getName());
+			pstmt.setString(3, publisher.getDescription());
+			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("CREATE PUBLISHER " + e.getMessage());
 		}
@@ -36,8 +35,8 @@ public class RequestHandler {
 				+ "			publisher.description"
 				+ " FROM 	Publisher publisher";
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.resultSet = this.preparedStatement.executeQuery();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			this.resultSet = pstmt.executeQuery();
 			this.list = new ArrayList<PublisherBean>();
 			while (this.resultSet.next()) {
 				this.publisher = new PublisherBean();
@@ -60,8 +59,8 @@ public class RequestHandler {
 				+ " FROM 	Publisher publisher"
 				+ " WHERE	publisher_id = " + id;
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.resultSet = this.preparedStatement.executeQuery();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			this.resultSet = pstmt.executeQuery();
 			if (this.resultSet.next()) {
 				this.publisher = new PublisherBean();
 				this.publisher.setPublisher_id(this.resultSet.getInt(1));
@@ -80,10 +79,10 @@ public class RequestHandler {
 				+ "			description = ?"
 				+ " WHERE 	publisher_id = " + id;
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.preparedStatement.setString(1, publisher.getName());
-			this.preparedStatement.setString(2, publisher.getDescription());
-			return this.preparedStatement.execute();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			pstmt.setString(1, publisher.getName());
+			pstmt.setString(2, publisher.getDescription());
+			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("UPDATE PUBLISHER " + e.getMessage());
 		}
@@ -94,8 +93,8 @@ public class RequestHandler {
 		this.sql = "DELETE 	FROM PUBLISHER"
 				+ " WHERE 	publisher_id = " + id;
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			return this.preparedStatement.execute();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("DELETE PUBLISHER " + e.getMessage());
 		}
@@ -103,12 +102,12 @@ public class RequestHandler {
 	}
 	
 	private int getIdFromLastIndex() {
-		this.sql = "SELECT MAX(publisher_id) FROM PUBLISHER;";
+		String maxIndexQuery = "SELECT MAX(publisher_id) FROM PUBLISHER;";
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.resultSet = this.preparedStatement.executeQuery();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(maxIndexQuery);
+			this.resultSet = pstmt.executeQuery();
 			if (this.resultSet.next())
-				return this.resultSet.getInt(1);
+				return this.resultSet.getInt(1)+1;
 		} catch (Exception e) {
 			System.out.println("GET MAX INDEX " + e.getMessage());
 		}

@@ -99,7 +99,7 @@ public class AssuntoBean {
 	public String updateSubject() {
 		try {
 			if (!HandlerHelper.isBlankOrNull(this.subject.getName())) {
-				boolean isSuccess = requestHandler.createSubject(this.subject);
+				boolean isSuccess = requestHandler.updateSubject(this.subject, this.subject.getSubject_id());
 				if (isSuccess) {
 					this.subject.setName(null);
 					return "index_asssunto";

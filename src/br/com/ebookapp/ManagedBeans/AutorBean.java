@@ -118,6 +118,7 @@ public class AutorBean {
 				boolean isSuccess = requestHandler.updateAuthor(this.author, this.author.getAuthor_id());
 				if (isSuccess) {
 					this.author.setName(null);
+					this.authorList = requestHandler.getAuthor();
 					return "index_autor";
 				}
 			}

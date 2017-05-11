@@ -102,6 +102,7 @@ public class AssuntoBean {
 				boolean isSuccess = requestHandler.updateSubject(this.subject, this.subject.getSubject_id());
 				if (isSuccess) {
 					this.subject.setName(null);
+					this.subjectList = requestHandler.getSubject();
 					return "index_asssunto";
 				}
 			}

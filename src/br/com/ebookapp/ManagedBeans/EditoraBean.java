@@ -110,6 +110,7 @@ public class EditoraBean {
 				boolean isSuccess = requestHandler.updatePublisher(this.publisher, this.publisher.getPublisher_id());
 				if (isSuccess) {
 					this.publisher.setName(null);
+					this.publisherList = requestHandler.getPublisher();
 					return "index_editora";
 				}
 			}

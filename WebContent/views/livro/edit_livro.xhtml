@@ -3,58 +3,59 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
-
-<h:head></h:head> 
+      
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Editar Livro - eBookApp</title>
+</h:head>
 <h:body> 
 	<ui:composition template="../layout/app.xhtml">
-	<ui:define name = "content">
-		<div class="row">
-			<div class="col s12 m6 l6 offset-m3">
+		<ui:define name = "content">
+			<div class="row">
+				<div class="col s12 m6 l6 offset-m3">
 					<div class="row">
-					<h4 class="pink-text center thin">Edite um Livro</h4>
-						<div class="input-field col s12">
-							<i class="fa fa-book prefix"></i>
-	
-							<h:inputText value="" id="tituloLivro" required="true" />
-		          			<label for="tituloLivro">Titulo do Livro</label>
-		        		</div>
-		        		<div class="input-field col s12 m12 l6">
-		        			<i class="fa fa-money prefix"></i>
-	
-							<h:inputText value="" id="precoLivro" required="true" />
-		          			<label for="precoLivro">Preco do Livro</label>
-		        		</div>
-		        		<div class="input-field col s12 m12 l6">
-		        			<i class="fa fa-credit-card-alt prefix"></i>
-	
-							<h:inputText value="" id="precoDesconto" required="true" />
-		          			<label for="precoDesconto">Preco do Desconto</label>
-		        		</div>
-		        		<div class="input-field col s12 m12 l6">
-		        			<i class="fa fa-archive prefix"></i>
-							<h:inputText value="" id="estoqueLivro" required="true" />
-		          			<label for="estoqueLivro">Estoque do Livro</label>
-		        		</div>
-		        		<div class="input-field col s12 m12 l6">
-		        			<i class="fa fa-pencil-square prefix"></i>
-							<h:inputText value="" id="edicaoLivro" required="true" />
-		          			<label for="edicaoLivro">Edição do Livro</label>
-		        		</div>
-		        		
-		        		<div class="input-field col s12">
-		        			<i class="fa fa-pencil-square-o prefix"></i>     
-							<textarea id="descricaoLivro" class="materialize-textarea"></textarea>
-							<label for="descricaoLivro">Descricao do Livro</label>  
-		        		</div>
-		        		<div class="row">
-			        		<div class="col s12 m12 l12">
-			        			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" />
+						<h:form>
+							<h4 class="pink-text center thin">Edite um Livro</h4>
+							<div class="input-field col s12">
+								<i class="fa fa-book prefix"></i>
+								<h:inputText value="#{livroBean.book.name}" id="name" required="true" />
+			          			<label for="name">Titulo do Livro</label>
 			        		</div>
-			        	</div>
+			        		<div class="input-field col s12 m12 l6">
+			        			<i class="fa fa-money prefix"></i>
+								<h:inputText value="#{livroBean.book.price}" id="price" required="true" />
+			          			<label for="price">Preco do Livro</label>
+			        		</div>
+			        		<div class="input-field col s12 m12 l6">
+			        			<i class="fa fa-credit-card-alt prefix"></i>
+								<h:inputText value="#{livroBean.book.discount}" id="discount" required="true" />
+			          			<label for="discount">Desconto (%)</label>
+			        		</div>
+			        		<div class="input-field col s12 m12 l6">
+			        			<i class="fa fa-archive prefix"></i>
+								<h:inputText value="#{livroBean.book.stock}" id="stock" required="true" />
+			          			<label for="stock">Estoque do Livro</label>
+			        		</div>
+			        		<div class="input-field col s12 m12 l6">
+			        			<i class="fa fa-pencil-square prefix"></i>
+								<h:inputText value="#{livroBean.book.edition}" id="edition" required="true" />
+			          			<label for="edition">Edição do Livro</label>
+			        		</div>
+			        		<div class="input-field col s12">
+			        			<i class="fa fa-pencil-square-o prefix"></i>     
+								<h:inputTextarea value="#{livroBean.book.description}" id="description" class="materialize-textarea"/>
+								<label for="description">Descricao do Livro</label>  
+			        		</div>
+			        		<div class="row">
+				        		<div class="col s12 m12 l12">
+				        			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" type="subtmit" action="#{livroBean.updateBook}" />
+				        		</div>
+				        	</div>
+				        </h:form>
 	        		</div>
+				</div>
 			</div>
-		</div>
-	</ui:define>		
+		</ui:define>		
 	</ui:composition>
 </h:body> 
 </html>

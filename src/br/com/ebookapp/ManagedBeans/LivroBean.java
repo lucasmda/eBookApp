@@ -1,78 +1,139 @@
 package br.com.ebookapp.ManagedBeans;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
+
+import br.com.ebookapp.database.validation.HandlerHelper;
+import br.com.ebookapp.database.validation.RequestValidator;
+import br.com.ebookapp.book.bean.BookBean;
+import br.com.ebookapp.book.request.RequestHandler;
 
 @ManagedBean
 public class LivroBean {
-	private String titulo;
-	private String descricao;
-	private int codigo;
-	private String dataLancamento;
-	private Double preco;
-	private Boolean desconto;
-	private Double precoDesconto;
-	private EditoraBean editora;
-	private AutorBean autor;
-	private AssuntoBean assunto;
+	private BookBean book = null;
+	private List<BookBean> bookList = null;
+	private RequestHandler requestHandler = null;
+	private String response = "";
+	private String error = "";
 	
-	public String getTitulo() {
-		return titulo;
+	public LivroBean() {
+		this.requestHandler = new RequestHandler();
+		
+		this.book = new BookBean();
+		this.bookList = this.requestHandler.getBook();
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+
+	public BookBean getBook() {
+		return book;
 	}
-	public String getDescricao() {
-		return descricao;
+
+	public void setBook(BookBean book) {
+		this.book = book;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+
+	public List<BookBean> getBookList() {
+		return bookList;
 	}
-	public int getCodigo() {
-		return codigo;
+
+	public void setBookList(List<BookBean> bookList) {
+		this.bookList = bookList;
 	}
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+
+	public RequestHandler getRequestHandler() {
+		return requestHandler;
 	}
-	public String getDataLancamento() {
-		return dataLancamento;
+
+	public void setRequestHandler(RequestHandler requestHandler) {
+		this.requestHandler = requestHandler;
 	}
-	public void setDataLancamento(String dataLancamento) {
-		this.dataLancamento = dataLancamento;
+
+	public String getResponse() {
+		return response;
 	}
-	public Double getPreco() {
-		return preco;
+
+	public void setResponse(String response) {
+		this.response = response;
 	}
-	public void setPreco(Double preco) {
-		this.preco = preco;
+
+	public String getError() {
+		return error;
 	}
-	public Boolean getDesconto() {
-		return desconto;
+
+	public void setError(String error) {
+		this.error = error;
 	}
-	public void setDesconto(Boolean desconto) {
-		this.desconto = desconto;
+
+	public String registerNewBook() {
+		try {
+			if (RequestValidator.validateBook(this.book)) {
+				boolean isSuccess = requestHandler.createBook(this.book);
+				if (isSuccess) {
+					this.book.setName(null);
+					this.book.setDescription(null);
+					this.book.setPrice(0);
+					this.book.setDiscount(0);
+					this.book.setStock(0);
+					this.book.setEdition(0);
+					this.book.setAuthor(null);
+					this.book.setPublisher(null);
+					this.book.setSubject(null);
+				}
+			}
+			return response;
+		} catch(Exception e){
+			this.error = e.getMessage();
+			return "erro";
+		}
 	}
-	public Double getPrecoDesconto() {
-		return precoDesconto;
+	
+	public String editBook() {
+		try {
+			this.book = requestHandler.getBook(this.book.getBook_id());
+			return "edit_livro";
+		} catch (Exception e) {
+			this.error = e.getMessage();
+			return "erro";
+		}
 	}
-	public void setPrecoDesconto(Double precoDesconto) {
-		this.precoDesconto = precoDesconto;
+	
+	public String deleteBook() {
+		try {
+			if (!HandlerHelper.isBlankOrNull(String.valueOf(this.book.getBook_id()))) {
+				boolean isSuccess = requestHandler.deleteBook(this.book.getBook_id());
+				if (isSuccess) {
+					this.bookList = requestHandler.getBook();
+				}
+			}
+			return response;
+		} catch (Exception e) {
+			this.error = e.getMessage();
+			return "erro";
+		}
 	}
-	public EditoraBean getEditora() {
-		return editora;
-	}
-	public void setEditora(EditoraBean editora) {
-		this.editora = editora;
-	}
-	public AutorBean getAutor() {
-		return autor;
-	}
-	public void setAutor(AutorBean autor) {
-		this.autor = autor;
-	}
-	public AssuntoBean getAssunto() {
-		return assunto;
-	}
-	public void setAssunto(AssuntoBean assunto) {
-		this.assunto = assunto;
+	
+	public String updateBook() {
+		try {
+			if (RequestValidator.validateBook(this.book)) {
+				boolean isSuccess = requestHandler.updateBook(this.book, this.book.getBook_id());
+				if (isSuccess) {
+					this.book.setName(null);
+					this.book.setDescription(null);
+					this.book.setPrice(0);
+					this.book.setDiscount(0);
+					this.book.setStock(0);
+					this.book.setEdition(0);
+					this.book.setAuthor(null);
+					this.book.setPublisher(null);
+					this.book.setSubject(null);
+					this.bookList = requestHandler.getBook();
+					return "index_livro";
+				} 
+			}
+			return response;
+		} catch (Exception e) {
+			this.error = e.getMessage();
+			return "error";
+		}
 	}
 }

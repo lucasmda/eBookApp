@@ -12,7 +12,6 @@ import br.com.ebookapp.publisher.bean.PublisherBean;
 import br.com.ebookapp.subject.bean.SubjectBean;
 
 public class RequestHandler {
-	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 	private String sql = "";
 	private List<BookBean> list = null;
@@ -22,18 +21,18 @@ public class RequestHandler {
 		this.sql = "INSERT INTO BOOK"
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.preparedStatement.setInt(1, this.getIdFromLastIndex());
-			this.preparedStatement.setString(2,  book.getName());
-			this.preparedStatement.setString(3, book.getDescription());
-			this.preparedStatement.setDouble(4, book.getPrice());
-			this.preparedStatement.setDouble(5, book.getDiscount());
-			this.preparedStatement.setInt(6, book.getStock());
-			this.preparedStatement.setInt(7, book.getEdition());
-			this.preparedStatement.setInt(8, book.getAuthor().getAuthor_id());
-			this.preparedStatement.setInt(9, book.getPublisher().getPublisher_id());
-			this.preparedStatement.setInt(10, book.getSubject().getSubject_id());
-			return this.preparedStatement.execute();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			pstmt.setInt(1, this.getIdFromLastIndex());
+			pstmt.setString(2,  book.getName());
+			pstmt.setString(3, book.getDescription());
+			pstmt.setDouble(4, book.getPrice());
+			pstmt.setDouble(5, book.getDiscount());
+			pstmt.setInt(6, book.getStock());
+			pstmt.setInt(7, book.getEdition());
+			pstmt.setInt(8, book.getAuthor().getAuthor_id());
+			pstmt.setInt(9, book.getPublisher().getPublisher_id());
+			pstmt.setInt(10, book.getSubject().getSubject_id());
+			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("CREATE BOOK " + e.getMessage());
 		}
@@ -64,8 +63,8 @@ public class RequestHandler {
 				+ "	JOIN	SUBJECT subject"
 				+ " ON		(book.subject_subject_id = subject.subject_id)";
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.resultSet = this.preparedStatement.executeQuery();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			this.resultSet = pstmt.executeQuery();
 			this.list = new ArrayList<BookBean>();
 			while (this.resultSet.next()) {
 				this.book = new BookBean();
@@ -113,8 +112,8 @@ public class RequestHandler {
 				+ " ON		(book.subject_subject_id = subject.subject_id)"
 				+ "	WHERE 	book.book_id = " + id;
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.resultSet = this.preparedStatement.executeQuery();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			this.resultSet = pstmt.executeQuery();
 			if (this.resultSet.next()) {
 				this.book = new BookBean();
 				this.book.setBook_id(this.resultSet.getInt(1));
@@ -136,7 +135,7 @@ public class RequestHandler {
 	}
 	
 	public boolean updateBook(BookBean book, int id) {
-		this.sql = "UPDATE 	SET book.name = ?,"
+		this.sql = "UPDATE 	BOOK SET book.name = ?,"
 				+ "			book.description = ?,"
 				+ "			book.price = ?,"
 				+ "			book.discount = ?,"
@@ -147,17 +146,17 @@ public class RequestHandler {
 				+ "			book.subject_subject_id = ?"
 				+ " WHERE	book.book_id = " + id;
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.preparedStatement.setString(1, book.getName());
-			this.preparedStatement.setString(2, book.getDescription());
-			this.preparedStatement.setDouble(3, book.getPrice());
-			this.preparedStatement.setDouble(4, book.getDiscount());
-			this.preparedStatement.setInt(5, book.getStock());
-			this.preparedStatement.setInt(6, book.getEdition());
-			this.preparedStatement.setInt(7, book.getAuthor().getAuthor_id());
-			this.preparedStatement.setInt(8, book.getPublisher().getPublisher_id());
-			this.preparedStatement.setInt(9, book.getSubject().getSubject_id());
-			return this.preparedStatement.execute();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			pstmt.setString(1, book.getName());
+			pstmt.setString(2, book.getDescription());
+			pstmt.setDouble(3, book.getPrice());
+			pstmt.setDouble(4, book.getDiscount());
+			pstmt.setInt(5, book.getStock());
+			pstmt.setInt(6, book.getEdition());
+			pstmt.setInt(7, book.getAuthor().getAuthor_id());
+			pstmt.setInt(8, book.getPublisher().getPublisher_id());
+			pstmt.setInt(9, book.getSubject().getSubject_id());
+			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("UPDATE BOOK " + e.getMessage());
 		}
@@ -168,8 +167,8 @@ public class RequestHandler {
 		this.sql = "DELETE 	FROM BOOK"
 				+ " WHERE 	book_id = " + id;
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			return this.preparedStatement.execute();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("DELETE BOOK " + e.getMessage());
 		}
@@ -179,10 +178,10 @@ public class RequestHandler {
 	private int getIdFromLastIndex() {
 		this.sql = "SELECT MAX(book_id) FROM BOOK;";
 		try {
-			this.preparedStatement = RequestConnection.getConnection().prepareStatement(sql);
-			this.resultSet = this.preparedStatement.executeQuery();
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			this.resultSet = pstmt.executeQuery();
 			if (this.resultSet.next())
-				return this.resultSet.getInt(1);
+				return this.resultSet.getInt(1)+1;
 		} catch (Exception e) {
 			System.out.println("GET MAX INDEX " + e.getMessage());
 		}

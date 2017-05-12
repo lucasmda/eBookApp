@@ -15,14 +15,14 @@
 					<div class="row">
 						<h:form>
 							<h4 class="pink-text center thin">Cadastre uma nova Editora</h4>
-							<div class="input-field col s12 m6 l6">
+							<div class="input-field col s12 m12 l12">
 								<i class="fa fa-user prefix"/>
 								<h:inputText value="#{editoraBean.publisher.name}" id="publisherName" required="true" />
 			          			<label for="publisherName">Nome da Editora</label>
 			        		</div>
-			        		<div class="input-field col s12 m6 l6">
+			        		<div class="input-field col s12 m12 l12">
 			        			<i class="fa fa-address-card-o prefix"/>
-								<h:inputText value="#{editoraBean.publisher.description}" id="publisherDescription" required="true" />
+								<h:inputTextarea value="#{editoraBean.publisher.description}" id="publisherDescription" required="true"  class="materialize-textarea"/>
 			          			<label for="publisherDescription">Descricao Editora</label>
 			        		</div>
 			        		<div class="row">

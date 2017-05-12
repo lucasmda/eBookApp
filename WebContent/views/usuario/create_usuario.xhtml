@@ -6,7 +6,7 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastro Usuario - eBookApp</title>
+	<title>Cadastro usuário - eBookApp</title>
 </h:head> 
 <h:body> 
 	<ui:composition template="../layout/app.xhtml">
@@ -17,26 +17,26 @@
 						<div class="content">
 							<div class="row">
 								<h:form>
-									<h4 class="pink-text center thin">Cadastre um novo Usuario</h4>
+									<h4 class="pink-text center thin">Cadastre um novo usuário</h4>
 									<div class="input-field col s12">
 										<i class="fa fa-user prefix"></i>
 										<h:inputText value="#{usuarioBean.user.name}" id="userName" required="true" />
-					          			<label for="userName">Nome do Usuario</label>
+					          			<label for="userName">Nome do usuário</label>
 					        		</div>
 					        		<div class="input-field col s12 m12 l6">
 					        			<i class="fa fa-address-card-o prefix"></i>
 										<h:inputText value="#{usuarioBean.user.email}" id="userEmail" type="email" required="true" />
-					          			<label for="userEmail">Email do Usuario</label>
+					          			<label for="userEmail">E-mail do usuário</label>
 					        		</div>
 					        		<div class="input-field col s12 m12 l6">
 					        			<i class="fa fa-lock prefix"></i>
 					          			<h:inputSecret value="#{usuarioBean.user.password}" id="userPassword" type="password" required="true"/>
-				         				<label for="userPassword">Senha do Usuario</label>
+				         				<label for="userPassword">Senha do usuário</label>
 					        		</div>
 					        		<div class="input-field col s12 m12 l6">
 					        			<i class="fa fa-map-marker prefix"></i>
 										<h:inputText value="#{usuarioBean.user.address}" id="userAddress" required="true" />
-					          			<label for="userAddress">Endereco do Usuario</label>
+					          			<label for="userAddress">Endereço do usuário</label>
 					        		</div>
 					        		<div class="row">
 						        		<div class="col s12 m12 l12">

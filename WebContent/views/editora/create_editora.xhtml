@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastro Editora - eBookApp</title>
+	<title>Cadastro editora - eBookApp</title>
 </h:head> 
 <h:body> 
 	<ui:composition template="../layout/app.xhtml">
@@ -14,16 +14,16 @@
 				<div class="col s12 m6 l6 offset-m3">
 					<div class="row">
 						<h:form>
-							<h4 class="pink-text center thin">Cadastre uma nova Editora</h4>
+							<h4 class="pink-text center thin">Cadastre uma nova editora</h4>
 							<div class="input-field col s12 m12 l12">
 								<i class="fa fa-user prefix"/>
 								<h:inputText value="#{editoraBean.publisher.name}" id="publisherName" required="true" />
-			          			<label for="publisherName">Nome da Editora</label>
+			          			<label for="publisherName">Nome da editora</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l12">
 			        			<i class="fa fa-address-card-o prefix"/>
 								<h:inputTextarea value="#{editoraBean.publisher.description}" id="publisherDescription" required="true"  class="materialize-textarea"/>
-			          			<label for="publisherDescription">Descricao Editora</label>
+			          			<label for="publisherDescription">Descrição editora</label>
 			        		</div>
 			        		<div class="row">
 				        		<div class="col s12 m12 l12">

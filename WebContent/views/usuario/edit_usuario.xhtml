@@ -13,39 +13,67 @@
 		<ui:define name = "content">
 			<div class="row">
 				<div class="col s12 m6 l6 offset-m3">
-					<div class="card">
-						<div class="content">
-							<div class="row">
-								<h:form>
-									<h4 class="pink-text center thin">Editar usuário</h4>
-									<div class="input-field col s12">
-										<i class="fa fa-user prefix"></i>
-										<h:inputText value="#{usuarioBean.user.name}" id="userName" required="true" />
-					          			<label for="userName">Nome do usuário</label>
+					<div class="content">
+						<div class="row">
+							<h:form>
+								<h4 class="pink-text center thin">Editar usuário</h4>
+								<div class="input-field col s12">
+									<i class="fa fa-user prefix"></i>
+									<h:inputText value="#{usuarioBean.user.name}" id="userName" required="true" />
+				          			<label for="userName">Nome*</label>
+				        		</div>
+				        		<div class="input-field col s12 m12 l6">
+				        			<i class="fa fa-address-card-o prefix"></i>
+									<h:inputText value="#{usuarioBean.user.email}" id="userEmail" type="email" required="true" />
+				          			<label for="userEmail">E-mail*</label>
+				        		</div>
+				        		<div class="input-field col s12 m12 l6">
+				        			<i class="fa fa-lock prefix"></i>
+				          			<h:inputSecret value="#{usuarioBean.user.password}" id="userPassword" type="password" required="true"/>
+			         				<label for="userPassword">Senha*</label>
+				        		</div>
+				        		<div class="input-field col s12 m12 l3">
+				        			<i class="fa fa-map-marker prefix"></i>
+									<h:inputText value="#{usuarioBean.user.cep}" id="userCep" type="number" required="true" />
+				          			<label for="userCep">CEP</label>
+				        		</div>
+				        		<div class="input-field col s12 m12 l9">
+				        			<i class="fa fa-map-marker prefix"></i>
+									<h:inputText value="#{usuarioBean.user.address}" id="userAddress" required="true" />
+				          			<label for="userAddress">Endereco do Usuario</label>
+				        		</div>
+				        		<div class="input-field col s12 m12 l3">
+				        			<i class="fa fa-map-marker prefix"></i>
+									<h:inputText value="#{usuarioBean.user.number}" id="userNumber" type="number" required="true" />
+				          			<label for="userNumber">Number</label>
+				        		</div>
+				        		<div class="input-field col s12 m12 l9">
+				        			<i class="fa fa-map-marker prefix"></i>
+									<h:inputText value="#{usuarioBean.user.complement}" id="userComplement" required="true" />
+				          			<label for="userComplement">Complemento</label>
+				        		</div>
+				        		<div class="input-field col s12 m12 l6">
+				        			<i class="fa fa-globe prefix"></i>
+									<h:inputText value="#{usuarioBean.user.city}" id="userCity" required="true" />
+				          			<label for="userCity">Cidade</label>
+				        		</div>
+				        		<div class="input-field col s12 m12 l6">
+				        			<i class="fa fa-globe prefix"></i>
+									<h:inputText value="#{usuarioBean.user.state}" id="userState" required="true" />
+				          			<label for="userState">Estado</label>
+				        		</div>
+				        		<div class="input-field col s12 m12 l6">
+				        			<i class="fa fa-globe prefix"></i>
+									<h:inputText value="#{usuarioBean.user.country}" id="userCountry" required="true" />
+				          			<label for="userCountry">País</label>
+				        		</div>
+				        		<div class="row">
+					        		<div class="col s12 m12 l12">
+					        			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" type="submit" action="#{usuarioBean.updateUser}" />
 					        		</div>
-					        		<div class="input-field col s12 m12 l6">
-					        			<i class="fa fa-address-card-o prefix"></i>
-										<h:inputText value="#{usuarioBean.user.email}" id="userEmail" type="email" required="true" />
-					          			<label for="userEmail">E-mail do usuário</label>
-					        		</div>
-					        		<div class="input-field col s12 m12 l6">
-					        			<i class="fa fa-lock prefix"></i>
-					          			<h:inputSecret value="#{usuarioBean.user.password}" id="userPassword" type="password" required="true"/>
-				         				<label for="userPassword">Senha do usuário</label>
-					        		</div>
-					        		<div class="input-field col s12 m12 l6">
-					        			<i class="fa fa-map-marker prefix"></i>
-										<h:inputText value="#{usuarioBean.user.address}" id="userAddress" required="true" />
-					          			<label for="userAddress">Endereço do usuário</label>
-					        		</div>
-					        		<div class="row">
-						        		<div class="col s12 m12 l12">
-						        			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" type="submit" action="#{usuarioBean.updateUser}" />
-						        		</div>
-						        	</div>
-					        	</h:form>
-			        		</div>
-						</div>
+					        	</div>
+				        	</h:form>
+		        		</div>
 					</div>
 				</div>
 			</div>		

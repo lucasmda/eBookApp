@@ -20,7 +20,13 @@
 							<tr>
 								<td>Nome</td>
 								<td>E-mail</td>
+								<td>CEP</td>
 								<td>Endereço</td>
+								<td>Número</td>
+								<td>Complemento</td>
+								<td>Cidade</td>
+								<td>Estado</td>
+								<td>País</td>
 								<td>Editar</td>
 								<td>Excluir</td>
 							</tr>
@@ -30,7 +36,13 @@
 									<tr>
 										<td>#{u.name}</td>
 										<td>#{u.email}</td>
+										<td>#{u.cep}</td>
 										<td>#{u.address}</td>
+										<td>#{u.number}</td>
+										<td>#{u.complement}</td>
+										<td>#{u.city}</td>
+										<td>#{u.state}</td>
+										<td>#{u.country}</td>
 										<td>
 											<h:commandLink value="Editar" action="#{usuarioBean.editUser}">
 												<f:setPropertyActionListener value="#{u.user_id}" target="#{usuarioBean.user.user_id}" />

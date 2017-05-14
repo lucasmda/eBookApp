@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ebookapp.database.RequestConnection;
-import br.com.ebookapp.subject.bean.SubjectBean;
 import br.com.ebookapp.user.bean.UserBean;
 
 public class RequestHandler {
@@ -19,7 +18,14 @@ public class RequestHandler {
 		this.sql = "SELECT  eBookUser.user_id,"
 				+ "			eBookUser.name,"
 				+ "			eBookUser.email,"
-				+ "			eBookUser.address"
+				+ "			eBookUser.cep,"
+				+ "			eBookUser.address,"
+				+ "			eBookUser.number,"
+				+ "			eBookUser.complement,"
+				+ "			eBookUser.neighborhood,"
+				+ "			eBookUser.city,"
+				+ "			eBookUser.state,"
+				+ "			eBookUser.country"
 				+ " FROM	BOOK_USER eBookUser"
 				+ " WHERE   eBookUser.email    = ?"
 				+ " AND     eBookUser.password = ?";
@@ -33,7 +39,14 @@ public class RequestHandler {
 				this.user.setUser_id(this.resultSet.getInt(1));
 				this.user.setName(this.resultSet.getString(2));
 				this.user.setEmail(this.resultSet.getString(3));
-				this.user.setAddress(this.resultSet.getString(4));
+				this.user.setCep(this.resultSet.getInt(4));
+				this.user.setAddress(this.resultSet.getString(5));
+				this.user.setNumber(this.resultSet.getInt(6));
+				this.user.setComplement(this.resultSet.getString(7));
+				this.user.setNeighborhood(this.resultSet.getString(8));
+				this.user.setCity(this.resultSet.getString(9));
+				this.user.setState(this.resultSet.getString(10));
+				this.user.setCountry(this.resultSet.getString(11));
 				return this.user;
 			}
 		} catch (Exception e) {
@@ -44,14 +57,21 @@ public class RequestHandler {
 	
 	public boolean createUser(UserBean user) {
 		this.sql = "INSERT INTO BOOK_USER"
-				+ " VALUES (?, ?, ?, ?, ?)";
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
 			pstmt.setInt(1, getIdFromLastIndex());
 			pstmt.setString(2, user.getName());
 			pstmt.setString(3, user.getEmail());
 			pstmt.setString(4, user.getPassword());
-			pstmt.setString(5, user.getAddress());
+			pstmt.setInt(5, user.getCep());
+			pstmt.setString(6, user.getAddress());
+			pstmt.setInt(7, user.getNumber());
+			pstmt.setString(8, user.getComplement());
+			pstmt.setString(9, user.getNeighborhood());
+			pstmt.setString(10, user.getCity());
+			pstmt.setString(11, user.getState());
+			pstmt.setString(12, user.getCountry());
 			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("CREATE USER " + e.getMessage());
@@ -60,12 +80,19 @@ public class RequestHandler {
 	}
 	
 	public List<UserBean> getUser() {
-		this.sql = "SELECT 	eBookUser.user_id,"
-				+ " 		eBookUser.name,"
+		this.sql = "SELECT  eBookUser.user_id,"
+				+ "			eBookUser.name,"
 				+ "			eBookUser.email,"
-				+ "			eBookUser.password,"
-				+ "			eBookUser.address"
-				+ " FROM 	BOOK_USER eBookUser";
+				+ "			eBookUser.cep,"
+				+ "			eBookUser.address,"
+				+ "			eBookUser.number,"
+				+ "			eBookUser.complement,"
+				+ "			eBookUser.neighborhood,"
+				+ "			eBookUser.city,"
+				+ "			eBookUser.state,"
+				+ "			eBookUser.country"
+				+ " FROM	BOOK_USER eBookUser"
+				+ " WHERE 	eBookUser.email != 'root@ebookapp.com'";
 		try {
 			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
 			this.resultSet = preparedStatement.executeQuery();
@@ -75,8 +102,14 @@ public class RequestHandler {
 				this.user.setUser_id(this.resultSet.getInt(1));
 				this.user.setName(this.resultSet.getString(2));
 				this.user.setEmail(this.resultSet.getString(3));
-				this.user.setPassword(this.resultSet.getString(4));
+				this.user.setCep(this.resultSet.getInt(4));
 				this.user.setAddress(this.resultSet.getString(5));
+				this.user.setNumber(this.resultSet.getInt(6));
+				this.user.setComplement(this.resultSet.getString(7));
+				this.user.setNeighborhood(this.resultSet.getString(8));
+				this.user.setCity(this.resultSet.getString(9));
+				this.user.setState(this.resultSet.getString(10));
+				this.user.setCountry(this.resultSet.getString(11));
 				this.list.add(this.user);
 			}
 			return this.list;
@@ -87,12 +120,18 @@ public class RequestHandler {
 	}
 	
 	public UserBean getUser(int id) {
-		this.sql = "SELECT 	eBookUser.user_id,"
-				+ " 		eBookUser.name,"
+		this.sql = "SELECT  eBookUser.user_id,"
+				+ "			eBookUser.name,"
 				+ "			eBookUser.email,"
-				+ "			eBookUser.password,"
-				+ "			eBookUser.address"
-				+ " FROM 	BOOK_USER eBookUser"
+				+ "			eBookUser.cep,"
+				+ "			eBookUser.address,"
+				+ "			eBookUser.number,"
+				+ "			eBookUser.complement,"
+				+ "			eBookUser.neighborhood,"
+				+ "			eBookUser.city,"
+				+ "			eBookUser.state,"
+				+ "			eBookUser.country"
+				+ " FROM	BOOK_USER eBookUser"
 				+ " WHERE	eBookUser.user_id = " + id;
 		try {
 			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
@@ -102,8 +141,14 @@ public class RequestHandler {
 				this.user.setUser_id(this.resultSet.getInt(1));
 				this.user.setName(this.resultSet.getString(2));
 				this.user.setEmail(this.resultSet.getString(3));
-				this.user.setPassword(this.resultSet.getString(4));
+				this.user.setCep(this.resultSet.getInt(4));
 				this.user.setAddress(this.resultSet.getString(5));
+				this.user.setNumber(this.resultSet.getInt(6));
+				this.user.setComplement(this.resultSet.getString(7));
+				this.user.setNeighborhood(this.resultSet.getString(8));
+				this.user.setCity(this.resultSet.getString(9));
+				this.user.setState(this.resultSet.getString(10));
+				this.user.setCountry(this.resultSet.getString(11));
 				return this.user;
 			}
 		} catch (Exception e) {
@@ -117,15 +162,30 @@ public class RequestHandler {
 				+ " SET		name = ?,"
 				+ "			email = ?,"
 				+ "			password = ?,"
-				+ "			address = ?"
+				+ "			cep = ?,"
+				+ "			address = ?,"
+				+ "			number = ?,"
+				+ "			complement = ?,"
+				+ "			neighborhood = ?,"
+				+ "			city = ?,"
+				+ "			state = ?,"
+				+ "			country = ?"
 				+ " WHERE 	user_id = " + id;
 		try {
-			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
-			preparedStatement.setString(1, user.getName());
-			preparedStatement.setString(2, user.getEmail());
-			preparedStatement.setString(3, user.getPassword());
-			preparedStatement.setString(4, user.getAddress());
-			return preparedStatement.executeUpdate()==1;
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			pstmt.setInt(1, getIdFromLastIndex());
+			pstmt.setString(2, user.getName());
+			pstmt.setString(3, user.getEmail());
+			pstmt.setString(4, user.getPassword());
+			pstmt.setInt(5, user.getCep());
+			pstmt.setString(6, user.getAddress());
+			pstmt.setInt(7, user.getNumber());
+			pstmt.setString(8, user.getComplement());
+			pstmt.setString(9, user.getNeighborhood());
+			pstmt.setString(10, user.getCity());
+			pstmt.setString(11, user.getState());
+			pstmt.setString(12, user.getCountry());
+			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("UPDATE USER " + e.getMessage());
 		}
@@ -136,8 +196,8 @@ public class RequestHandler {
 		this.sql = "DELETE 	FROM BOOK_USER"
 				+ " WHERE 	user_id = " + id;
 		try {
-			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
-			return preparedStatement.executeUpdate()==1;
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("DELETE USER BY ID" + e.getMessage());
 		}

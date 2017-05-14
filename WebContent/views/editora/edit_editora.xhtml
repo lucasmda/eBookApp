@@ -10,22 +10,21 @@
 </h:head>
 <h:body> 
 	<ui:composition template="../layout/app.xhtml">
-	<ui:define name = "content">
-		<div class="row">
-			<div class="col s12 m6 l6 offset-m3">
-				<div class="card">
+		<ui:define name = "content">
+			<div class="row">
+				<div class="col s12 m6 l6 offset-m3">
 					<div class="content">
 						<div class="row">
 							<h:form>
 								<h4 class="pink-text center thin">Editar editora</h4>
-								<div class="input-field col s12 m6 l6">
-									<i class="fa fa-user prefix"></i>
+								<div class="input-field col s12 m12 l12">
+									<i class="fa fa-user prefix"/>
 									<h:inputText value="#{editoraBean.publisher.name}" id="publisherName" required="true" />
 				          			<label for="publisherName">Nome da editora</label>
 				        		</div>
-				        		<div class="input-field col s12 m6 l6">
-				        			<i class="fa fa-address-card-o prefix"></i>
-									<h:inputText value="#{editoraBean.publisher.description}" id="publisherDescription" required="true" />
+				        		<div class="input-field col s12 m12 l12">
+				        			<i class="fa fa-address-card-o prefix"/>
+									<h:inputTextarea value="#{editoraBean.publisher.description}" id="publisherDescription" required="true"  class="materialize-textarea"/>
 				          			<label for="publisherDescription">Descrição editora</label>
 				        		</div>
 				        		<div class="row">
@@ -33,13 +32,12 @@
 					        			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" type="submit" action="#{editoraBean.updatePublisher}" />
 					        		</div>
 				        		</div>	
-			        		</h:form>
-		        		</div>
+				       		</h:form>
+			       		</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</ui:define>		
+		</ui:define>		
 	</ui:composition>
 </h:body> 
 </html>

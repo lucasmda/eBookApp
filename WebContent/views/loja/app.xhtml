@@ -12,29 +12,34 @@
 		href="../../public/plugins/font-awesome-4.7.0/css/font-awesome.min.css" />
 </h:head>
 <h:body style="display: flex;min-height: 100vh;flex-direction: column;">
-	<header> <nav class="nav-extended">
+	<header> <nav class="nav-extended pink">
 	<div class="nav-wrapper">
 		<a href="app.jsf" class="brand-logo">eBookApp</a>
-		<a href="#" data-activates="mobile-demo" class="button-collapse"><i
-			class="fa fa-bars fa-2x"></i></a>
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li><a href="badges.html" class="tooltipped"
-				data-position="left" data-delay="50" data-tooltip="Desejo"><i
-					class="fa fa-heart fa-2x"></i></a></li>
-			<li><a href="carrinho.jsf" class="tooltipped"
-				data-position="bottom" data-delay="50" data-tooltip="Carrinho"><i
-					class="fa fa-shopping-cart fa-2x"></i></a></li>
-			<li><a href="login.jsf" class="tooltipped"
-				data-position="bottom" data-delay="50"
-				data-tooltip="Login"><i class="fa fa-sign-in fa-2x"></i></a></li>
-		</ul>
-		<ul class="side-nav" id="mobile-demo">
-			<li><a href="badges.html" class="tooltipped"
-				data-position="left" data-delay="50" data-tooltip="Carrinho"><i
-					class="fa fa-shopping-cart fa-2x"></i></a></li>
-			<li><a href="collapsible.html" class="tooltipped"
-				data-position="bottom" data-delay="50"
-				data-tooltip="Painel admin login"><i class="fa fa-sign-in fa-2x"></i></a></li>
+			<li>
+				<h:form>
+					<div class="input-field col s12 m6 l6">
+						<h:inputText id="search" type="search" required="true" />
+						<label class="label-icon tooltipped" for="search" data-position="left" data-delay="50" data-tooltip="Search"><i class="fa fa-search"></i></label>
+					</div>
+				</h:form>
+      		</li>
+			<li>
+				<a href="desejo.jsf" class="tooltipped"
+					data-position="left" data-delay="50" data-tooltip="Desejo"><i
+						class="fa fa-heart fa-2x"></i>
+				</a>
+			</li>
+			<li>
+				<a href="Carrinho.jsf" class="tooltipped"
+					data-position="bottom" data-delay="50" data-tooltip="Carrinho"><i
+						class="fa fa-shopping-cart fa-2x"></i></a>
+			</li>
+			<li>
+				<a href="login.jsf" class="tooltipped"
+					data-position="bottom" data-delay="50"
+					data-tooltip="Login"><i class="fa fa-sign-in fa-2x"></i></a>
+			</li>
 		</ul>
 	</div>
 	<div class="row">
@@ -49,7 +54,7 @@
 		</div>
 		<div class="col s10 m10 l10">
 			<div class="nav-content">
-				<ul class="tabs tabs-transparent">
+				<ul class="tabs tabs-transparent tabs-fixed-width">
 					<li class="tab"><a class="active" href="#descontos">Descontos</a></li>
 					<li class="tab"><a href="#lancamentos">Lançamenos</a></li>
 					<li class="tab"><a href="#novidades">Novidades</a></li>
@@ -57,7 +62,8 @@
 			</div>
 		</div>
 	</div>
-	</nav> </header>
+	</nav>
+	</header>
 	<main style="flex: 1 0 auto;"> <section>
 	<div class="row">
 		<div class="col s12 m12 l12">
@@ -125,7 +131,7 @@
 		</div>
 	</div>
 	</section> </main>
-	<footer class="page-footer">
+	<footer class="page-footer pink">
 		<div class="container">
 			<div class="row">
 				<div class="col l6 s12">

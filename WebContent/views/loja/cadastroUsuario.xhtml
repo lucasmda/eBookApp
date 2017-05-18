@@ -5,12 +5,17 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastrar novo usuário - eBookApp</title>
+	<link type="text/css" rel="stylesheet" href="../../public/plugins/materialize/css/materialize.min.css" media="screen,projection"/>
+	<link rel="stylesheet" href="../../public/plugins/font-awesome-4.7.0/css/font-awesome.min.css" />
 </h:head> 
-<h:body> 
-	<ui:composition template="../layout/app.xhtml">
-		<ui:define name = "content">
+<h:body>
+	<nav class="indigo lighten-1">
+	   <div class="nav-wrapper pink">
+	     <a href="app.jsf" class="brand-logo indigo-text text-lighten-5 center">eBookApp</a>
+	   </div>
+	</nav>
+	<section>
+		<div class="card">
 			<div class="row">
 				<div class="col s12 m6 l6 offset-m3">
 					<div class="content">
@@ -33,7 +38,7 @@
 			         				<label for="userPassword">Senha*</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l3">
-				        			<i class="fa fa-map-marker prefix"></i>
+				        			<i class="fa fa-sort-numeric-asc prefix"></i>
 									<h:inputText value="#{usuarioBean.user.cep}" id="userCep" type="number" required="true" />
 				          			<label for="userCep">CEP</label>
 				        		</div>
@@ -43,12 +48,12 @@
 				          			<label for="userAddress">Endereco do Usuario</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l3">
-				        			<i class="fa fa-map-marker prefix"></i>
+				        			<i class="fa fa-tag prefix"></i>
 									<h:inputText value="#{usuarioBean.user.number}" id="userNumber" type="number" required="true" />
 				          			<label for="userNumber">Number</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l9">
-				        			<i class="fa fa-map-marker prefix"></i>
+				        			<i class="fa fa-file-text-o prefix"></i>
 									<h:inputText value="#{usuarioBean.user.complement}" id="userComplement" required="true" />
 				          			<label for="userComplement">Complemento</label>
 				        		</div>
@@ -69,15 +74,17 @@
 				        		</div>
 				        		<div class="row">
 					        		<div class="col s12 m12 l12">
-					        			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" type="submit" action="#{usuarioBean.updateUser}" />
+					        			<h:commandButton class="waves-effect waves-light btn right pink" value="Salvar" type="submit" action="#{usuarioBean.updateUser}" />
 					        		</div>
 					        	</div>
 				        	</h:form>
 		        		</div>
 					</div>
 				</div>
-			</div>		
-		</ui:define>		
-	</ui:composition>
+			</div>
+		</div>		
+	</section> 
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../public/plugins/materialize/js/materialize.min.js"></script>
 </h:body> 
 </html>

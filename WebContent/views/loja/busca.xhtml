@@ -19,28 +19,35 @@
 			<div class="s12 m12 l12">
 				<div class="card">
 					<div class="card-content">
-						<h4 class="pink-text"><i class="fa fa-shopping-cart"/>  Carrinho</h4>
+						<h4 class="pink-text"><i class="fa fa-search"/>Busca Avançada</h4>
 						<br/>
 						<br/>
 						<br/>
 						<div class="row">
-							<div class="col s12 m10 l10 offset-m1 offset-l1">
-								<table class="table bodered">
-									<thead>
-										<td>Livro</td>
-										<td>Preço Desconto</td>
-										<td>Preço Total</td>
-										<td>Unidades</td>
-									</thead>
-									<tbody></tbody>
-								</table>
-								<br/>
-								<div class="row right">
-									<b>Valor total: </b>
-									<div class="row">
-										<a class="waves-effect waves-light btn pink">Finalizar</a>
-									</div>
-								</div>
+							<div class="col s12 m8 l6 offset-m3 offset-l3">
+								<div class="input-field col s12">
+									<i class="fa fa-book prefix"></i>
+									<h:inputText id="bookName" required="true" />
+				          			<label for="bookName">Livro</label>
+			        			</div>
+			        			<div class="input-field col s12">
+									<i class="fa fa-user prefix"></i>
+									<h:inputText id="authorName" required="true" />
+				          			<label for="authorName">Autor</label>
+			        			</div>
+			        			<div class="input-field col s12">
+									<i class="fa fa-building-o prefix"></i>
+									<h:inputText id="publisherName" required="true" />
+				          			<label for="publisherName">Editora</label>
+			        			</div>
+			        			<div class="input-field col s12">
+									<i class="fa fa-paperclip prefix"></i>
+									<h:inputText id="subjectName" required="true" />
+				          			<label for="subjectName">Assunto</label>
+			        			</div>
+			        			<div class="row">
+			        				<h:commandButton class="waves-effect waves-light btn pink col s12 m12 l12" value="Pesquisar"/>
+				        		</div>
 							</div>
 						</div>
 					</div>

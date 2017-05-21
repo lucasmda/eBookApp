@@ -15,17 +15,22 @@
 			<div class="col s12 m6 l6 offset-m3">
 				<div class="content">
 					<div class="row">
-						<h4 class="pink-text center thin">Editar autor</h4>
-						<div class="input-field col s12">
-							<i class="fa fa-user prefix"></i>
-							<h:inputText value="#{autorBean.author.name}" id="authorName" required="true" />
-			         			<label for="authorName">Nome do autor</label>
-			       		</div>
-			       		<div class="row">
-				       		<div class="col s12 m12 l12">
-				       			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" type="submit" action="#{autorBean.updateAuthor}"/>
+						<h:form>
+							<h4 class="pink-text center thin">Editar autor</h4>
+							<div class="input-field col s12">
+								<i class="fa fa-user prefix"></i>
+								<h:inputText value="#{autorBean.author.name}" id="authorName" required="true" requiredMessage="Name field must be required">
+									<f:validateLength minimum="1" maximum="255"/>
+								</h:inputText>
+								<h:message for="authorName" styleClass="error"/>
+				         		<label for="authorName">Nome do autor *</label>
 				       		</div>
-				       	</div>
+				       		<div class="row">
+					       		<div class="col s12 m12 l12">
+					       			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" type="submit" action="#{autorBean.updateAuthor}"/>
+					       		</div>
+					       	</div>
+						</h:form>
 		        	</div>
 				</div>
 			</div>

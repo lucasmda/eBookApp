@@ -19,8 +19,11 @@
 							<h4 class="pink-text center thin">Cadastrar novo autor</h4>
 							<div class="input-field col s12">
 								<i class="fa fa-user prefix"></i>
-								<h:inputText value="#{autorBean.author.name}" id="authorName" required="true" />
-			          			<label for="authorName">Nome do autor</label>
+								<h:inputText value="#{autorBean.author.name}" id="authorName" required="true" requiredMessage="Name field must be required">
+									<f:validateLength minimum="1" maximum="255"/>
+								</h:inputText>
+								<h:message for="authorName" styleClass="error"/>
+			          			<label for="authorName">Nome do autor *</label>
 			        		</div>
 			        		<div class="row">
 				        		<div class="col s12 m12 l12">

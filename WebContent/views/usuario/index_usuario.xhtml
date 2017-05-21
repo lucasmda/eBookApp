@@ -12,25 +12,25 @@
 	<ui:composition template="../layout/app.xhtml">
 		<ui:define name="content">
 			<div class="row">
-				<h:form>
-					<h4 class="pink-text center thin">Lista de usuários</h4>
-					<div class="col 12 m6 l6 offset-m3">
+				<h4 class="pink-text center thin">Lista de usuários</h4>
+				<div class="col 12 s12 m12 l12">
+					<h:form>
 						<table class="table">
-						<thead>
-							<tr>
-								<td>Nome</td>
-								<td>E-mail</td>
-								<td>CEP</td>
-								<td>Endereço</td>
-								<td>Número</td>
-								<td>Complemento</td>
-								<td>Cidade</td>
-								<td>Estado</td>
-								<td>País</td>
-								<td>Editar</td>
-								<td>Excluir</td>
-							</tr>
-						</thead>
+							<thead>
+								<tr>
+									<td>Nome</td>
+									<td>E-mail</td>
+									<td>CEP</td>
+									<td>Endereço</td>
+									<td>Número</td>
+									<td>Complemento</td>
+									<td>Cidade</td>
+									<td>Estado</td>
+									<td>País</td>
+									<td>Editar</td>
+									<td>Excluir</td>
+								</tr>
+							</thead>
 							<tbody>
 								<ui:repeat var="u" value="#{usuarioBean.userList}">
 									<tr>
@@ -57,8 +57,8 @@
 								</ui:repeat>
 							</tbody>
 						</table>
-					</div>
-				</h:form>
+					</h:form>
+				</div>
 			</div>
 		</ui:define>
 	</ui:composition>

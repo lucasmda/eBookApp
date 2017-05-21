@@ -6,6 +6,9 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.ebookapp.database.validation.HandlerHelper;
 import br.com.ebookapp.database.validation.RequestValidator;
+import br.com.ebookapp.publisher.bean.PublisherBean;
+import br.com.ebookapp.subject.bean.SubjectBean;
+import br.com.ebookapp.author.bean.AuthorBean;
 import br.com.ebookapp.book.bean.BookBean;
 import br.com.ebookapp.book.request.RequestHandler;
 
@@ -13,6 +16,9 @@ import br.com.ebookapp.book.request.RequestHandler;
 public class LivroBean {
 	private BookBean book = null;
 	private List<BookBean> bookList = null;
+	private List<AuthorBean> authors = null;
+	private List<PublisherBean> publishers = null;
+	private List<SubjectBean> subjects = null;
 	private RequestHandler requestHandler = null;
 	private String response = "";
 	private String error = "";
@@ -22,6 +28,10 @@ public class LivroBean {
 		
 		this.book = new BookBean();
 		this.bookList = this.requestHandler.getBook();
+		
+		this.authors = new br.com.ebookapp.author.request.RequestHandler().getAuthor();
+		this.publishers = new br.com.ebookapp.publisher.request.RequestHandler().getPublisher();
+		this.subjects = new br.com.ebookapp.subject.request.RequestHandler().getSubject();
 	}
 
 	public BookBean getBook() {
@@ -38,6 +48,30 @@ public class LivroBean {
 
 	public void setBookList(List<BookBean> bookList) {
 		this.bookList = bookList;
+	}
+
+	public List<AuthorBean> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<AuthorBean> authors) {
+		this.authors = authors;
+	}
+
+	public List<PublisherBean> getPublishers() {
+		return publishers;
+	}
+
+	public void setPublishers(List<PublisherBean> publishers) {
+		this.publishers = publishers;
+	}
+
+	public List<SubjectBean> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(List<SubjectBean> subjects) {
+		this.subjects = subjects;
 	}
 
 	public RequestHandler getRequestHandler() {
@@ -71,10 +105,10 @@ public class LivroBean {
 				if (isSuccess) {
 					this.book.setName(null);
 					this.book.setDescription(null);
-					this.book.setPrice(0);
-					this.book.setDiscount(0);
-					this.book.setStock(0);
-					this.book.setEdition(0);
+					this.book.setPrice(null);
+					this.book.setDiscount(null);
+					this.book.setStock(null);
+					this.book.setEdition(null);
 					this.book.setAuthor(null);
 					this.book.setPublisher(null);
 					this.book.setSubject(null);
@@ -119,10 +153,10 @@ public class LivroBean {
 				if (isSuccess) {
 					this.book.setName(null);
 					this.book.setDescription(null);
-					this.book.setPrice(0);
-					this.book.setDiscount(0);
-					this.book.setStock(0);
-					this.book.setEdition(0);
+					this.book.setPrice(null);
+					this.book.setDiscount(null);
+					this.book.setStock(null);
+					this.book.setEdition(null);
 					this.book.setAuthor(null);
 					this.book.setPublisher(null);
 					this.book.setSubject(null);

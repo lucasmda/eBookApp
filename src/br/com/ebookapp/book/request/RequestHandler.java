@@ -19,7 +19,7 @@ public class RequestHandler {
 	
 	public boolean createBook(BookBean book) {
 		this.sql = "INSERT INTO BOOK"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
 			pstmt.setInt(1, this.getIdFromLastIndex());
@@ -32,6 +32,7 @@ public class RequestHandler {
 			pstmt.setInt(8, book.getAuthor().getAuthor_id());
 			pstmt.setInt(9, book.getPublisher().getPublisher_id());
 			pstmt.setInt(10, book.getSubject().getSubject_id());
+			pstmt.setString(11, book.getImage());
 			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("CREATE BOOK " + e.getMessage());
@@ -54,7 +55,8 @@ public class RequestHandler {
 				+ "			publisher.name, "
 				+ "			publisher.description, "
 				+ "			subject.subject_id, "
-				+ "			subject.name"
+				+ "			subject.name,"
+				+ "			book.image"
 				+ " FROM 	BOOK book"
 				+ " JOIN 	AUTHOR author"
 				+ "	ON		(book.author_author_id = author.author_id)"
@@ -78,6 +80,7 @@ public class RequestHandler {
 				this.book.setAuthor(new AuthorBean(this.resultSet.getInt(8), this.resultSet.getString(9)));
 				this.book.setPublisher(new PublisherBean(this.resultSet.getInt(10), this.resultSet.getString(11), this.resultSet.getString(12)));
 				this.book.setSubject(new SubjectBean(this.resultSet.getInt(13), this.resultSet.getString(14)));
+				this.book.setImage(this.resultSet.getString(15));
 				this.list.add(this.book);
 			}
 			return this.list;
@@ -102,7 +105,8 @@ public class RequestHandler {
 				+ "			publisher.name, "
 				+ "			publisher.description, "
 				+ "			subject.subject_id, "
-				+ "			subject.name"
+				+ "			subject.name,"
+				+ "			book.image"
 				+ " FROM 	BOOK book"
 				+ " JOIN 	AUTHOR author"
 				+ "	ON		(book.author_author_id = author.author_id)"
@@ -126,6 +130,7 @@ public class RequestHandler {
 				this.book.setAuthor(new AuthorBean(this.resultSet.getInt(8), this.resultSet.getString(9)));
 				this.book.setPublisher(new PublisherBean(this.resultSet.getInt(10), this.resultSet.getString(11), this.resultSet.getString(12)));
 				this.book.setSubject(new SubjectBean(this.resultSet.getInt(13), this.resultSet.getString(14)));
+				this.book.setImage(this.resultSet.getString(15));
 			}
 			return this.book;
 		} catch (Exception e) {
@@ -143,7 +148,8 @@ public class RequestHandler {
 				+ "			book.edition = ?,"
 				+ "			book.author_author_id = ?, "
 				+ "			book.publisher_publisher_id = ?,"
-				+ "			book.subject_subject_id = ?"
+				+ "			book.subject_subject_id = ?,"
+				+ "			book.image = ?"
 				+ " WHERE	book.book_id = " + id;
 		try {
 			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
@@ -156,6 +162,7 @@ public class RequestHandler {
 			pstmt.setInt(7, book.getAuthor().getAuthor_id());
 			pstmt.setInt(8, book.getPublisher().getPublisher_id());
 			pstmt.setInt(9, book.getSubject().getSubject_id());
+			pstmt.setString(10, book.getImage());
 			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("UPDATE BOOK " + e.getMessage());

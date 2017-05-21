@@ -19,52 +19,61 @@
 								<h4 class="pink-text center thin">Editar usuário</h4>
 								<div class="input-field col s12">
 									<i class="fa fa-user prefix"></i>
-									<h:inputText value="#{usuarioBean.user.name}" id="userName" required="true" />
-				          			<label for="userName">Nome*</label>
+									<h:inputText value="#{usuarioBean.user.name}" id="userName" required="true" requiredMessage="Name field must be required">
+										<f:validateLength minimum="1" maximum="255"/>
+									</h:inputText>
+									<h:message for="userName" styleClass="error"/>
+				          			<label for="userName">Nome *</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-address-card-o prefix"></i>
-									<h:inputText value="#{usuarioBean.user.email}" id="userEmail" type="email" required="true" />
-				          			<label for="userEmail">E-mail*</label>
+									<h:inputText value="#{usuarioBean.user.email}" id="userEmail" type="email" required="true" requiredMessage="E-mail field must be required">
+										<f:validateLength minimum="1" maximum="255"/>
+									</h:inputText>
+									<h:message for="userEmail" styleClass="error"/>
+									<label for="userEmail">E-mail *</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-lock prefix"></i>
-				          			<h:inputSecret value="#{usuarioBean.user.password}" id="userPassword" type="password" required="true"/>
-			         				<label for="userPassword">Senha*</label>
+				          			<h:inputSecret value="#{usuarioBean.user.password}" id="userPassword" type="password" required="true" requiredMessage="Password field must be required">
+				          				<f:validateLength minimum="1" maximum="255"/>
+				          			</h:inputSecret>
+				          			<h:message for="userPassword" styleClass="error"/>
+			         				<label for="userPassword">Senha *</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l3">
 				        			<i class="fa fa-map-marker prefix"></i>
-									<h:inputText value="#{usuarioBean.user.cep}" id="userCep" type="number" required="true" />
+									<h:inputText value="#{usuarioBean.user.cep}" id="userCep" type="number" />
 				          			<label for="userCep">CEP</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l9">
 				        			<i class="fa fa-map-marker prefix"></i>
-									<h:inputText value="#{usuarioBean.user.address}" id="userAddress" required="true" />
+									<h:inputText value="#{usuarioBean.user.address}" id="userAddress"/>
 				          			<label for="userAddress">Endereco do Usuario</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l3">
 				        			<i class="fa fa-map-marker prefix"></i>
-									<h:inputText value="#{usuarioBean.user.number}" id="userNumber" type="number" required="true" />
+									<h:inputText value="#{usuarioBean.user.number}" id="userNumber" type="number" />
 				          			<label for="userNumber">Number</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l9">
 				        			<i class="fa fa-map-marker prefix"></i>
-									<h:inputText value="#{usuarioBean.user.complement}" id="userComplement" required="true" />
+									<h:inputText value="#{usuarioBean.user.complement}" id="userComplement" />
 				          			<label for="userComplement">Complemento</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-globe prefix"></i>
-									<h:inputText value="#{usuarioBean.user.city}" id="userCity" required="true" />
+									<h:inputText value="#{usuarioBean.user.city}" id="userCity" />
 				          			<label for="userCity">Cidade</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-globe prefix"></i>
-									<h:inputText value="#{usuarioBean.user.state}" id="userState" required="true" />
+									<h:inputText value="#{usuarioBean.user.state}" id="userState" />
 				          			<label for="userState">Estado</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-globe prefix"></i>
-									<h:inputText value="#{usuarioBean.user.country}" id="userCountry" required="true" />
+									<h:inputText value="#{usuarioBean.user.country}" id="userCountry" />
 				          			<label for="userCountry">País</label>
 				        		</div>
 				        		<div class="row">

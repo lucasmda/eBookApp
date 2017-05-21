@@ -18,8 +18,11 @@
 							<h4 class="pink-text center thin">Cadastrar novo gênero</h4>
 							<div class="input-field col s12">
 								<i class="fa fa-file-text prefix"></i> 
-								<h:inputText value="#{assuntoBean.subject.name}" id="subjectName" required="true" />
-			          			<label for="subjectName">Nome do gênero</label>
+								<h:inputText value="#{assuntoBean.subject.name}" id="subjectName" required="true" requiredMessage="Name field must be required">
+									<f:validateLength minimum="1" maximum="255"/>
+								</h:inputText>
+								<h:message for="subjectName" styleClass="error"/>
+			          			<label for="subjectName">Nome do gênero *</label>
 			        		</div>
 			        		<div class="row">
 				        		<div class="col s12 m12 l12">

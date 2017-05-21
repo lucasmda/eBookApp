@@ -3,6 +3,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
+      
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Cadastrar editora - eBookApp</title>
@@ -18,13 +19,19 @@
 								<h4 class="pink-text center thin">Cadastrar editora</h4>
 								<div class="input-field col s12 m12 l12">
 									<i class="fa fa-user prefix"/>
-									<h:inputText value="#{editoraBean.publisher.name}" id="publisherName" required="true" />
-				          			<label for="publisherName">Nome da editora</label>
+									<h:inputText value="#{editoraBean.publisher.name}" id="publisherName" required="true" requiredMessage="Name field must be required">
+										<f:validateLength minimum="1" maximum="255"/>
+									</h:inputText>
+									<h:message for="publisherName" styleClass="error"/>
+				          			<label for="publisherName">Nome da editora *</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l12">
 				        			<i class="fa fa-address-card-o prefix"/>
-									<h:inputTextarea value="#{editoraBean.publisher.description}" id="publisherDescription" required="true"  class="materialize-textarea"/>
-				          			<label for="publisherDescription">Descrição editora</label>
+									<h:inputTextarea value="#{editoraBean.publisher.description}" class="materialize-textarea" id="publisherDescription" required="true" requiredMessage="Description field must be required">
+										<f:validateLength minimum="1" maximum="1024"/>
+									</h:inputTextarea>
+									<h:message for="publisherDescription"/>
+				          			<label for="publisherDescription">Descrição editora *</label>
 				        		</div>
 				        		<div class="row">
 					        		<div class="col s12 m12 l12">

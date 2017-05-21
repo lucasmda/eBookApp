@@ -74,7 +74,7 @@ public class AutorBean {
 	
 	public String registerNewAuthor() {
 		try {
-			if (HandlerHelper.isBlankOrNull(this.author.getName())) {
+			if (!HandlerHelper.isBlankOrNull(this.author.getName())) {
 				boolean isSuccess = requestHandler.createAuthor(this.author.getName());
 				if (isSuccess) {
 					this.author.setName(null);

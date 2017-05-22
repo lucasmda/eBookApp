@@ -19,7 +19,9 @@
 					<li>
 						<h:form>
 							<div class="input-field col s12 m6 l6">
-								<h:inputText id="search" type="search" required="true" />
+								<h:inputText id="search" type="search" required="true" value="#{homeManagedBean.inputSearch}">
+									<f:ajax event="change" listener="#{homeManagedBean.searchBookByField}"></f:ajax>
+								</h:inputText>
 								<label class="label-icon tooltipped" for="search" data-position="left" data-delay="50" data-tooltip="Search"><i class="fa fa-search"></i></label>
 							</div>
 						</h:form>
@@ -75,7 +77,7 @@
 							<div class="col s12 m6">
 								<div class="card horizontal">
 									<div class="card-image">
-										<img src="#{book.image}" style="margin: 10px; height: 300px;"></img>
+										<img src="#{book.image}" style="margin: 10px; height: 300px; width:200px;"></img>
 									</div>
 									<div class="card-stacked">
 										<div class="card-content">
@@ -95,7 +97,7 @@
 							<div class="col s12 m6">
 								<div class="card horizontal">
 									<div class="card-image">
-										<img src="#{book.image}" style="margin: 10px; height: 300px;"></img>
+										<img src="#{book.image}" style="margin: 10px; height: 300px; width:200px;"></img>
 									</div>
 									<div class="card-stacked">
 										<div class="card-content">
@@ -115,7 +117,7 @@
 							<div class="col s12 m6">
 								<div class="card horizontal">
 									<div class="card-image">
-										<img src="#{book.image}" style="margin: 10px; height: 300px;"></img>
+										<img src="#{book.image}" style="margin: 10px; height: 300px; width:200px;"></img>
 									</div>
 									<div class="card-stacked">
 										<div class="card-content">

@@ -19,35 +19,56 @@
 			<div class="s12 m12 l12">
 				<div class="card">
 					<div class="card-content">
-						<h4 class="pink-text"><i class="fa fa-search"/>Busca Avançada</h4>
-						<br/>
-						<br/>
-						<br/>
+						<h4 class="pink-text"><i class="fa fa-search"/>Busca Avançada</h4><br/><br/><br/>
 						<div class="row">
-							<div class="col s12 m8 l6 offset-m3 offset-l3">
-								<div class="input-field col s12">
-									<i class="fa fa-book prefix"></i>
-									<h:inputText id="bookName" required="true" />
-				          			<label for="bookName">Livro</label>
-			        			</div>
-			        			<div class="input-field col s12">
-									<i class="fa fa-user prefix"></i>
-									<h:inputText id="authorName" required="true" />
-				          			<label for="authorName">Autor</label>
-			        			</div>
-			        			<div class="input-field col s12">
-									<i class="fa fa-building-o prefix"></i>
-									<h:inputText id="publisherName" required="true" />
-				          			<label for="publisherName">Editora</label>
-			        			</div>
-			        			<div class="input-field col s12">
-									<i class="fa fa-paperclip prefix"></i>
-									<h:inputText id="subjectName" required="true" />
-				          			<label for="subjectName">Assunto</label>
-			        			</div>
-			        			<div class="row">
-			        				<h:commandButton class="waves-effect waves-light btn pink col s12 m12 l12" value="Pesquisar"/>
-				        		</div>
+							<h:form>
+								<div class="col s12 m8 l6 offset-m3 offset-l3">
+									<div class="input-field col s12">
+										<i class="fa fa-book prefix"></i>
+										<h:inputText id="bookName" value="#{advancedSearchManagedBean.book}"/>
+					          			<label for="bookName">Livro</label>
+				        			</div>
+				        			<div class="input-field col s12">
+										<i class="fa fa-user prefix"></i>
+										<h:inputText id="authorName" value="#{advancedSearchManagedBean.author}"/>
+					          			<label for="authorName">Autor</label>
+				        			</div>
+				        			<div class="input-field col s12">
+										<i class="fa fa-building-o prefix"></i>
+										<h:inputText id="publisherName" value="#{advancedSearchManagedBean.publisher}"/>
+					          			<label for="publisherName">Editora</label>
+				        			</div>
+				        			<div class="input-field col s12">
+										<i class="fa fa-paperclip prefix"></i>
+										<h:inputText id="subjectName" value="#{advancedSearchManagedBean.subject}"/>
+					          			<label for="subjectName">Assunto</label>
+				        			</div>
+				        			<div class="row">
+				        				<h:commandButton class="waves-effect waves-light btn pink col s12 m12 l12" value="Pesquisar" type="submit" action="#{advancedSearchManagedBean.searchBook}"/>
+					        		</div>
+								</div>
+							</h:form>
+						</div>
+						<div class="content">
+							<div class="row">
+								<ui:repeat var="book" value="#{advancedSearchManagedBean.bookList}">
+									<div class="col s12 m6">
+										<div class="card horizontal">
+											<div class="card-image">
+												<img src="#{book.image}" style="margin: 10px; height: 300px; width:200px;"></img>
+											</div>
+											<div class="card-stacked">
+												<div class="card-content">
+													<h3 style="height:96px; overflow-y:hidden;">#{book.reducedName}</h3>
+													<p>#{book.reducedDescription}</p>
+												</div>
+												<div class="card-action">
+													<a href="#">This is a link</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</ui:repeat>
 							</div>
 						</div>
 					</div>

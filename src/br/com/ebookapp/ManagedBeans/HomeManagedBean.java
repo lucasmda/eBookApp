@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.ebookapp.book.bean.BookBean;
 import br.com.ebookapp.book.request.RequestHandler;
+import br.com.ebookapp.database.validation.HandlerHelper;
 
 @ManagedBean
 public class HomeManagedBean {
@@ -16,6 +17,7 @@ public class HomeManagedBean {
 	private RequestHandler requestHandler = null;
 	private String response = "";
 	private String error = "";
+	private String inputSearch = "";
 
 	public HomeManagedBean() {
 		this.requestHandler = new RequestHandler();
@@ -92,5 +94,19 @@ public class HomeManagedBean {
 
 	public void setError(String error) {
 		this.error = error;
+	}
+
+	public String getInputSearch() {
+		return inputSearch;
+	}
+
+	public void setInputSearch(String inputSearch) {
+		this.inputSearch = inputSearch;
+	}
+	
+	public void searchBookByField() {
+		if (!HandlerHelper.isBlankOrNull(this.inputSearch)) {
+			this.bookList = this.requestHandler.getBook(this.inputSearch);
+		}
 	}
 }

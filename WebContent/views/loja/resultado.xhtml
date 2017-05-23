@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<link type="text/css" rel="stylesheet" href="../../public/plugins/materialize/css/materialize.min.css" media="screen,projection"/>
+	<link rel="stylesheet" href="../../public/plugins/font-awesome-4.7.0/css/font-awesome.min.css" />
+</h:head> 
+<h:body style="display: flex;min-height: 100vh;flex-direction: column;">
+	<nav class="indigo lighten-1">
+   		<div class="nav-wrapper pink">
+			<a href="app.jsf" class="brand-logo indigo-text text-lighten-5 center">eBookApp</a>
+		</div>
+	</nav>
+	<section style="flex: 1 0 auto;">
+		<div class="row">
+			<div class="col s12 m12 l12">
+				<ui:repeat var="book" value="#{homeManagedBean.bookListFilteredByDiscount}">
+					<div class="col s12 m6">
+						<div class="card horizontal">
+							<div class="card-image">
+								<img src="#{book.image}" style="margin: 10px; height: 300px; width:200px;"></img>
+							</div>
+							<div class="card-stacked">
+								<div class="card-content">
+									<h3 style="height:96px; overflow-y:hidden;">#{book.reducedName}</h3>
+									<p>#{book.reducedDescription}</p>
+								</div>
+								<div class="card-action">
+									<a href="#">This is a link</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ui:repeat>
+			</div>	
+         </div>
+	</section>
+	<footer class="page-footer pink">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m12 l12 center">
+					<h6 class="white-text">Deseja pesquisar algo? <a class="white-text" style="text-decoration: underline;" href="busca.jsf">Aperte aqui!</a></h6>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col l6 s12 center">
+					<h6 class="white-text">Formas de Pagamento</h6>
+					<ul>
+						<li><a class="white-text fa fa-cc-visa fa-3x" href="https://www.visa.com.br"></a>
+						<a class="white-text fa fa-cc-amex fa-3x" href="https://www.americanexpress.com/br/"></a>
+						<a class="white-text fa fa-cc-mastercard fa-3x" href="http://www.mastercard.com/br/consumidores/"></a>
+						<a class="white-text fa fa-cc-paypal fa-3x" href="https://www.paypal.com/br/home"></a></li>
+					</ul>
+				</div>
+				<div class="col l4 offset-l2 s12 center">
+					<h6 class="white-text">Redes Sociais</h6>
+					<ul>
+						<li><a class="white-text fa fa-facebook-square fa-3x" href="https://www.facebook.com.br"></a>
+						<a class="white-text fa fa-instagram fa-3x" href="https://www.instagram.com/br/"></a>
+						<a class="white-text fa fa-twitter-square fa-3x" href="http://www.twitter.com.br/"></a>
+						<a class="white-text fa fa fa-pinterest-square fa-3x" href="https://br.pinterest.com/"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container center">
+				© 2017 All Rights Reserved 
+			</div>
+		</div>
+		</footer>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../public/plugins/materialize/js/materialize.min.js"></script>
+</h:body>   
+</html>

@@ -48,7 +48,7 @@ public class BookBean {
 	}
 	
 	public String getReducedName() {
-		final int maxLengh = 35;
+		final int maxLengh = 45;
 		if (name.length() > maxLengh)
 			return name.substring(0, maxLengh) + "...";
 		
@@ -63,19 +63,26 @@ public class BookBean {
 		return description;
 	}
 	
-	public String getReducedDescription() {
-		final int maxLengh = 200;
-		if (description.length() > maxLengh)
-			return description.substring(0, maxLengh) + "...";
-		
-		return description;
-	}
+//	public String getReducedDescription() {
+//		final int maxLengh = 210;
+//		if (description.length() > maxLengh)
+//			return description.substring(0, maxLengh) + "...";
+//		
+//		return description;
+//	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
 	public Double getPrice() {
+		return price;
+	}
+	
+	public Double getPriceWithDiscount() {
+		if (this.discount != null && this.discount > 0) {
+			return Double.valueOf(Math.round(this.price * (1 - (this.discount / 100))));
+		}
 		return price;
 	}
 

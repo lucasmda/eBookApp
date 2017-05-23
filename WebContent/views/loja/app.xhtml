@@ -54,10 +54,10 @@
 					</ul>
 					<a class="dropdown-button" href="#!" data-activates="dropdown1">Categorias</a>
 				</div> -->
-				<div class="col s10 m10 l10">
+				<div class="col s12 m12 l12">
 					<div class="nav-content">
 						<ul class="tabs tabs-transparent tabs-fixed-width">
-							<li class="tab"><a class="active" href="#descontos">Descontos</a></li>
+							<li class="tab"><a href="#descontos">Descontos</a></li>
 							<li class="tab"><a href="#lancamentos">Lançamenos</a></li>
 							<li class="tab"><a href="#novidades">Novidades</a></li>
 						</ul>
@@ -74,18 +74,24 @@
 				<div class="content">
 					<div id="descontos">
 						<ui:repeat var="book" value="#{homeManagedBean.bookListFilteredByDiscount}">
-							<div class="col s12 m6">
-								<div class="card horizontal">
-									<div class="card-image">
-										<img src="#{book.image}" style="margin: 10px; height: 300px; width:200px;"></img>
+							<div class="col s12 m12 l4">
+								<div class="card horizontal" style="max-height:200px;">
+									<div class="card-image" style="height: 200px;; width: 30%;">
+										<img src="#{book.image}" width="100%" height="100%"></img>
 									</div>
-									<div class="card-stacked">
-										<div class="card-content">
-											<h3 style="height:96px; overflow-y:hidden;">#{book.reducedName}</h3>
-											<p>#{book.reducedDescription}</p>
+									<div class="card-stacked" style="width: 70%;">
+										<div class="card-content" style="padding-bottom: 0px;">
+											<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
+										</div>
+										<div class="container">
+											<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
+											<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
 										</div>
 										<div class="card-action">
-											<a href="#">This is a link</a>
+											<h:form>
+												<a class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<a class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+											</h:form>
 										</div>
 									</div>
 								</div>
@@ -94,18 +100,24 @@
 					</div>
 					<div id="lancamentos">
 						<ui:repeat var="book" value="#{homeManagedBean.bookListFilteredByRelease}">
-							<div class="col s12 m6">
-								<div class="card horizontal">
-									<div class="card-image">
-										<img src="#{book.image}" style="margin: 10px; height: 300px; width:200px;"></img>
+							<div class="col s12 m4">
+								<div class="card horizontal" style="max-height:200px;">
+									<div class="card-image" style="height: 200px; width: 30%;">
+										<img src="#{book.image}" width="100%" height="100%"></img>
 									</div>
-									<div class="card-stacked">
-										<div class="card-content">
-											<h3 style="height:96px; overflow-y:hidden;">#{book.reducedName}</h3>
-											<p>#{book.reducedDescription}</p>
+									<div class="card-stacked" style="width: 70%;">
+										<div class="card-content" style="padding-bottom: 0px;">
+											<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
+										</div>
+										<div class="container">
+											<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
+											<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
 										</div>
 										<div class="card-action">
-											<a href="#">This is a link</a>
+											<h:form>
+												<a class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<a class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+											</h:form>
 										</div>
 									</div>
 								</div>
@@ -114,18 +126,24 @@
 					</div>
 					<div id="novidades">
 						<ui:repeat var="book" value="#{homeManagedBean.bookListFilteredByNew}">
-							<div class="col s12 m6">
-								<div class="card horizontal">
-									<div class="card-image">
-										<img src="#{book.image}" style="margin: 10px; height: 300px; width:200px;"></img>
+							<div class="col s12 m4">
+								<div class="card horizontal" style="max-height:200px;">
+									<div class="card-image" style="height: 200px; width: 30%;">
+										<img src="#{book.image}" width="100%" height="100%"></img>
 									</div>
-									<div class="card-stacked">
-										<div class="card-content">
-											<h3 style="height:96px; overflow-y:hidden;">#{book.reducedName}</h3>
-											<p>#{book.reducedDescription}</p>
+									<div class="card-stacked" style="width: 70%;">
+										<div class="card-content" style="padding-bottom: 0px;">
+											<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
+										</div>
+										<div class="container">
+											<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
+											<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
 										</div>
 										<div class="card-action">
-											<a href="#">This is a link</a>
+											<h:form>
+												<a class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<a class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+											</h:form>
 										</div>
 									</div>
 								</div>

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+	<link type="text/css" rel="stylesheet" href="../../public/plugins/materialize/css/materialize.min.css" media="screen,projection"/>
+	<link rel="stylesheet" href="../../public/plugins/font-awesome-4.7.0/css/font-awesome.min.css" />
+</h:head> 
+<h:body style="display: flex;min-height: 100vh;flex-direction: column;">
+	<nav class="indigo lighten-1">
+   		<div class="nav-wrapper pink">
+			<a href="app.jsf" class="brand-logo indigo-text text-lighten-5 center">eBookApp</a>
+		</div>
+	</nav>
+	<section style="flex: 1 0 auto;">
+		<div class="row">
+			<div class="col s12 m8 l8 offset-m2 offset-l2">
+				<div class="card">
+					<div class="card-content">
+						<div class="row">
+							<div class="col s4 m4 l4">
+								<img src="http://statics.livrariacultura.net.br/products/capas_lg/248/42891248.jpg" width="100%"/>
+							</div>
+							<div class="col s8 m8 l8">
+								<h4>Os contos de vários Nadas</h4>
+								<h6>Autor: Lucas Modesto | Gênero: Romance | Data: 22/05/2017</h6>
+								<hr />
+								<div class="row">
+									<div class="col s12 m12 l5">
+										<di class="row">
+											<h5>Preço</h5>
+											<h4>R$ 53,22</h4>
+										</di>
+										<hr />
+										<div class="row">
+											<h5>Com desconto</h5>
+											<h4 class="pink-text">R$ 40,21</h4>
+										</div>
+									</div>
+									<div class="col s12 m12 l7">
+										<br/>
+										<br/>
+										<div class="row">
+											<h:commandButton 
+											value="Adicionar ao Carrinho" 
+											class="btn pink right waves-effect waves-light">
+											</h:commandButton>
+										</div>
+										<div class="row">
+											<h:commandButton 
+											value="Lista de Desejos" 
+											class="btn pink right waves-effect waves-light">
+											</h:commandButton>
+										</div>
+									</div>
+								</div>
+							</div>							
+						</div>
+						<div class="row">
+							<div class="col s12 m12 l12" style="text-align: justify;text-justify: inter-word;">
+								<h4 class="pink-text">Sinopse</h4>
+								<p>
+									Lorem Ipsum é simplesmente 
+									uma simulação de texto da 
+									indústria tipográfica e de 
+									impressos, e vem sendo 
+									utilizado desde o século 
+									XVI, quando um impressor 
+									desconhecido pegou uma 
+									bandeja de tipos e os 
+									embaralhou para fazer um 
+									livro de modelos de tipos. 
+									Lorem Ipsum sobreviveu não 
+									só a cinco séculos, como 
+									também ao salto para a 
+									editoração eletrônica, 
+									permanecendo essencialmente 
+									inalterado. Se popularizou 
+									na década de 60, quando a 
+									Letraset lançou decalques 
+									contendo passagens de Lorem 
+									Ipsum, e mais recentemente 
+									quando passou a ser 
+									integrado a softwares de 
+									editoração eletrônica como 
+									Aldus PageMaker.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+         </div>
+	</section>
+	<footer class="page-footer pink">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m12 l12 center">
+					<h6 class="white-text">Deseja pesquisar algo? <a class="white-text" style="text-decoration: underline;" href="busca.jsf">Aperte aqui!</a></h6>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col l6 s12 center">
+					<h6 class="white-text">Formas de Pagamento</h6>
+					<ul>
+						<li><a class="white-text fa fa-cc-visa fa-3x" href="https://www.visa.com.br"></a>
+						<a class="white-text fa fa-cc-amex fa-3x" href="https://www.americanexpress.com/br/"></a>
+						<a class="white-text fa fa-cc-mastercard fa-3x" href="http://www.mastercard.com/br/consumidores/"></a>
+						<a class="white-text fa fa-cc-paypal fa-3x" href="https://www.paypal.com/br/home"></a></li>
+					</ul>
+				</div>
+				<div class="col l4 offset-l2 s12 center">
+					<h6 class="white-text">Redes Sociais</h6>
+					<ul>
+						<li><a class="white-text fa fa-facebook-square fa-3x" href="https://www.facebook.com.br"></a>
+						<a class="white-text fa fa-instagram fa-3x" href="https://www.instagram.com/br/"></a>
+						<a class="white-text fa fa-twitter-square fa-3x" href="http://www.twitter.com.br/"></a>
+						<a class="white-text fa fa fa-pinterest-square fa-3x" href="https://br.pinterest.com/"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container center">
+				© 2017 All Rights Reserved 
+			</div>
+		</div>
+		</footer>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../public/plugins/materialize/js/materialize.min.js"></script>
+</h:body>   
+</html>

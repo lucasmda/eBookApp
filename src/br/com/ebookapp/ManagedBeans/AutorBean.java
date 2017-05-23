@@ -10,12 +10,11 @@ import br.com.ebookapp.database.validation.HandlerHelper;
 
 @ManagedBean
 public class AutorBean {
-//	private Autor autor = new Author();
-	private AuthorBean author = null;
-	private List<AuthorBean> authorList = null;
-	private RequestHandler requestHandler = null;
-	private String response = "";
-	private String error = "";
+	private AuthorBean author;
+	private List<AuthorBean> authorList;
+	private RequestHandler requestHandler;
+	private String response;
+	private String error;
 	
 	public AutorBean() {
 		this.requestHandler = new RequestHandler();

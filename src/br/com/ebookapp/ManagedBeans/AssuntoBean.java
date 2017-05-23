@@ -10,12 +10,11 @@ import br.com.ebookapp.subject.request.RequestHandler;
 
 @ManagedBean
 public class AssuntoBean {
-//	private Assunto assunto = new Assunto();
-	private SubjectBean subject = null;
-	private List<SubjectBean> subjectList = null;
-	private RequestHandler requestHandler = null;
-	private String response = "";
-	private String error = "";
+	private SubjectBean subject;
+	private List<SubjectBean> subjectList;
+	private RequestHandler requestHandler;
+	private String response;
+	private String error;
 	
 	public AssuntoBean() {
 		this.requestHandler = new RequestHandler();

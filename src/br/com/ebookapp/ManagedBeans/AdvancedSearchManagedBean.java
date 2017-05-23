@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import br.com.ebookapp.book.bean.BookBean;
 import br.com.ebookapp.book.request.RequestHandler;
 import br.com.ebookapp.database.validation.HandlerHelper;
 
 @ManagedBean
+@SessionScoped
 public class AdvancedSearchManagedBean {
 	private String author = "";
 	private String book = "";
 	private String publisher = "";
 	private String subject = "";
-	private List<BookBean> bookList = null;
+	private List<BookBean> bookList;
 	private RequestHandler requestHandler = null;
 	private String response = "";
 	private String error = "";

@@ -5,33 +5,36 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import br.com.ebookapp.book.bean.BookBean;
 import br.com.ebookapp.book.request.RequestHandler;
 import br.com.ebookapp.database.validation.HandlerHelper;
 
 @ManagedBean
+@SessionScoped
 public class HomeManagedBean {
-	private BookBean book = null;
-	private List<BookBean> bookList = null;
-	private RequestHandler requestHandler = null;
-	private String response = "";
-	private String error = "";
-	private String inputSearch = "";
+	private BookBean selectedBook;
+	private List<BookBean> bookList;
+	private List<BookBean> wishList;
+	private RequestHandler requestHandler;
+	private String response;
+	private String error;
+	private String inputSearch;
 
 	public HomeManagedBean() {
 		this.requestHandler = new RequestHandler();
 
-		this.book = new BookBean();
+		this.selectedBook = new BookBean();
 		this.bookList = requestHandler.getBook();
 	}
 
-	public BookBean getBook() {
-		return book;
+	public BookBean getSelectedBook() {
+		return selectedBook;
 	}
 
-	public void setBook(BookBean book) {
-		this.book = book;
+	public void setSelectedBook(BookBean selectedBook) {
+		this.selectedBook = selectedBook;
 	}
 
 	public List<BookBean> getBookList() {
@@ -72,6 +75,14 @@ public class HomeManagedBean {
 		this.bookList = bookList;
 	}
 
+	public List<BookBean> getWishList() {
+		return wishList;
+	}
+
+	public void setWishList(List<BookBean> wishList) {
+		this.wishList = wishList;
+	}
+
 	public RequestHandler getRequestHandler() {
 		return requestHandler;
 	}
@@ -108,5 +119,9 @@ public class HomeManagedBean {
 		if (!HandlerHelper.isBlankOrNull(this.inputSearch)) {
 			this.bookList = this.requestHandler.getBook(this.inputSearch);
 		}
+	}
+	
+	public void addNewItem() {
+		System.out.println(selectedBook.getName());
 	}
 }

@@ -14,14 +14,14 @@ import br.com.ebookapp.book.request.RequestHandler;
 
 @ManagedBean
 public class LivroBean {
-	private BookBean book = null;
-	private List<BookBean> bookList = null;
-	private List<AuthorBean> authors = null;
-	private List<PublisherBean> publishers = null;
-	private List<SubjectBean> subjects = null;
-	private RequestHandler requestHandler = null;
-	private String response = "";
-	private String error = "";
+	private BookBean book;
+	private List<BookBean> bookList;
+	private List<AuthorBean> authors;
+	private List<PublisherBean> publishers;
+	private List<SubjectBean> subjects;
+	private RequestHandler requestHandler;
+	private String response;
+	private String error;
 	
 	public LivroBean() {
 		this.requestHandler = new RequestHandler();

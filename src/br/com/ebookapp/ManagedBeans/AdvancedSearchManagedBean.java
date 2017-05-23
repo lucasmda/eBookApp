@@ -13,14 +13,14 @@ import br.com.ebookapp.database.validation.HandlerHelper;
 @ManagedBean
 @SessionScoped
 public class AdvancedSearchManagedBean {
-	private String author = "";
-	private String book = "";
-	private String publisher = "";
-	private String subject = "";
+	private String author;
+	private String book;
+	private String publisher;
+	private String subject;
 	private List<BookBean> bookList;
-	private RequestHandler requestHandler = null;
-	private String response = "";
-	private String error = "";
+	private RequestHandler requestHandler;
+	private String response;
+	private String error;
 	
 	public AdvancedSearchManagedBean() {
 		this.requestHandler = new RequestHandler();

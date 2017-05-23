@@ -11,11 +11,11 @@ import br.com.ebookapp.user.request.RequestHandler;
 
 @ManagedBean
 public class UsuarioBean {
-	private UserBean user = null;
-	private List<UserBean> userList = null;
-	private RequestHandler requestHandler = null;
-	private String response = "";
-	private String error = "";
+	private UserBean user;
+	private List<UserBean> userList;
+	private RequestHandler requestHandler;
+	private String response;
+	private String error;
 	
 	public UsuarioBean() {
 		this.requestHandler = new RequestHandler();

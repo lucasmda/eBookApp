@@ -10,11 +10,11 @@ import br.com.ebookapp.publisher.request.RequestHandler;
 
 @ManagedBean
 public class EditoraBean {
-	private PublisherBean publisher = null;
-	private List<PublisherBean> publisherList = null;
-	private RequestHandler requestHandler = null;
-	private String response = "";
-	private String error = "";
+	private PublisherBean publisher;
+	private List<PublisherBean> publisherList;
+	private RequestHandler requestHandler;
+	private String response;
+	private String error;
 	
 	public EditoraBean() {
 		this.requestHandler = new RequestHandler();

@@ -16,7 +16,6 @@ import br.com.ebookapp.database.validation.HandlerHelper;
 public class HomeManagedBean {
 	private BookBean selectedBook;
 	private List<BookBean> bookList;
-	private List<BookBean> wishList;
 	private RequestHandler requestHandler;
 	private String response;
 	private String error;
@@ -73,14 +72,6 @@ public class HomeManagedBean {
 
 	public void setBookList(List<BookBean> bookList) {
 		this.bookList = bookList;
-	}
-
-	public List<BookBean> getWishList() {
-		return wishList;
-	}
-
-	public void setWishList(List<BookBean> wishList) {
-		this.wishList = wishList;
 	}
 
 	public RequestHandler getRequestHandler() {

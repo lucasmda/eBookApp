@@ -18,23 +18,23 @@
 		<div class="row">
 			<div class="col s12 m6 l6 offset-m3 offset-l3">
 				<h:form>
-			      <h4 class="pink-text center thin">Login</h4>
+			      <h4 class="pink-text center thin">#{ebook.entrar}</h4>
 			      <div class="input-field col s12">
 					<i class="fa fa-envelope-o prefix"></i>
 					<h:inputText id="email" required="true" />
-          			<label for="email">E-mail</label>
+          			<label for="email">#{ebook.email}</label>
         		  </div>
         		  <div class="input-field col s12">
 					<i class="fa fa-unlock prefix"></i>
 					<h:inputText id="password" required="true" />
-          			<label for="password">Senha</label>
+          			<label for="password">#{ebook.senha_sem_asterisco}</label>
         		  </div>
         		  <div class="row">
-        		  	<a class="waves-effect waves-light btn pink col s12 m12 l12">Logar</a>
+        		  	<a class="waves-effect waves-light btn pink col s12 m12 l12">#{ebook.conectar}</a>
         		  </div>
         		  <div class="row">
         		  	<div class="col s12 m12 l12 center">
-        		  		<a class="blue-text" href="cadastroUsuario.jsf">Deseja se cadastrar? Sim!</a>
+        		  		<a class="blue-text" href="cadastroUsuario.jsf">#{ebook.deseja_cadastrar}</a>
         		  	</div>
         		  </div>
 			    </h:form>

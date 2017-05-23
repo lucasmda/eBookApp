@@ -19,29 +19,29 @@
 			<div class="s12 m12 l12">
 				<div class="card">
 					<div class="card-content">
-						<h4 class="pink-text"><i class="fa fa-search"/>Busca Avançada</h4><br/><br/><br/>
+						<h4 class="pink-text"><i class="fa fa-search"/>#{ebook.busca_avancada}</h4><br/><br/><br/>
 						<div class="row">
 							<h:form>
 								<div class="col s12 m8 l6 offset-m3 offset-l3">
 									<div class="input-field col s12">
 										<i class="fa fa-book prefix"></i>
 										<h:inputText id="bookName" value="#{advancedSearchManagedBean.book}"/>
-					          			<label for="bookName">Livro</label>
+					          			<label for="bookName">#{ebook.livro}</label>
 				        			</div>
 				        			<div class="input-field col s12">
 										<i class="fa fa-user prefix"></i>
 										<h:inputText id="authorName" value="#{advancedSearchManagedBean.author}"/>
-					          			<label for="authorName">Autor</label>
+					          			<label for="authorName">#{ebook.autor}</label>
 				        			</div>
 				        			<div class="input-field col s12">
 										<i class="fa fa-building-o prefix"></i>
 										<h:inputText id="publisherName" value="#{advancedSearchManagedBean.publisher}"/>
-					          			<label for="publisherName">Editora</label>
+					          			<label for="publisherName">#{ebook.editora}</label>
 				        			</div>
 				        			<div class="input-field col s12">
 										<i class="fa fa-paperclip prefix"></i>
 										<h:inputText id="subjectName" value="#{advancedSearchManagedBean.subject}"/>
-					          			<label for="subjectName">Assunto</label>
+					          			<label for="subjectName">#{ebook.genero}</label>
 				        			</div>
 				        			<div class="row">
 				        				<h:commandButton class="waves-effect waves-light btn pink col s12 m12 l12" value="Pesquisar" type="submit" action="#{advancedSearchManagedBean.searchBook}"/>

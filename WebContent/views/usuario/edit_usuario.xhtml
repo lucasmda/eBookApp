@@ -6,7 +6,7 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Editar usuário - eBookApp</title>
+	<title>#{ebook.editar_usuario_title}</title>
 </h:head> 
 <h:body> 
 	<ui:composition template="../layout/app.xhtml">
@@ -16,14 +16,14 @@
 					<div class="content">
 						<div class="row">
 							<h:form>
-								<h4 class="pink-text center thin">Editar usuário</h4>
+								<h4 class="pink-text center thin">#{ebook.editar_usuario}</h4>
 								<div class="input-field col s12">
 									<i class="fa fa-user prefix"></i>
 									<h:inputText value="#{usuarioBean.user.name}" id="userName" required="true" requiredMessage="Name field must be required">
 										<f:validateLength minimum="1" maximum="255"/>
 									</h:inputText>
 									<h:message for="userName" styleClass="error"/>
-				          			<label for="userName">Nome *</label>
+				          			<label for="userName">#{ebook.nome_asterisco}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-address-card-o prefix"></i>
@@ -31,7 +31,7 @@
 										<f:validateLength minimum="1" maximum="255"/>
 									</h:inputText>
 									<h:message for="userEmail" styleClass="error"/>
-									<label for="userEmail">E-mail *</label>
+									<label for="userEmail">#{ebook.email}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-lock prefix"></i>
@@ -39,42 +39,42 @@
 				          				<f:validateLength minimum="1" maximum="255"/>
 				          			</h:inputSecret>
 				          			<h:message for="userPassword" styleClass="error"/>
-			         				<label for="userPassword">Senha *</label>
+			         				<label for="userPassword">#{ebook.senha}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l3">
 				        			<i class="fa fa-map-marker prefix"></i>
 									<h:inputText value="#{usuarioBean.user.cep}" id="userCep" type="number" />
-				          			<label for="userCep">CEP</label>
+				          			<label for="userCep">#{ebook.cep}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l9">
 				        			<i class="fa fa-map-marker prefix"></i>
 									<h:inputText value="#{usuarioBean.user.address}" id="userAddress"/>
-				          			<label for="userAddress">Endereco do Usuario</label>
+				          			<label for="userAddress">#{ebook.endereco_do_usuario}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l3">
 				        			<i class="fa fa-map-marker prefix"></i>
 									<h:inputText value="#{usuarioBean.user.number}" id="userNumber" type="number" />
-				          			<label for="userNumber">Number</label>
+				          			<label for="userNumber">#{ebook.numero}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l9">
 				        			<i class="fa fa-map-marker prefix"></i>
 									<h:inputText value="#{usuarioBean.user.complement}" id="userComplement" />
-				          			<label for="userComplement">Complemento</label>
+				          			<label for="userComplement">#{ebook.complemento}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-globe prefix"></i>
 									<h:inputText value="#{usuarioBean.user.city}" id="userCity" />
-				          			<label for="userCity">Cidade</label>
+				          			<label for="userCity">#{ebook.cidade}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-globe prefix"></i>
 									<h:inputText value="#{usuarioBean.user.state}" id="userState" />
-				          			<label for="userState">Estado</label>
+				          			<label for="userState">#{ebook.estado}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-globe prefix"></i>
 									<h:inputText value="#{usuarioBean.user.country}" id="userCountry" />
-				          			<label for="userCountry">País</label>
+				          			<label for="userCountry">#{ebook.pais}</label>
 				        		</div>
 				        		<div class="row">
 					        		<div class="col s12 m12 l12">

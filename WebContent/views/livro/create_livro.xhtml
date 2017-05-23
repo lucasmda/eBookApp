@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastrar novo livro - eBookApp</title>
+	<title>#{ebook.cadastrar_livro_title}</title>
 </h:head> 
 <h:body> 
 	<ui:composition template="../layout/app.xhtml">
@@ -14,14 +14,14 @@
 				<div class="col s12 m6 l6 offset-m3">
 					<div class="row">
 						<h:form>
-							<h4 class="pink-text center thin">Cadastrar novo livro</h4>
+							<h4 class="pink-text center thin">#{ebook.cadastrar_livro_title}</h4>
 							<div class="input-field col s12 m12 l12">
 								<i class="fa fa-book prefix"></i>
 								<h:inputText value="#{livroBean.book.name}" id="bookName" required="true" requiredMessage="Book title must be required">
 									<f:validateLength minimum="1" maximum="255"/>
 								</h:inputText>
 								<h:message for="bookName" styleClass="error"/>
-			          			<label for="bookName">Título do livro *</label>
+			          			<label for="bookName">#{ebook.titulo_do_livro}</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-money prefix"></i>
@@ -30,14 +30,14 @@
 									<f:convertNumber maxFractionDigits="2"/>
 								</h:inputText>
 								<h:message for="bookPrice" styleClass="error"/>
-			          			<label for="bookPrice">Preço do livro *</label>
+			          			<label for="bookPrice">#{ebook.preco_do_livro}</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-credit-card-alt prefix"></i>
 								<h:inputText value="#{livroBean.book.discount}" id="bookDiscount">
 									<!-- <f:convertNumber type="percentage"/> -->
 								</h:inputText>
-			          			<label for="bookDiscount">Desconto (%)</label>
+			          			<label for="bookDiscount">#{ebook.desconto}</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-archive prefix"></i>
@@ -46,17 +46,17 @@
 									<f:convertNumber maxFractionDigits="0"/>
 								</h:inputText>
 								<h:message for="bookStock" styleClass="error"/>
-			          			<label for="bookStock">Estoque do livro *</label>
+			          			<label for="bookStock">#{ebook.estoque_do_livro}</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-pencil-square prefix"></i>
 								<h:inputText value="#{livroBean.book.edition}" id="bookEdition"/>
-			          			<label for="bookEdition">Edição do livro</label>
+			          			<label for="bookEdition">#{ebook.edicao_do_livro}</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l12">
 			        			<i class="fa fa-pencil-square-o prefix"></i>     
 								<h:inputTextarea value="#{livroBean.book.description}" class="materialize-textarea" id="bookDescription"/>
-								<label for="bookDescription">Descrição do livro</label>  
+								<label for="bookDescription">#{ebook.descricao_do_livro}</label>  
 			        		</div>
 			        		<div class="input-field col s12 m12 l12">
 			        			<i class="fa fa-pencil-square-o prefix"></i>
@@ -64,7 +64,7 @@
 			        				<f:selectItem noSelectionOption="true" itemLabel="Select one option"/>
 			        				<f:selectItems value="#{livroBean.authors}" var="a" itemValue="#{a.author_id}" itemLabel="#{a.name}" /> 
 			        			</h:selectOneMenu>
-			        			<label for="bookAuthor">Autor</label>
+			        			<label for="bookAuthor">#{ebook.autor}</label>
 			        		</div>
 			        		<div class="row">
 				        		<div class="col s12 m12 l12">

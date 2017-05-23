@@ -6,7 +6,7 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Editar autor - eBookApp</title>
+	<title>#{ebook.editar_autor_title}</title>
 </h:head> 
 <h:body> 
 	<ui:composition template="../layout/app.xhtml">
@@ -16,14 +16,14 @@
 				<div class="content">
 					<div class="row">
 						<h:form>
-							<h4 class="pink-text center thin">Editar autor</h4>
+							<h4 class="pink-text center thin">#{ebook.editar_autor}</h4>
 							<div class="input-field col s12">
 								<i class="fa fa-user prefix"></i>
 								<h:inputText value="#{autorBean.author.name}" id="authorName" required="true" requiredMessage="Name field must be required">
 									<f:validateLength minimum="1" maximum="255"/>
 								</h:inputText>
 								<h:message for="authorName" styleClass="error"/>
-				         		<label for="authorName">Nome do autor *</label>
+				         		<label for="authorName">#{ebook.nome_do_autor}</label>
 				       		</div>
 				       		<div class="row">
 					       		<div class="col s12 m12 l12">

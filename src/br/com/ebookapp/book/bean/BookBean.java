@@ -48,7 +48,7 @@ public class BookBean {
 	}
 	
 	public String getReducedName() {
-		final int maxLengh = 40;
+		final int maxLengh = 35;
 		if (name.length() > maxLengh)
 			return name.substring(0, maxLengh) + "...";
 		

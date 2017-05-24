@@ -21,22 +21,22 @@
 					<div class="card-content">
 						<div class="row">
 							<div class="col s4 m4 l4">
-								<img src="http://statics.livrariacultura.net.br/products/capas_lg/248/42891248.jpg" width="100%"/>
+								<img src="#{bookDetailManagedBean.book.image}" width="100%"/>
 							</div>
 							<div class="col s8 m8 l8">
-								<h4>Os contos de vários Nadas</h4>
-								<h6>Autor: Lucas Modesto | Gênero: Romance | Data: 22/05/2017</h6>
+								<h4>#{bookDetailManagedBean.book.name}</h4>
+								<h6>Autor: #{bookDetailManagedBean.book.author.name} | Gênero: #{bookDetailManagedBean.book.subject.name} | Data: 22/05/2017</h6>
 								<hr />
 								<div class="row">
 									<div class="col s12 m12 l5">
 										<di class="row">
 											<h5>Preço</h5>
-											<h4>R$ 53,22</h4>
+											<h4>R$ #{bookDetailManagedBean.book.price}</h4>
 										</di>
 										<hr />
 										<div class="row">
 											<h5>Com desconto</h5>
-											<h4 class="pink-text">R$ 40,21</h4>
+											<h4 class="pink-text">R$ #{bookDetailManagedBean.book.priceWithDiscount}</h4>
 										</div>
 									</div>
 									<div class="col s12 m12 l7">
@@ -61,32 +61,7 @@
 						<div class="row">
 							<div class="col s12 m12 l12" style="text-align: justify;text-justify: inter-word;">
 								<h4 class="pink-text">Sinopse</h4>
-								<p>
-									Lorem Ipsum é simplesmente 
-									uma simulação de texto da 
-									indústria tipográfica e de 
-									impressos, e vem sendo 
-									utilizado desde o século 
-									XVI, quando um impressor 
-									desconhecido pegou uma 
-									bandeja de tipos e os 
-									embaralhou para fazer um 
-									livro de modelos de tipos. 
-									Lorem Ipsum sobreviveu não 
-									só a cinco séculos, como 
-									também ao salto para a 
-									editoração eletrônica, 
-									permanecendo essencialmente 
-									inalterado. Se popularizou 
-									na década de 60, quando a 
-									Letraset lançou decalques 
-									contendo passagens de Lorem 
-									Ipsum, e mais recentemente 
-									quando passou a ser 
-									integrado a softwares de 
-									editoração eletrônica como 
-									Aldus PageMaker.
-								</p>
+								<p>#{bookDetailManagedBean.book.description}</p>
 							</div>
 						</div>
 					</div>

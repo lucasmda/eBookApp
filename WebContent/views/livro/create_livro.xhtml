@@ -58,18 +58,6 @@
 								<h:inputTextarea value="#{livroBean.book.description}" class="materialize-textarea" id="bookDescription"/>
 								<label for="bookDescription">#{ebook.descricao_do_livro}</label>  
 			        		</div>
-			        		<!-- <div class="input-field col s12 m12 l12">
-			        			<i class="fa fa-pencil-square-o prefix"></i>
-			        			<h:selectOneMenu value="#{livroBean.book.author.author_id}" id="bookAuthor" required="true"> 
-			        				<f:selectItem noSelectionOption="true" itemLabel="Select one option"/>
-			        				<f:selectItems value="#{livroBean.authors}" var="a" itemValue="#{a.author_id}" itemLabel="#{a.name}" /> 
-			        			</h:selectOneMenu>
-<<<<<<< HEAD
-			        			<label for="bookAuthor">#{ebook.autor}</label>
-			        		</div>
-=======
-			        		</div> -->
->>>>>>> aadd30cdad612f4c8080e7421d302049bbbef9ab
 			        		<div class="row">
 				        		<div class="col s12 m12 l12">
 				        			<h:commandButton class="waves-effect waves-light btn right pink" value="Registrar" type="submit" action="#{livroBean.registerNewBook}" />

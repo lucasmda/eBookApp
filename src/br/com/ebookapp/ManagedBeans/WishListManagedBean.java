@@ -43,8 +43,11 @@ public class WishListManagedBean {
 		this.error = error;
 	}
 	
-	public void addToWishList(BookBean book) {
-		if (this.wishList != null && !this.wishList.contains(book))
+	public String addToWishList(BookBean book) {
+		if (this.wishList != null && !this.wishList.contains(book)) {
 			this.wishList.add(book);
+			return "desejo.jsf";
+		}
+		return "";
 	}
 }

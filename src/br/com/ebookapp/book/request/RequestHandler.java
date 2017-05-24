@@ -1,8 +1,10 @@
 package br.com.ebookapp.book.request;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.ebookapp.author.bean.AuthorBean;
@@ -19,7 +21,7 @@ public class RequestHandler {
 	
 	public boolean createBook(BookBean book) {
 		this.sql = "INSERT INTO BOOK"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
 			pstmt.setInt(1, this.getIdFromLastIndex());
@@ -33,6 +35,7 @@ public class RequestHandler {
 			pstmt.setInt(9, book.getPublisher().getPublisher_id());
 			pstmt.setInt(10, book.getSubject().getSubject_id());
 			pstmt.setString(11, book.getImage());
+			pstmt.setDate(12, new Date(Calendar.getInstance().getTimeInMillis()));
 			return pstmt.executeUpdate()==1;
 		} catch (Exception e) {
 			System.out.println("CREATE BOOK " + e.getMessage());
@@ -56,7 +59,8 @@ public class RequestHandler {
 				+ "			publisher.description, "
 				+ "			subject.subject_id, "
 				+ "			subject.name,"
-				+ "			book.image"
+				+ "			book.image,"
+				+ "			book.release_date"
 				+ " FROM 	BOOK book"
 				+ " JOIN 	AUTHOR author"
 				+ "	ON		(book.author_author_id = author.author_id)"
@@ -81,13 +85,14 @@ public class RequestHandler {
 				this.book.setPublisher(new PublisherBean(this.resultSet.getInt(10), this.resultSet.getString(11), this.resultSet.getString(12)));
 				this.book.setSubject(new SubjectBean(this.resultSet.getInt(13), this.resultSet.getString(14)));
 				this.book.setImage(this.resultSet.getString(15));
+				this.book.setReleaseDate(this.resultSet.getDate(16));
 				this.list.add(this.book);
 			}
 			return this.list;
 		} catch (Exception e) {
 			System.out.println("GET BOOK " + e.getMessage());
 		}
-		return null;
+		return new ArrayList<BookBean>();
 	}
 	
 	public BookBean getBook(int id) {
@@ -106,7 +111,8 @@ public class RequestHandler {
 				+ "			publisher.description, "
 				+ "			subject.subject_id, "
 				+ "			subject.name,"
-				+ "			book.image"
+				+ "			book.image,"
+				+ "			book.release_date"
 				+ " FROM 	BOOK book"
 				+ " JOIN 	AUTHOR author"
 				+ "	ON		(book.author_author_id = author.author_id)"
@@ -131,12 +137,13 @@ public class RequestHandler {
 				this.book.setPublisher(new PublisherBean(this.resultSet.getInt(10), this.resultSet.getString(11), this.resultSet.getString(12)));
 				this.book.setSubject(new SubjectBean(this.resultSet.getInt(13), this.resultSet.getString(14)));
 				this.book.setImage(this.resultSet.getString(15));
+				this.book.setReleaseDate(this.resultSet.getDate(16));
 			}
 			return this.book;
 		} catch (Exception e) {
 			System.out.println("GET BOOK BY ID " + e.getMessage());
 		}
-		return null;
+		return new BookBean();
 	}
 	
 	public boolean updateBook(BookBean book, int id) {
@@ -186,7 +193,8 @@ public class RequestHandler {
 				+ "			publisher.description, "
 				+ "			subject.subject_id, "
 				+ "			subject.name,"
-				+ "			book.image"
+				+ "			book.image,"
+				+ "			book.release_date"
 				+ " FROM 	BOOK book"
 				+ " JOIN 	AUTHOR author"
 				+ "	ON		(book.author_author_id = author.author_id)"
@@ -217,13 +225,14 @@ public class RequestHandler {
 				this.book.setPublisher(new PublisherBean(this.resultSet.getInt(10), this.resultSet.getString(11), this.resultSet.getString(12)));
 				this.book.setSubject(new SubjectBean(this.resultSet.getInt(13), this.resultSet.getString(14)));
 				this.book.setImage(this.resultSet.getString(15));
+				this.book.setReleaseDate(this.resultSet.getDate(16));
 				this.list.add(this.book);
 			}
 			return this.list;
 		} catch (Exception e) {
 			System.out.println("GET BOOK BY ID " + e.getMessage());
 		}
-		return null;
+		return new ArrayList<BookBean>();
 	}
 	
 	public List<BookBean> getBookFilteredByAdvancedSearch(List<String> map) {
@@ -250,7 +259,8 @@ public class RequestHandler {
 				+ "			publisher.description, "
 				+ "			subject.subject_id, "
 				+ "			subject.name,"
-				+ "			book.image"
+				+ "			book.image, "
+				+ "			book.release_date"
 				+ " FROM 	BOOK book"
 				+ " JOIN 	AUTHOR author"
 				+ "	ON		(book.author_author_id = author.author_id)"
@@ -276,13 +286,14 @@ public class RequestHandler {
 				this.book.setPublisher(new PublisherBean(this.resultSet.getInt(10), this.resultSet.getString(11), this.resultSet.getString(12)));
 				this.book.setSubject(new SubjectBean(this.resultSet.getInt(13), this.resultSet.getString(14)));
 				this.book.setImage(this.resultSet.getString(15));
+				this.book.setReleaseDate(this.resultSet.getDate(16));
 				this.list.add(this.book);
 			}
 			return this.list;
 		} catch (Exception e) {
 			System.out.println("GET BOOK BY ID " + e.getMessage());
 		}
-		return null;
+		return new ArrayList<BookBean>();
 	}
 	
 	public List<BookBean> getBookWithDiscount() {
@@ -301,7 +312,8 @@ public class RequestHandler {
 				+ "			publisher.description, "
 				+ "			subject.subject_id, "
 				+ "			subject.name,"
-				+ "			book.image"
+				+ "			book.image,"
+				+ "			book.release_date"
 				+ " FROM 	BOOK book"
 				+ " JOIN 	AUTHOR author"
 				+ "	ON		(book.author_author_id = author.author_id)"
@@ -327,13 +339,14 @@ public class RequestHandler {
 				this.book.setPublisher(new PublisherBean(this.resultSet.getInt(10), this.resultSet.getString(11), this.resultSet.getString(12)));
 				this.book.setSubject(new SubjectBean(this.resultSet.getInt(13), this.resultSet.getString(14)));
 				this.book.setImage(this.resultSet.getString(15));
+				this.book.setReleaseDate(this.resultSet.getDate(16));
 				this.list.add(this.book);
 			}
 			return this.list;
 		} catch (Exception e) {
 			System.out.println("GET BOOK " + e.getMessage());
 		}
-		return null;
+		return new ArrayList<BookBean>();
 	}
 	
 	public boolean deleteBook(int id) {

@@ -20,7 +20,7 @@ public class BookDetailManagedBean {
 	public String setBook(BookBean book) {
 		this.book = book;
 		
-		return "detalhesLivro";
+		return "detalhesLivro.jsf";
 	}
 	public String getResponse() {
 		return response;

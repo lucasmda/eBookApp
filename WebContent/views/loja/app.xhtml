@@ -20,8 +20,8 @@
 					<li>
 						<h:form>
 							<div class="input-field col s12 m6 l6">
-								<h:inputText id="search" type="search" required="true" value="#{homeManagedBean.inputSearch}">
-									<f:ajax event="change" listener="#{homeManagedBean.searchBookByField}"></f:ajax>
+								<h:inputText id="search" type="search" required="true" value="#{resultManagedBean.inputSearch}" style="width: 90%;">
+									<f:ajax event="change" listener="#{resultManagedBean.searchBookByField}"></f:ajax>
 								</h:inputText>
 								<label class="label-icon tooltipped" for="search" data-position="left" data-delay="50" data-tooltip="Search"><i class="fa fa-search"></i></label>
 							</div>
@@ -56,6 +56,34 @@
 					<div class="row">
 						<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">Livros em destaques</h5>
 						<ui:repeat var="book" value="#{homeManagedBean.bookWithDiscountList}">
+							<div class="col s12 m12 l4">
+								<div class="card horizontal" style="max-height:200px;">
+									<div class="card-image" style="height: 200px;; width: 30%;">
+										<h:form>
+											<h:commandLink action="#{bookDetailManagedBean.setBook(book)}">
+												<img src="#{book.image}" style="max-height: 200px;" width="100%" height="100%"></img>
+											</h:commandLink>
+										</h:form>
+									</div>
+									<div class="card-stacked" style="width: 70%;">
+										<div class="card-content" style="padding-bottom: 0px;">
+											<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
+										</div>
+										<div class="container">
+											<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
+											<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
+										</div>
+										<div class="card-action">
+											<h:form>
+												<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</ui:repeat>
+						<ui:repeat var="book" value="#{advanced}">
 							<div class="col s12 m12 l4">
 								<div class="card horizontal" style="max-height:200px;">
 									<div class="card-image" style="height: 200px;; width: 30%;">

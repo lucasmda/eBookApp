@@ -1,6 +1,9 @@
 package br.com.ebookapp.book.bean;
 
+import java.sql.Date;
+
 import br.com.ebookapp.author.bean.AuthorBean;
+import br.com.ebookapp.database.validation.HandlerHelper;
 import br.com.ebookapp.publisher.bean.PublisherBean;
 import br.com.ebookapp.subject.bean.SubjectBean;
 
@@ -16,6 +19,7 @@ public class BookBean {
 	private PublisherBean publisher;
 	private SubjectBean subject;
 	private String image;
+	private Date releaseDate;
 
 	public BookBean() {}
 
@@ -144,5 +148,17 @@ public class BookBean {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+	
+	public String getStringReleaseDate() {
+		return HandlerHelper.convertSystemDate(releaseDate.toString());
+	}
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 }

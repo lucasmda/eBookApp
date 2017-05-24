@@ -1,5 +1,6 @@
 package br.com.ebookapp.ManagedBeans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -11,52 +12,24 @@ import br.com.ebookapp.database.validation.HandlerHelper;
 
 @ManagedBean
 @SessionScoped
-public class HomeManagedBean {
-	private BookBean selectedBook;
+public class ResultManagedBean {
 	private List<BookBean> bookList;
-	private List<BookBean> bookWithDiscountList;
 	private RequestHandler requestHandler;
 	private String response;
 	private String error;
-
-	public HomeManagedBean() {
+	private String inputSearch;
+	
+	public ResultManagedBean() {
 		this.requestHandler = new RequestHandler();
-
-		this.selectedBook = new BookBean();
-		this.bookList = requestHandler.getBook();
-		this.bookWithDiscountList = requestHandler.getBookWithDiscount();
-	}
-
-	public BookBean getSelectedBook() {
-		return selectedBook;
-	}
-
-	public void setSelectedBook(BookBean selectedBook) {
-		this.selectedBook = selectedBook;
+		this.bookList = new ArrayList<BookBean>();
 	}
 
 	public List<BookBean> getBookList() {
 		return bookList;
 	}
 
-	public List<BookBean> getBookWithDiscountList() {
-		return bookWithDiscountList;
-	}
-
-	public void setBookWithDiscountList(List<BookBean> bookWithDiscountList) {
-		this.bookWithDiscountList = bookWithDiscountList;
-	}
-
 	public void setBookList(List<BookBean> bookList) {
 		this.bookList = bookList;
-	}
-
-	public RequestHandler getRequestHandler() {
-		return requestHandler;
-	}
-
-	public void setRequestHandler(RequestHandler requestHandler) {
-		this.requestHandler = requestHandler;
 	}
 
 	public String getResponse() {
@@ -73,5 +46,22 @@ public class HomeManagedBean {
 
 	public void setError(String error) {
 		this.error = error;
+	}
+
+	public String getInputSearch() {
+		return inputSearch;
+	}
+
+	public void setInputSearch(String inputSearch) {
+		this.inputSearch = inputSearch;
+	}
+	
+	public String searchBookByField() {
+		if (!HandlerHelper.isBlankOrNull(this.inputSearch)) {
+			this.bookList = this.requestHandler.getBook(this.inputSearch);
+			
+			return "resultado.jsf";
+		}
+		return "";
 	}
 }

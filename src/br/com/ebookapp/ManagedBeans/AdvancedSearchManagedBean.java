@@ -90,7 +90,7 @@ public class AdvancedSearchManagedBean {
 		this.error = error;
 	}
 	
-	public void searchBook() {
+	public String searchBook() {
 		List<String> map = new ArrayList<String>();
 		if (!HandlerHelper.isBlankOrNull(this.book)) {
 			map.add("book.name LIKE '%" + this.book + "%'");
@@ -112,6 +112,10 @@ public class AdvancedSearchManagedBean {
 		
 		if (map.size() > 0) {
 			this.bookList = this.requestHandler.getBookFilteredByAdvancedSearch(map);
+			
+			return "resultado.jsf";
 		}
+		
+		return "";
 	}
 }

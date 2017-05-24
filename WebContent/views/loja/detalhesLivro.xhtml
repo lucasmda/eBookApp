@@ -25,7 +25,7 @@
 							</div>
 							<div class="col s8 m8 l8">
 								<h4>#{bookDetailManagedBean.book.name}</h4>
-								<h6>Autor: #{bookDetailManagedBean.book.author.name} | Gênero: #{bookDetailManagedBean.book.subject.name} | Data: 22/05/2017</h6>
+								<h6>Autor: #{bookDetailManagedBean.book.author.name} | Gênero: #{bookDetailManagedBean.book.subject.name} | Data: #{bookDetailManagedBean.book.stringReleaseDate}</h6>
 								<hr />
 								<div class="row">
 									<div class="col s12 m12 l5">
@@ -43,16 +43,22 @@
 										<br/>
 										<br/>
 										<div class="row">
-											<h:commandButton 
-											value="Adicionar ao Carrinho" 
-											class="btn pink right waves-effect waves-light">
-											</h:commandButton>
+											<h:form>
+												<h:commandButton 
+												action="#{cartManagedBean.addToCart(bookDetailManagedBean.book)}"
+												value="Adicionar ao Carrinho" 
+												class="btn pink right waves-effect waves-light">
+												</h:commandButton>
+											</h:form>
 										</div>
 										<div class="row">
-											<h:commandButton 
-											value="Lista de Desejos" 
-											class="btn pink right waves-effect waves-light">
-											</h:commandButton>
+											<h:form>
+												<h:commandButton
+												action="#{wishListManagedBean.addToWishList(bookDetailManagedBean.book)}" 
+												value="Lista de Desejos" 
+												class="btn pink right waves-effect waves-light">
+												</h:commandButton>
+											</h:form>
 										</div>
 									</div>
 								</div>

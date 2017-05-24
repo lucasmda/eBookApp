@@ -17,23 +17,33 @@
 	<section style="flex: 1 0 auto;">
 		<div class="row">
 			<div class="col s12 m12 l12">
-				<ui:repeat var="book" value="#{homeManagedBean.bookListFilteredByDiscount}">
-					<div class="col s12 m6">
-						<div class="card horizontal">
-							<div class="card-image">
-								<img src="#{book.image}" style="margin: 10px; height: 300px; width:200px;"></img>
-							</div>
-							<div class="card-stacked">
-								<div class="card-content">
-									<h3 style="height:96px; overflow-y:hidden;">#{book.reducedName}</h3>
-									<p>#{book.reducedDescription}</p>
+				<ui:repeat var="book" value="#{homeManagedBean.bookList}">
+							<div class="col s12 m12 l4">
+								<div class="card horizontal" style="max-height:200px;">
+									<div class="card-image" style="height: 200px;; width: 30%;">
+										<h:form>
+											<h:commandLink action="#{bookDetailManagedBean.setBook(book)}">
+												<img src="#{book.image}" style="max-height: 200px;" width="100%" height="100%"></img>
+											</h:commandLink>
+										</h:form>
+									</div>
+									<div class="card-stacked" style="width: 70%;">
+										<div class="card-content" style="padding-bottom: 0px;">
+											<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
+										</div>
+										<div class="container">
+											<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
+											<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
+										</div>
+										<div class="card-action">
+											<h:form>
+												<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+											</h:form>
+										</div>
+									</div>
 								</div>
-								<div class="card-action">
-									<a href="#">This is a link</a>
-								</div>
 							</div>
-						</div>
-					</div>
 				</ui:repeat>
 			</div>	
          </div>

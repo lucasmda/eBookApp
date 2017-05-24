@@ -6,29 +6,29 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Lista de livros - eBookApp</title>
+	<title>#{ebook.lista_de_livros_title}</title>
 </h:head>
 <h:body>
 	<ui:composition template="../layout/app.xhtml">
 		<ui:define name="content">
 			<div class="row">
-				<h4 class="pink-text center thin">Lista de livros</h4>
+				<h4 class="pink-text center thin">#{ebook.lista_de_livros}</h4>
 				<div class="col 12 s12 m12 l12">
 					<h:form>
 						<table class="table">
 							<thead>
 								<tr>
-									<td>Título</td>
-									<td>Descrição</td>
-									<td>Preço</td>
-									<td>Desconto</td>
-									<td>Estoque</td>
-									<td>Edição</td>
-									<td>Autor</td>
-									<td>Editora</td>
-									<td>Assunto</td>
-									<td>Editar</td>
-									<td>Excluir</td>
+									<td>#{ebook.titulo}</td>
+									<td>#{ebook.descricao}</td>
+									<td>#{ebook.preco}</td>
+									<td>#{ebook.valor_desconto}</td>
+									<td>#{ebook.estoque}</td>
+									<td>#{ebook.edicao}</td>
+									<td>#{ebook.autor}</td>
+									<td>#{ebook.editora}</td>
+									<td>#{ebook.genero}</td>
+									<td>#{ebook.editar}</td>
+									<td>#{ebook.excluir}</td>
 								</tr>
 							</thead>
 							<tbody>

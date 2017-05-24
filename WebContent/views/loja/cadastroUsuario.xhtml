@@ -21,56 +21,56 @@
 					<div class="content">
 						<div class="row">
 							<h:form>
-								<h4 class="pink-text center thin">Cadastrar novo usuário</h4>
+								<h4 class="pink-text center thin">#{ebook.cadastrar_novo_usuario}</h4>
 								<div class="input-field col s12">
 									<i class="fa fa-user prefix"></i>
 									<h:inputText value="#{usuarioBean.user.name}" id="userName" required="true" />
-				          			<label for="userName">Nome*</label>
+				          			<label for="userName">#{ebook.nome_asterisco}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-address-card-o prefix"></i>
 									<h:inputText value="#{usuarioBean.user.email}" id="userEmail" type="email" required="true" />
-				          			<label for="userEmail">E-mail*</label>
+				          			<label for="userEmail">#{ebook.email}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-lock prefix"></i>
 				          			<h:inputSecret value="#{usuarioBean.user.password}" id="userPassword" type="password" required="true"/>
-			         				<label for="userPassword">Senha*</label>
+			         				<label for="userPassword">#{ebook.senha}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l3">
 				        			<i class="fa fa-sort-numeric-asc prefix"></i>
 									<h:inputText value="#{usuarioBean.user.cep}" id="userCep" type="number" required="true" />
-				          			<label for="userCep">CEP</label>
+				          			<label for="userCep">#{ebook.cep}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l9">
 				        			<i class="fa fa-map-marker prefix"></i>
 									<h:inputText value="#{usuarioBean.user.address}" id="userAddress" required="true" />
-				          			<label for="userAddress">Endereco do Usuario</label>
+				          			<label for="userAddress">#{ebook.endereco_do_usuario}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l3">
 				        			<i class="fa fa-tag prefix"></i>
 									<h:inputText value="#{usuarioBean.user.number}" id="userNumber" type="number" required="true" />
-				          			<label for="userNumber">Number</label>
+				          			<label for="userNumber">#{ebook.numero}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l9">
 				        			<i class="fa fa-file-text-o prefix"></i>
 									<h:inputText value="#{usuarioBean.user.complement}" id="userComplement" required="true" />
-				          			<label for="userComplement">Complemento</label>
+				          			<label for="userComplement">#{ebook.complemento}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-globe prefix"></i>
 									<h:inputText value="#{usuarioBean.user.city}" id="userCity" required="true" />
-				          			<label for="userCity">Cidade</label>
+				          			<label for="userCity">#{ebook.cidade}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-globe prefix"></i>
 									<h:inputText value="#{usuarioBean.user.state}" id="userState" required="true" />
-				          			<label for="userState">Estado</label>
+				          			<label for="userState">#{ebook.estado}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-globe prefix"></i>
 									<h:inputText value="#{usuarioBean.user.country}" id="userCountry" required="true" />
-				          			<label for="userCountry">País</label>
+				          			<label for="userCountry">#{ebook.pais}</label>
 				        		</div>
 				        		<div class="row">
 					        		<div class="col s12 m12 l12">

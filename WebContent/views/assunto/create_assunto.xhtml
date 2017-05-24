@@ -6,7 +6,7 @@
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastrar novo gênero - eBookApp</title>
+	<title>#{ebook.cadastrar_genero_title}</title>
 </h:head> 
 <h:body>
 	<ui:composition template="../layout/app.xhtml">
@@ -15,14 +15,14 @@
 				<div class="col s12 m6 l6 offset-m3">
 					<div class="row">
 						<h:form>
-							<h4 class="pink-text center thin">Cadastrar novo gênero</h4>
+							<h4 class="pink-text center thin">#{ebook.cadastrar_novo_genero}</h4>
 							<div class="input-field col s12">
 								<i class="fa fa-file-text prefix"></i> 
 								<h:inputText value="#{assuntoBean.subject.name}" id="subjectName" required="true" requiredMessage="Name field must be required">
 									<f:validateLength minimum="1" maximum="255"/>
 								</h:inputText>
 								<h:message for="subjectName" styleClass="error"/>
-			          			<label for="subjectName">Nome do gênero *</label>
+			          			<label for="subjectName">#{ebook.nome_do_genero}</label>
 			        		</div>
 			        		<div class="row">
 				        		<div class="col s12 m12 l12">

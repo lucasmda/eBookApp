@@ -6,7 +6,7 @@
       
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastrar editora - eBookApp</title>
+	<title>#{ebook.cadastrar_editora_title}</title>
 </h:head> 
 <h:body> 
 	<ui:composition template="../layout/app.xhtml">
@@ -16,14 +16,14 @@
 					<div class="content">
 						<div class="row">
 							<h:form>
-								<h4 class="pink-text center thin">Cadastrar editora</h4>
+								<h4 class="pink-text center thin">#{ebook.cadastrar_editora}</h4>
 								<div class="input-field col s12 m12 l12">
 									<i class="fa fa-user prefix"/>
 									<h:inputText value="#{editoraBean.publisher.name}" id="publisherName" required="true" requiredMessage="Name field must be required">
 										<f:validateLength minimum="1" maximum="255"/>
 									</h:inputText>
 									<h:message for="publisherName" styleClass="error"/>
-				          			<label for="publisherName">Nome da editora *</label>
+				          			<label for="publisherName">#{ebook.nome_da_editora}</label>
 				        		</div>
 				        		<div class="input-field col s12 m12 l12">
 				        			<i class="fa fa-address-card-o prefix"/>
@@ -31,7 +31,7 @@
 										<f:validateLength minimum="1" maximum="1024"/>
 									</h:inputTextarea>
 									<h:message for="publisherDescription"/>
-				          			<label for="publisherDescription">Descrição editora *</label>
+				          			<label for="publisherDescription">#{ebook.descricao_editora}</label>
 				        		</div>
 				        		<div class="row">
 					        		<div class="col s12 m12 l12">

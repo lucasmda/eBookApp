@@ -28,15 +28,22 @@
 								<table class="table bodered">
 									<thead>
 										<td>Livro</td>
-										<td>Preço Desconto</td>
-										<td>Preço Total</td>
+										<td>Preço</td>
 										<td>Unidades</td>
+										<td>Remover</td>
 									</thead>
-									<tbody></tbody>
+									<tbody>
+										<ui:repeat var="b" value="#{cartManagedBean.cartList}">
+											<tr>
+												<td>#{b.name}</td>
+												<td>#{b.priceWithDiscount}</td>
+											</tr>
+										</ui:repeat>
+									</tbody>
 								</table>
 								<br/>
 								<div class="row right">
-									<b>Valor total: </b>
+									<b>Valor total: #{cartManagedBean.totalPrice}</b>
 									<div class="row">
 										<a class="waves-effect waves-light btn pink">Finalizar</a>
 									</div>

@@ -285,6 +285,57 @@ public class RequestHandler {
 		return null;
 	}
 	
+	public List<BookBean> getBookWithDiscount() {
+		this.sql = "SELECT 	book.book_id, "
+				+ "			book.name, "
+				+ "			book.description, "
+				+ "			book.price, "
+				+ "			book.discount, "
+				+ "			book.stock, "
+				+ "			book.edition, "
+				+ "			author.author_id, "
+				+ "			author.name,"
+				+ "			publisher."
+				+ "			publisher_id, "
+				+ "			publisher.name, "
+				+ "			publisher.description, "
+				+ "			subject.subject_id, "
+				+ "			subject.name,"
+				+ "			book.image"
+				+ " FROM 	BOOK book"
+				+ " JOIN 	AUTHOR author"
+				+ "	ON		(book.author_author_id = author.author_id)"
+				+ "	JOIN	PUBLISHER publisher"
+				+ "	ON 		(book.publisher_publisher_id = publisher.publisher_id)"
+				+ "	JOIN	SUBJECT subject"
+				+ " ON		(book.subject_subject_id = subject.subject_id)"
+				+ " WHERE 	book.discount > 0";
+		try {
+			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
+			this.resultSet = pstmt.executeQuery();
+			this.list = new ArrayList<BookBean>();
+			while (this.resultSet.next()) {
+				this.book = new BookBean();
+				this.book.setBook_id(this.resultSet.getInt(1));
+				this.book.setName(this.resultSet.getString(2));
+				this.book.setDescription(this.resultSet.getString(3));
+				this.book.setPrice(this.resultSet.getDouble(4));
+				this.book.setDiscount(this.resultSet.getDouble(5));
+				this.book.setStock(this.resultSet.getInt(6));
+				this.book.setEdition(this.resultSet.getInt(7));
+				this.book.setAuthor(new AuthorBean(this.resultSet.getInt(8), this.resultSet.getString(9)));
+				this.book.setPublisher(new PublisherBean(this.resultSet.getInt(10), this.resultSet.getString(11), this.resultSet.getString(12)));
+				this.book.setSubject(new SubjectBean(this.resultSet.getInt(13), this.resultSet.getString(14)));
+				this.book.setImage(this.resultSet.getString(15));
+				this.list.add(this.book);
+			}
+			return this.list;
+		} catch (Exception e) {
+			System.out.println("GET BOOK " + e.getMessage());
+		}
+		return null;
+	}
+	
 	public boolean deleteBook(int id) {
 		this.sql = "DELETE 	FROM BOOK"
 				+ " WHERE 	book_id = " + id;

@@ -44,36 +44,17 @@
 					</li>
 				</ul>
 			</div>
-			<div class="row">
-				<!-- <div class="col s2 m2 l2">
-					<ul id="dropdown1" class="dropdown-content">
-						<li><a href="#!">one</a></li>
-						<li><a href="#!">two</a></li>
-						<li class="divider"></li>
-						<li><a href="#!">three</a></li>
-					</ul>
-					<a class="dropdown-button" href="#!" data-activates="dropdown1">Categorias</a>
-				</div> -->
-				<div class="col s12 m12 l12">
-					<div class="nav-content">
-						<ul class="tabs tabs-transparent tabs-fixed-width">
-							<li class="tab"><a href="#descontos">Descontos</a></li>
-							<li class="tab"><a href="#lancamentos">Lançamenos</a></li>
-							<li class="tab"><a href="#novidades">Novidades</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
 		</nav>
 	</header>
 	<main style="flex: 1 0 auto;"> 
 	<section>
 	<div class="row">
 		<div class="col s12 m12 l12">
-			<div class="card">
-				<div class="content">
-					<div id="descontos">
-						<ui:repeat var="book" value="#{homeManagedBean.bookListFilteredByDiscount}">
+			<div class="content">
+				<div class="card">
+					<div class="row">
+						<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">Livros em destaques</h5>
+						<ui:repeat var="book" value="#{homeManagedBean.bookWithDiscountList}">
 							<div class="col s12 m12 l4">
 								<div class="card horizontal" style="max-height:200px;">
 									<div class="card-image" style="height: 200px;; width: 30%;">
@@ -89,8 +70,8 @@
 										</div>
 										<div class="card-action">
 											<h:form>
-												<a class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-												<a class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
 											</h:form>
 										</div>
 									</div>
@@ -98,11 +79,12 @@
 							</div>
 						</ui:repeat>
 					</div>
-					<div id="lancamentos">
-						<ui:repeat var="book" value="#{homeManagedBean.bookListFilteredByRelease}">
-							<div class="col s12 m4">
+					<div class="row">
+						<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">Todos os livros</h5>
+						<ui:repeat var="book" value="#{homeManagedBean.bookList}">
+							<div class="col s12 m12 l4">
 								<div class="card horizontal" style="max-height:200px;">
-									<div class="card-image" style="height: 200px; width: 30%;">
+									<div class="card-image" style="height: 200px;; width: 30%;">
 										<img src="#{book.image}" width="100%" height="100%"></img>
 									</div>
 									<div class="card-stacked" style="width: 70%;">
@@ -115,34 +97,8 @@
 										</div>
 										<div class="card-action">
 											<h:form>
-												<a class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-												<a class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-											</h:form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</ui:repeat>
-					</div>
-					<div id="novidades">
-						<ui:repeat var="book" value="#{homeManagedBean.bookListFilteredByNew}">
-							<div class="col s12 m4">
-								<div class="card horizontal" style="max-height:200px;">
-									<div class="card-image" style="height: 200px; width: 30%;">
-										<img src="#{book.image}" width="100%" height="100%"></img>
-									</div>
-									<div class="card-stacked" style="width: 70%;">
-										<div class="card-content" style="padding-bottom: 0px;">
-											<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
-										</div>
-										<div class="container">
-											<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
-											<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
-										</div>
-										<div class="card-action">
-											<h:form>
-												<a class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-												<a class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
 											</h:form>
 										</div>
 									</div>

@@ -1,7 +1,5 @@
 package br.com.ebookapp.ManagedBeans;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -16,6 +14,7 @@ import br.com.ebookapp.database.validation.HandlerHelper;
 public class HomeManagedBean {
 	private BookBean selectedBook;
 	private List<BookBean> bookList;
+	private List<BookBean> bookWithDiscountList;
 	private RequestHandler requestHandler;
 	private String response;
 	private String error;
@@ -26,6 +25,7 @@ public class HomeManagedBean {
 
 		this.selectedBook = new BookBean();
 		this.bookList = requestHandler.getBook();
+		this.bookWithDiscountList = requestHandler.getBookWithDiscount();
 	}
 
 	public BookBean getSelectedBook() {
@@ -40,34 +40,12 @@ public class HomeManagedBean {
 		return bookList;
 	}
 
-	public List<BookBean> getBookListFilteredByDiscount() {
-		Collections.sort(this.bookList, new Comparator<BookBean>() {
-			@Override
-		    public int compare(BookBean o1, BookBean o2) {
-		        return o1.getDiscount().compareTo(o2.getDiscount());
-		    }
-		});
-		return bookList;
+	public List<BookBean> getBookWithDiscountList() {
+		return bookWithDiscountList;
 	}
 
-	public List<BookBean> getBookListFilteredByRelease() {
-		Collections.sort(this.bookList, new Comparator<BookBean>() {
-			@Override
-		    public int compare(BookBean o1, BookBean o2) {
-		        return o1.getPrice().compareTo(o2.getPrice());
-		    }
-		});
-		return bookList;
-	}
-
-	public List<BookBean> getBookListFilteredByNew() {
-		Collections.sort(this.bookList, new Comparator<BookBean>() {
-			@Override
-		    public int compare(BookBean o1, BookBean o2) {
-		        return new Integer(o1.getBook_id()).compareTo(new Integer(o2.getBook_id()));
-		    }
-		});
-		return bookList;
+	public void setBookWithDiscountList(List<BookBean> bookWithDiscountList) {
+		this.bookWithDiscountList = bookWithDiscountList;
 	}
 
 	public void setBookList(List<BookBean> bookList) {
@@ -110,9 +88,5 @@ public class HomeManagedBean {
 		if (!HandlerHelper.isBlankOrNull(this.inputSearch)) {
 			this.bookList = this.requestHandler.getBook(this.inputSearch);
 		}
-	}
-	
-	public void addNewItem() {
-		System.out.println(selectedBook.getName());
 	}
 }

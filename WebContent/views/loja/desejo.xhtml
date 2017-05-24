@@ -28,11 +28,18 @@
 								<table class="table bodered">
 									<thead>
 										<td>Livro</td>
-										<td>Preço Desconto</td>
-										<td>Preço Total</td>
+										<td>Preço</td>
+										<td>Adicionar ao carrinho</td>
 										<td>Remover</td>
 									</thead>
-									<tbody></tbody>
+									<tbody>
+										<ui:repeat var="b" value="#{wishListManagedBean.wishList}">
+											<tr>
+												<td>#{b.name}</td>
+												<td>#{b.priceWithDiscount}</td>
+											</tr>
+										</ui:repeat>
+									</tbody>
 								</table>
 							</div>
 						</div>

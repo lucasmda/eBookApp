@@ -7,6 +7,7 @@ import java.util.List;
 
 import br.com.ebookapp.author.bean.AuthorBean;
 import br.com.ebookapp.database.RequestConnection;
+import br.com.ebookapp.user.bean.UserBean;
 
 public class RequestHandler {
 	private ResultSet resultSet = null;
@@ -26,6 +27,23 @@ public class RequestHandler {
 			System.out.println("CREATE AUTHOR " + e.getMessage());
 		}
 		return false;
+	}
+	
+	public AuthorBean createAuthorFromName(String authorName) {
+		this.sql = "INSERT 	INTO AUTHOR "
+				+ " VALUES(?, ?)";
+		try {
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
+			preparedStatement.setInt(1, getIdFromLastIndex());
+			preparedStatement.setString(2, authorName);
+			boolean sucess = preparedStatement.executeUpdate()==1;
+			if (sucess) {
+				return this.getAuthor(authorName);
+			}
+		} catch (Exception e) {
+			System.out.println("CREATE AUTHOR " + e.getMessage());
+		}
+		return null;
 	}
 	
 	public List<AuthorBean> getAuthor() {
@@ -65,6 +83,26 @@ public class RequestHandler {
 			}
 		} catch (Exception e) {
 			System.out.println("GET AUTHOR BY ID " + e.getMessage());
+		}
+		return null;
+	}
+	
+	public AuthorBean getAuthor(String name) {
+		this.sql = "SELECT 	author.author_id,"
+				+ "			author.name"
+				+ " FROM 	AUTHOR author"
+				+ "	WHERE 	author.name = " + name;
+		try {
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
+			this.resultSet = preparedStatement.executeQuery();
+			if (this.resultSet.next()) {
+				this.author = new AuthorBean();
+				this.author.setAuthor_id(this.resultSet.getInt(1));
+				this.author.setName(this.resultSet.getString(2));
+				return this.author;
+			}
+		} catch (Exception e) {
+			System.out.println("GET AUTHOR BY NAME " + e.getMessage());
 		}
 		return null;
 	}

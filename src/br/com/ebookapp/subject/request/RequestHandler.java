@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ebookapp.database.RequestConnection;
+import br.com.ebookapp.publisher.bean.PublisherBean;
 import br.com.ebookapp.subject.bean.SubjectBean;
 
 public class RequestHandler {
@@ -26,6 +27,23 @@ public class RequestHandler {
 			System.out.println("CREATE SUBJECT " + e.getMessage());
 		}
 		return false;
+	}
+	
+	public SubjectBean createSubjectFromName(String name) {
+		this.sql = "INSERT INTO SUBJECT"
+				+ " VALUES (?, ?)";
+		try {
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
+			preparedStatement.setInt(1, getIdFromLastIndex());
+			preparedStatement.setString(2, subject.getName());
+			boolean success = preparedStatement.executeUpdate()==1;
+			if (success) {
+				return this.getSubject(name);
+			}
+		} catch (Exception e) {
+			System.out.println("CREATE SUBJECT " + e.getMessage());
+		}
+		return null;
 	}
 	
 	public List<SubjectBean> getSubject() {
@@ -54,6 +72,26 @@ public class RequestHandler {
 				+ "			subject.name"
 				+ " FROM	SUBJECT subject"
 				+ " WHERE	subject.subject_id = " + id;
+		try {
+			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				subject = new SubjectBean();
+				subject.setSubject_id(resultSet.getInt(1));
+				subject.setName(resultSet.getString(2));
+				return subject;
+			}
+		} catch (Exception e) {
+			System.out.println("GET SUBJECT BY ID " + e.getMessage());
+		}
+		return null;
+	}
+	
+	public SubjectBean getSubject(String name) {
+		this.sql = "SELECT	subject.subject_id,"
+				+ "			subject.name"
+				+ " FROM	SUBJECT subject"
+				+ " WHERE	subject.name = " + name;
 		try {
 			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
 			resultSet = preparedStatement.executeQuery();

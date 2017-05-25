@@ -20,6 +20,24 @@ public class RequestHandler {
 	private BookBean book;
 	
 	public boolean createBook(BookBean book) {
+		if (book.getAuthor().getName().length() > 0) {
+			book.setAuthor(new br.com.ebookapp.author.request.RequestHandler().getAuthor(book.getAuthor().getName()));
+		} else {
+			book.setAuthor(new br.com.ebookapp.author.request.RequestHandler().createAuthorFromName(book.getAuthor().getName()));
+		}
+		
+		if (book.getPublisher().getName().length() > 0) {
+			book.setPublisher(new br.com.ebookapp.publisher.request.RequestHandler().getPublisher(book.getPublisher().getName()));
+		} else {
+			book.setPublisher(new br.com.ebookapp.publisher.request.RequestHandler().createPublisherFromName(book.getPublisher().getName()));
+		}
+		
+		if (book.getSubject().getName().length() > 0) {
+			book.setSubject(new br.com.ebookapp.subject.request.RequestHandler().getSubject(book.getSubject().getName()));
+		} else {
+			book.setSubject(new br.com.ebookapp.subject.request.RequestHandler().createSubjectFromName(book.getSubject().getName()));
+		}
+		
 		this.sql = "INSERT INTO BOOK"
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {

@@ -17,7 +17,7 @@ public class AdvancedSearchManagedBean {
 	private String book;
 	private String publisher;
 	private String subject;
-	private List<BookBean> bookList;
+	private List<BookBean> bookResult;
 	private RequestHandler requestHandler;
 	private String response;
 	private String error;
@@ -58,12 +58,12 @@ public class AdvancedSearchManagedBean {
 		this.subject = subject;
 	}
 
-	public List<BookBean> getBookList() {
-		return bookList;
+	public List<BookBean> getBookResult() {
+		return bookResult;
 	}
 
-	public void setBookList(List<BookBean> bookList) {
-		this.bookList = bookList;
+	public void setBookResult(List<BookBean> bookResult) {
+		this.bookResult = bookResult;
 	}
 
 	public RequestHandler getRequestHandler() {
@@ -90,7 +90,7 @@ public class AdvancedSearchManagedBean {
 		this.error = error;
 	}
 	
-	public String searchBook() {
+	public void searchBook() {
 		List<String> map = new ArrayList<String>();
 		if (!HandlerHelper.isBlankOrNull(this.book)) {
 			map.add("book.name LIKE '%" + this.book + "%'");
@@ -111,11 +111,7 @@ public class AdvancedSearchManagedBean {
 		}
 		
 		if (map.size() > 0) {
-			this.bookList = this.requestHandler.getBookFilteredByAdvancedSearch(map);
-			
-			return "resultado.jsf";
+			this.bookResult = this.requestHandler.getBookFilteredByAdvancedSearch(map);
 		}
-		
-		return "";
 	}
 }

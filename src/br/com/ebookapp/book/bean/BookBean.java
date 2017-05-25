@@ -20,6 +20,7 @@ public class BookBean {
 	private SubjectBean subject;
 	private String image;
 	private Date releaseDate;
+	private int ammount;
 
 	public BookBean() {}
 
@@ -160,5 +161,13 @@ public class BookBean {
 
 	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+
+	public int getAmmount() {
+		return ammount == 0 ? 1 : ammount;
+	}
+
+	public void setAmmount(int ammount) {
+		this.ammount = ammount;
 	}
 }

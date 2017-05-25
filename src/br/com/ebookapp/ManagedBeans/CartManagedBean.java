@@ -25,7 +25,7 @@ public class CartManagedBean {
 		if (this.cartList != null && this.cartList.size() > 0) {
 			for (BookBean book : this.cartList) {
 				if (book != null) {
-					count += book.getPriceWithDiscount();
+					count += (book.getPriceWithDiscount() * book.getAmmount());
 				}
 			}
 		}
@@ -60,6 +60,12 @@ public class CartManagedBean {
 	public void addToCart(BookBean book) {
 		if (this.cartList != null && !this.cartList.contains(book)) {
 			this.cartList.add(book);
+		}
+	}
+	
+	public void removeFromCart(BookBean book) {
+		if (this.cartList != null && this.cartList.contains(book)) {
+			this.cartList.remove(book);
 		}
 	}
 }

@@ -28,15 +28,17 @@
 								<table class="table bodered">
 									<thead>
 										<td>#{ebook.livro}</td>
-										<td>#{ebook.preco_desconto}</td>
-										<td>#{ebook.preco_total}</td>
+										<td>#{ebook.preco}</td>
 										<td>#{ebook.unidades}</td>
+										<td>#{ebook.excluir}</td>
 									</thead>
 									<tbody>
 										<ui:repeat var="b" value="#{cartManagedBean.cartList}">
 											<tr>
 												<td>#{b.name}</td>
-												<td>#{b.priceWithDiscount}</td>
+												<td>R$#{b.priceWithDiscount}</td>
+												<td><h:form><h:inputText value="#{b.ammount}" style="width: 30px; background: white; border: 1px solid lightgray; height: 30px; text-align: center; margin-left: 5%; margin-top: 7%;"/></h:form></td>
+												<td><h:form><h:commandLink action="#{cartManagedBean.removeFromCart(b)}" class="fa fa-times-circle fa-2x" style="cursor: pointer; color: #e91e63; margin-left: 10%"/></h:form></td>
 											</tr>
 										</ui:repeat>
 									</tbody>

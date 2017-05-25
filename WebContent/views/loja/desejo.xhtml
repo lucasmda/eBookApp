@@ -36,7 +36,9 @@
 										<ui:repeat var="b" value="#{wishListManagedBean.wishList}">
 											<tr>
 												<td>#{b.name}</td>
-												<td>#{b.priceWithDiscount}</td>
+												<td>R$#{b.priceWithDiscount}</td>
+												<td><h:form><h:commandLink action="#{cartManagedBean.addToCart(b)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; color: #e91e63; margin-left: 13%"/></h:form></td>
+												<td><h:form><h:commandLink action="#{wishListManagedBean.removeFromWishList(b)}" class="fa fa-times-circle fa-2x" style="cursor: pointer; color: #e91e63; margin-left: 10%"/></h:form></td>
 											</tr>
 										</ui:repeat>
 									</tbody>

@@ -4,7 +4,9 @@ public class AuthorBean {
 	private int author_id;
 	private String name;
 	
-	public AuthorBean() {}
+	public AuthorBean() {
+		this.author_id = -1;
+	}
 	
 	public AuthorBean(int author_id, String name) {
 		super();

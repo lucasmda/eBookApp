@@ -21,21 +21,27 @@ public class RequestHandler {
 	
 	public boolean createBook(BookBean book) {
 		if (book.getAuthor().getName().length() > 0) {
-			book.setAuthor(new br.com.ebookapp.author.request.RequestHandler().getAuthor(book.getAuthor().getName()));
-		} else {
-			book.setAuthor(new br.com.ebookapp.author.request.RequestHandler().createAuthorFromName(book.getAuthor().getName()));
-		}
+			book.setAuthor(new br.com.ebookapp.author.request.RequestHandler().getAuthor(book.getAuthor()));
+			if (book.getAuthor() != null) {
+				boolean success = new br.com.ebookapp.author.request.RequestHandler().createAuthor(book.getAuthor().getName());
+				book.setAuthor(new br.com.ebookapp.author.request.RequestHandler().getAuthor(book.getAuthor()));
+			}
+		} 
 		
 		if (book.getPublisher().getName().length() > 0) {
-			book.setPublisher(new br.com.ebookapp.publisher.request.RequestHandler().getPublisher(book.getPublisher().getName()));
-		} else {
-			book.setPublisher(new br.com.ebookapp.publisher.request.RequestHandler().createPublisherFromName(book.getPublisher().getName()));
+			book.setPublisher(new br.com.ebookapp.publisher.request.RequestHandler().getPublisher(book.getPublisher()));
+			if (book.getPublisher() != null) {
+				boolean success = new br.com.ebookapp.publisher.request.RequestHandler().createPublisher(book.getPublisher());
+				book.setPublisher(new br.com.ebookapp.publisher.request.RequestHandler().getPublisher(book.getPublisher()));
+			}
 		}
 		
 		if (book.getSubject().getName().length() > 0) {
-			book.setSubject(new br.com.ebookapp.subject.request.RequestHandler().getSubject(book.getSubject().getName()));
-		} else {
-			book.setSubject(new br.com.ebookapp.subject.request.RequestHandler().createSubjectFromName(book.getSubject().getName()));
+			book.setSubject(new br.com.ebookapp.subject.request.RequestHandler().getSubject(book.getSubject()));
+			if (book.getSubject() != null) {
+				boolean success = new br.com.ebookapp.subject.request.RequestHandler().createSubject(book.getSubject());
+				book.setSubject(new br.com.ebookapp.subject.request.RequestHandler().getSubject(book.getSubject()));
+			}
 		}
 		
 		this.sql = "INSERT INTO BOOK"

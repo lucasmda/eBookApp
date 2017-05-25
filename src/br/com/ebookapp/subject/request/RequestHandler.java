@@ -29,23 +29,6 @@ public class RequestHandler {
 		return false;
 	}
 	
-	public SubjectBean createSubjectFromName(String name) {
-		this.sql = "INSERT INTO SUBJECT"
-				+ " VALUES (?, ?)";
-		try {
-			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
-			preparedStatement.setInt(1, getIdFromLastIndex());
-			preparedStatement.setString(2, subject.getName());
-			boolean success = preparedStatement.executeUpdate()==1;
-			if (success) {
-				return this.getSubject(name);
-			}
-		} catch (Exception e) {
-			System.out.println("CREATE SUBJECT " + e.getMessage());
-		}
-		return null;
-	}
-	
 	public List<SubjectBean> getSubject() {
 		this.sql = "SELECT 	subject.subject_id,"
 				+ " 		subject.name"
@@ -87,11 +70,11 @@ public class RequestHandler {
 		return null;
 	}
 	
-	public SubjectBean getSubject(String name) {
+	public SubjectBean getSubject(SubjectBean subject) {
 		this.sql = "SELECT	subject.subject_id,"
 				+ "			subject.name"
 				+ " FROM	SUBJECT subject"
-				+ " WHERE	subject.name = " + name;
+				+ " WHERE	subject.name = '" + subject.getName() + "'";
 		try {
 			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
 			resultSet = preparedStatement.executeQuery();
@@ -104,7 +87,7 @@ public class RequestHandler {
 		} catch (Exception e) {
 			System.out.println("GET SUBJECT BY ID " + e.getMessage());
 		}
-		return null;
+		return subject;
 	}
 	
 	public boolean updateSubject(SubjectBean subject, int id) {

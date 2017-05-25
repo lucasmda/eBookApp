@@ -4,7 +4,9 @@ public class SubjectBean {
 	private int subject_id;
 	private String name;
 	
-	public SubjectBean() {}
+	public SubjectBean() {
+		this.subject_id = -1;
+	}
 	
 	public SubjectBean(int subject_id, String name) {
 		super();

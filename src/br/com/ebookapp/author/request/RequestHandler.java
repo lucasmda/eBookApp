@@ -29,23 +29,6 @@ public class RequestHandler {
 		return false;
 	}
 	
-	public AuthorBean createAuthorFromName(String authorName) {
-		this.sql = "INSERT 	INTO AUTHOR "
-				+ " VALUES(?, ?)";
-		try {
-			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
-			preparedStatement.setInt(1, getIdFromLastIndex());
-			preparedStatement.setString(2, authorName);
-			boolean sucess = preparedStatement.executeUpdate()==1;
-			if (sucess) {
-				return this.getAuthor(authorName);
-			}
-		} catch (Exception e) {
-			System.out.println("CREATE AUTHOR " + e.getMessage());
-		}
-		return null;
-	}
-	
 	public List<AuthorBean> getAuthor() {
 		this.sql = "SELECT 	author.author_id,"
 				+ "			author.name"
@@ -87,11 +70,11 @@ public class RequestHandler {
 		return null;
 	}
 	
-	public AuthorBean getAuthor(String name) {
+	public AuthorBean getAuthor(AuthorBean author) {
 		this.sql = "SELECT 	author.author_id,"
 				+ "			author.name"
 				+ " FROM 	AUTHOR author"
-				+ "	WHERE 	author.name = " + name;
+				+ "	WHERE 	author.name = '" + author.getName() + "'";
 		try {
 			PreparedStatement preparedStatement = RequestConnection.getConnection().prepareStatement(this.sql);
 			this.resultSet = preparedStatement.executeQuery();
@@ -104,7 +87,7 @@ public class RequestHandler {
 		} catch (Exception e) {
 			System.out.println("GET AUTHOR BY NAME " + e.getMessage());
 		}
-		return null;
+		return author;
 	}
 	
 	public boolean updateAuthor(AuthorBean author, int id) {

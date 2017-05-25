@@ -27,6 +27,9 @@ public class LivroBean {
 		this.requestHandler = new RequestHandler();
 		
 		this.book = new BookBean();
+		this.book.setAuthor(new AuthorBean());
+		this.book.setPublisher(new PublisherBean());
+		this.book.setSubject(new SubjectBean());
 		this.bookList = this.requestHandler.getBook();
 		
 		this.authors = new br.com.ebookapp.author.request.RequestHandler().getAuthor();

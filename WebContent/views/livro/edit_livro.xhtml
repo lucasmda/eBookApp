@@ -50,6 +50,30 @@
 			          			<label for="bookStock">#{ebook.estoque_do_livro}</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
+			        			<i class="fa fa-user prefix"></i>
+								<h:inputText value="#{livroBean.book.author.name}" id="bookAuthor" required="true" requiredMessage="#{ebook.validacao_autor}">
+									<f:validateLength minimum="1"/>
+								</h:inputText>
+								<h:message for="bookAuthor" styleClass="error"/>
+			          			<label for="bookAuthor">#{ebook.autor}</label>
+			        		</div>
+			        		<div class="input-field col s12 m12 l6">
+			        			<i class="fa fa-newspaper-o prefix"></i>
+								<h:inputText value="#{livroBean.book.subject.name}" id="bookGender" required="true" requiredMessage="#{ebook.validacao_genero}">
+									<f:validateLength minimum="1"/>
+								</h:inputText>
+								<h:message for="bookGender" styleClass="error"/>
+			          			<label for="bookGender">#{ebook.genero}</label>
+			        		</div>
+			        		<div class="input-field col s12 m12 l6">
+			        			<i class="fa fa-building-o prefix"></i>
+								<h:inputText value="#{livroBean.book.publisher.name}" id="bookPublisher" required="true" requiredMessage="#{ebook.validacao_editora}">
+									<f:validateLength minimum="1"/>
+								</h:inputText>
+								<h:message for="bookPublisher" styleClass="error"/>
+			          			<label for="bookPublisher">#{ebook.editora}</label>
+			        		</div>
+			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-pencil-square prefix"></i>
 								<h:inputText value="#{livroBean.book.edition}" id="bookEdition"/>
 			          			<label for="bookEdition">#{ebook.edicao_do_livro}</label>

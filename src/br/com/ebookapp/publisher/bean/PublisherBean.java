@@ -5,7 +5,9 @@ public class PublisherBean {
 	private String name;
 	private String description;
 	
-	public PublisherBean() {}
+	public PublisherBean() {
+		this.publisher_id = -1;
+	}
 
 	public PublisherBean(int publisher_id, String name, String description) {
 		super();

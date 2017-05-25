@@ -29,24 +29,6 @@ public class RequestHandler {
 		return false;
 	}
 	
-	public PublisherBean createPublisherFromName(String name) {
-		this.sql = "INSERT INTO PUBLISHER"
-				+ " VALUES (?, ?, ?)";
-		try {
-			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
-			pstmt.setInt(1, getIdFromLastIndex());
-			pstmt.setString(2, publisher.getName());
-			pstmt.setString(3, publisher.getDescription());
-			boolean success =  pstmt.executeUpdate()==1;
-			if (success) {
-				return this.getPublisher(name);
-			}
-		} catch (Exception e) {
-			System.out.println("CREATE PUBLISHER " + e.getMessage());
-		}
-		return null;
-	}
-	
 	public List<PublisherBean> getPublisher() {
 		this.sql = "SELECT 	publisher.publisher_id,"
 				+ "			publisher.name,"
@@ -92,12 +74,12 @@ public class RequestHandler {
 		return null;
 	}
 	
-	public PublisherBean getPublisher(String name) {
+	public PublisherBean getPublisher(PublisherBean publisher) {
 		this.sql = "SELECT 	publisher.publisher_id,"
 				+ "			publisher.name,"
 				+ "			publisher.description"
 				+ " FROM 	Publisher publisher"
-				+ " WHERE	name = " + name;
+				+ " WHERE	publisher.name = '" + publisher.getName() + "'";
 		try {
 			PreparedStatement pstmt = RequestConnection.getConnection().prepareStatement(this.sql);
 			this.resultSet = pstmt.executeQuery();
@@ -106,12 +88,12 @@ public class RequestHandler {
 				this.publisher.setPublisher_id(this.resultSet.getInt(1));
 				this.publisher.setName(this.resultSet.getString(2));
 				this.publisher.setDescription(this.resultSet.getString(3));
+				return this.publisher;
 			}
-			return this.publisher;
 		} catch (Exception e) {
 			System.out.println("GET PUBLISHER BY ID " + e.getMessage());
 		}
-		return null;
+		return publisher;
 	}
 	
 	public boolean updatePublisher(PublisherBean publisher, int id) {

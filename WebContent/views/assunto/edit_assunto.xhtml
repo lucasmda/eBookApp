@@ -18,7 +18,7 @@
 							<h4 class="pink-text center thin">#{ebook.editar_genero}</h4>
 							<div class="input-field col s12">
 								<i class="fa fa-file-text prefix"></i> 
-								<h:inputText value="#{assuntoBean.subject.name}" id="subjectName" required="true" requiredMessage="Name field must be required">
+								<h:inputText value="#{assuntoBean.subject.name}" id="subjectName" required="true" requiredMessage="#{ebook.nome_especificado}">
 									<f:validateLength minimum="1" maximum="255"/>
 								</h:inputText>
 								<h:message for="subjectName" styleClass="error"/>

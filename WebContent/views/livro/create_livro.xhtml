@@ -17,7 +17,7 @@
 							<h4 class="pink-text center thin">#{ebook.cadastrar_livro_title}</h4>
 							<div class="input-field col s12 m12 l12">
 								<i class="fa fa-book prefix"></i>
-								<h:inputText value="#{livroBean.book.name}" id="bookName" required="true" requiredMessage="Book title must be required">
+								<h:inputText value="#{livroBean.book.name}" id="bookName" required="true" requiredMessage="#{ebook.titulo_livro_especificado}">
 									<f:validateLength minimum="1" maximum="255"/>
 								</h:inputText>
 								<h:message for="bookName" styleClass="error"/>
@@ -25,7 +25,7 @@
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-money prefix"></i>
-								<h:inputText value="#{livroBean.book.price}" id="bookPrice" required="true" requiredMessage="Price must be required">
+								<h:inputText value="#{livroBean.book.price}" id="bookPrice" required="true" requiredMessage="#{ebook.preco_especificado}">
 									<f:validateLength minimum="1" maximum="255"/>
 									<f:convertNumber maxFractionDigits="2"/>
 								</h:inputText>
@@ -41,39 +41,12 @@
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-archive prefix"></i>
-								<h:inputText value="#{livroBean.book.stock}" id="bookStock" required="true" requiredMessage="Stock must be required">
+								<h:inputText value="#{livroBean.book.stock}" id="bookStock" required="true" requiredMessage="#{ebook.estoque_especificado}">
 									<f:validateLength minimum="1"/>
 									<f:convertNumber maxFractionDigits="0"/>
 								</h:inputText>
 								<h:message for="bookStock" styleClass="error"/>
 			          			<label for="bookStock">#{ebook.estoque_do_livro}</label>
-			        		</div>
-			        		<div class="input-field col s12 m12 l6">
-			        			<i class="fa fa-user prefix"></i>
-								<h:inputText  id="bookAuthor" required="true" requiredMessage="Author must be required">
-									<f:validateLength minimum="1"/>
-									<f:convertNumber maxFractionDigits="0"/>
-								</h:inputText>
-								<h:message for="bookAuthor" styleClass="error"/>
-			          			<label for="bookAuthor">#{ebook.autor}</label>
-			        		</div>
-			        		<div class="input-field col s12 m12 l6">
-			        			<i class="fa fa-newspaper-o prefix"></i>
-								<h:inputText  id="bookGender" required="true" requiredMessage="Gender must be required">
-									<f:validateLength minimum="1"/>
-									<f:convertNumber maxFractionDigits="0"/>
-								</h:inputText>
-								<h:message for="bookGender" styleClass="error"/>
-			          			<label for="bookGender">#{ebook.genero}</label>
-			        		</div>
-			        		<div class="input-field col s12 m12 l6">
-			        			<i class="fa fa-building-o prefix"></i>
-								<h:inputText  id="bookPublisher" required="true" requiredMessage="Publisher must be required">
-									<f:validateLength minimum="1"/>
-									<f:convertNumber maxFractionDigits="0"/>
-								</h:inputText>
-								<h:message for="bookPublisher" styleClass="error"/>
-			          			<label for="bookPublisher">#{ebook.editora}</label>
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-pencil-square prefix"></i>

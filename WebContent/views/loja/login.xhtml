@@ -21,7 +21,7 @@
 					<h4 class="pink-text center thin">#{ebook.entrar}</h4>
 					<div class="input-field col s12">
 						<i class="fa fa-envelope-o prefix"></i>
-						<h:inputText id="email" value="#{loginSessionManagedBean.email}" required="true" requiredMessage="E-mail field must be specified" validator="#{loginSessionManagedBean.validateEmailField}">
+						<h:inputText id="email" value="#{loginSessionManagedBean.email}" required="true" requiredMessage="#{ebook.email_especificado}" validator="#{loginSessionManagedBean.validateEmailField}">
 							<f:validateLength minimum="1" maximum="255" />
 						</h:inputText>
 						<h:message for="email" styleClass="error"/>
@@ -29,7 +29,7 @@
 	        		</div>
 	        		<div class="input-field col s12">
 						<i class="fa fa-unlock prefix"></i>
-						<h:inputSecret id="password" value="#{loginSessionManagedBean.password}" required="true" requiredMessage="Password field must be specified">
+						<h:inputSecret id="password" value="#{loginSessionManagedBean.password}" required="true" requiredMessage="#{ebook.senha_especificada}">
 							<f:validateLength minimum="1" maximum="255"/>
 						</h:inputSecret>
 						<h:message for="password" styleClass="error"/>

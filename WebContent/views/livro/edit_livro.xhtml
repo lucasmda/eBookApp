@@ -18,7 +18,7 @@
 							<h4 class="pink-text center thin">#{ebook.editar_livro}</h4>
 							<div class="input-field col s12">
 								<i class="fa fa-book prefix"></i>
-								<h:inputText value="#{livroBean.book.name}" id="bookName" required="true" requiredMessage="Book title must be required">
+								<h:inputText value="#{livroBean.book.name}" id="bookName" required="true" requiredMessage="#{ebook.titulo_livro_especificado}">
 									<f:validateLength minimum="1" maximum="255"/>
 								</h:inputText>
 								<h:message for="bookName" styleClass="error"/>
@@ -26,7 +26,7 @@
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-money prefix"></i>
-								<h:inputText value="#{livroBean.book.price}" id="bookPrice" required="true" requiredMessage="Price must be required">
+								<h:inputText value="#{livroBean.book.price}" id="bookPrice" required="true" requiredMessage="#{ebook.preco_especificado}">
 									<f:validateLength minimum="1" maximum="255"/>
 									<f:convertNumber maxFractionDigits="2"/>
 								</h:inputText>
@@ -42,7 +42,7 @@
 			        		</div>
 			        		<div class="input-field col s12 m12 l6">
 			        			<i class="fa fa-archive prefix"></i>
-								<h:inputText value="#{livroBean.book.stock}" id="bookStock" required="true" requiredMessage="Stock must be required">
+								<h:inputText value="#{livroBean.book.stock}" id="bookStock" required="true" requiredMessage="#{ebook.estoque_especificado}">
 									<f:validateLength minimum="1"/>
 									<f:convertNumber maxFractionDigits="0"/>
 								</h:inputText>

@@ -13,7 +13,8 @@ import br.com.ebookapp.book.bean.BookBean;
 @SessionScoped
 public class CartManagedBean {
 	private List<BookBean> cartList;
-	private String selectedValue;
+	private String payment;
+	private String creditCard;
 	private String response;
 	private String error;
 	
@@ -29,6 +30,10 @@ public class CartManagedBean {
 					count += (book.getPriceWithDiscount() * book.getAmmount());
 				}
 			}
+			
+			if (this.payment != null && this.payment.length() > 0) {
+				count += Double.parseDouble(this.payment);
+			}
 		}
 		
 		return count;
@@ -42,12 +47,12 @@ public class CartManagedBean {
 		this.cartList = cartList;
 	}
 
-	public String getSelectedValue() {
-		return selectedValue;
+	public String getPayment() {
+		return payment;
 	}
 
-	public void setSelectedValue(String selectedValue) {
-		this.selectedValue = selectedValue;
+	public void setPayment(String payment) {
+		this.payment = payment;
 	}
 
 	public String getResponse() {
@@ -66,6 +71,14 @@ public class CartManagedBean {
 		this.error = error;
 	}
 	
+	public String getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
+	}
+
 	public void addToCart(BookBean book) {
 		if (this.cartList != null && !this.cartList.contains(book)) {
 			this.cartList.add(book);
@@ -78,7 +91,11 @@ public class CartManagedBean {
 		}
 	}
 	
-	public void finishCart() {
-		
+	public String finishCart() {
+		if (this.cartList.size() > 0) {
+			this.cartList.clear();
+			return "checkout";
+		}
+		return "carrinho";
 	}
 }

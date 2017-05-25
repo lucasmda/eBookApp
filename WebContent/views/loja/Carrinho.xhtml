@@ -46,38 +46,41 @@
 								<br/>
 								<br/>
 								<hr/>
-								<div class="row">
-									<div class="col s12 m6 l6">
-										<b>#{ebook.loja_tipo_entrega}</b>
-										<br/>
-										<br/>
-										<p>
-											<h:selectOneRadio value="#{cartManagedBean.selectedValue}">
-											   	<f:selectItem itemValue="5.90" itemLabel="#{ebook.loja_pac}" />
-											   	<f:selectItem itemValue="7.60" itemLabel="#{ebook.loja_sedex}" />
-											   	<f:selectItem itemValue="10.90" itemLabel="#{ebook.loja_sedex_dez}" />
-											</h:selectOneRadio>
-									    </p>
-									</div>
-									<div class="col s12 m6 l6">
-										<b>#{ebook.loja_insira_cartao}</b>
-										<br/>
-										<div class="input-field col s12 m12 l8">
-											<i class="fa fa-credit-card-alt prefix"></i>
-											<h:inputText id="creditCard" required="true" type="number" />
-				          					<label for="creditCard">#{ebook.loja_cartao_credito}</label>
-				        				</div>
-									</div>
-								</div>
-								<hr/>
-								<div class="row right">
-									<b>#{ebook.loja_valor_total} #{cartManagedBean.totalPrice}</b>
+								<h:form>
 									<div class="row">
-										<h:form>
-											<h:commandButton action="#{cartManagedBean.finishCart}" class="waves-effect waves-light btn pink" value="#{ebook.finalizar}"/>
-										</h:form>
+										<div class="col s12 m6 l6">
+											<b>#{ebook.loja_tipo_entrega}</b>
+											<br/>
+											<br/>
+											<p>
+												<h:selectOneRadio id="frete" value="#{cartManagedBean.payment}">
+												   	<f:selectItem itemValue="5.90" itemLabel="#{ebook.loja_pac}" />
+												   	<f:selectItem itemValue="7.60" itemLabel="#{ebook.loja_sedex}" />
+												   	<f:selectItem itemValue="10.90" itemLabel="#{ebook.loja_sedex_dez}" />
+												</h:selectOneRadio>
+										    </p>
+										</div>
+										<div class="col s12 m6 l6">
+											<b>#{ebook.loja_insira_cartao}</b>
+											<br/>
+											<div class="input-field col s12 m12 l8">
+												<i class="fa fa-credit-card-alt prefix"></i>
+												<h:inputText value="#{cartManagedBean.creditCard}" id="creditCard" required="true" requiredMessage="Credit card must be specified" type="number">
+													<f:validateLength minimum="1" maximum="20"/>
+												</h:inputText>
+												<h:message for="creditCard" styleClass="error"/>
+					          					<label for="creditCard">#{ebook.loja_cartao_credito}</label>
+					        				</div>
+										</div>
 									</div>
-								</div>
+									<hr/>
+									<div class="row right">
+										<b>#{ebook.loja_valor_total} #{cartManagedBean.totalPrice}</b>
+										<div class="row">
+												<h:commandButton action="#{cartManagedBean.finishCart}" class="waves-effect waves-light btn pink" value="#{ebook.finalizar}"/>
+										</div>
+									</div>
+								</h:form>
 							</div>
 						</div>
 					</div>

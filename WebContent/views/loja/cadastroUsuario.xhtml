@@ -24,7 +24,7 @@
 								<h4 class="pink-text center thin">#{ebook.cadastrar_novo_usuario}</h4>
 								<div class="input-field col s12">
 									<i class="fa fa-user prefix"></i>
-									<h:inputText value="#{loginSessionManagedBean.user.name}" id="userName" required="true" requiredMessage="Name field must be required" validator="#{loginSessionManagedBean.validateEmailField}">
+									<h:inputText value="#{loginSessionManagedBean.user.name}" id="userName" required="true" requiredMessage="#{ebook.nome_especificado}" validator="#{loginSessionManagedBean.validateEmailField}">
 										<f:validateLength minimum="1" maximum="255"/>
 									</h:inputText>
 									<h:message for="userName" styleClass="error"/>
@@ -32,7 +32,7 @@
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-address-card-o prefix"></i>
-									<h:inputText value="#{loginSessionManagedBean.user.email}" id="userEmail" type="email" required="true" requiredMessage="E-mail field must be required">
+									<h:inputText value="#{loginSessionManagedBean.user.email}" id="userEmail" type="email" required="true" requiredMessage="ebook.email_especificado">
 										<f:validateLength minimum="1" maximum="255"/>
 									</h:inputText>
 									<h:message for="userEmail" styleClass="error"/>
@@ -40,7 +40,7 @@
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-lock prefix"></i>
-				          			<h:inputSecret value="#{loginSessionManagedBean.user.password}" id="userPassword" type="password" required="true" requiredMessage="Password field must be required">
+				          			<h:inputSecret value="#{loginSessionManagedBean.user.password}" id="userPassword" type="password" required="true" requiredMessage="#{ebook.senha_especificada}">
 				          				<f:validateLength minimum="1" maximum="255"/>
 				          			</h:inputSecret>
 				          			<h:message for="userPassword" styleClass="error"/>

@@ -19,7 +19,7 @@
 								<h4 class="pink-text center thin">#{ebook.editar_editora}</h4>
 								<div class="input-field col s12 m12 l12">
 									<i class="fa fa-user prefix"/>
-									<h:inputText value="#{editoraBean.publisher.name}" id="publisherName" required="true" requiredMessage="Name field must be required">
+									<h:inputText value="#{editoraBean.publisher.name}" id="publisherName" required="true" requiredMessage="#{ebook.nome_especificado}">
 										<f:validateLength minimum="1" maximum="255"/>
 									</h:inputText>
 									<h:message for="publisherName" styleClass="error"/>
@@ -27,7 +27,7 @@
 				        		</div>
 				        		<div class="input-field col s12 m12 l12">
 				        			<i class="fa fa-address-card-o prefix"/>
-									<h:inputTextarea value="#{editoraBean.publisher.description}" class="materialize-textarea" id="publisherDescription" required="true" requiredMessage="Description field must be required">
+									<h:inputTextarea value="#{editoraBean.publisher.description}" class="materialize-textarea" id="publisherDescription" required="true" requiredMessage="#{ebook.descricao_especificada}">
 										<f:validateLength minimum="1" maximum="1024"/>
 									</h:inputTextarea>
 									<h:message for="publisherDescription"/>

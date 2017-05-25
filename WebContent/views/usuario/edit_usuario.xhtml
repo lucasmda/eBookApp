@@ -27,7 +27,7 @@
 				        		</div>
 				        		<div class="input-field col s12 m12 l6">
 				        			<i class="fa fa-address-card-o prefix"></i>
-									<h:inputText value="#{usuarioBean.user.email}" id="userEmail" type="email" required="true" requiredMessage="E-mail field must be required" validator=#{usuarioBean.validateEmailField}>
+									<h:inputText value="#{usuarioBean.user.email}" id="userEmail" type="email" required="true" requiredMessage="E-mail field must be required" validator="#{usuarioBean.validateEmailField}">
 										<f:validateLength minimum="1" maximum="255"/>
 									</h:inputText>
 									<h:message for="userEmail" styleClass="error"/>
@@ -78,7 +78,7 @@
 				        		</div>
 				        		<div class="row">
 					        		<div class="col s12 m12 l12">
-					        			<h:commandButton class="waves-effect waves-light btn right pink" value="Editar" type="submit" action="#{usuarioBean.updateUser}" />
+					        			<h:commandButton class="waves-effect waves-light btn right pink" value="#{ebook.editar}" type="submit" action="#{usuarioBean.updateUser}" />
 					        		</div>
 					        	</div>
 				        	</h:form>

@@ -77,7 +77,7 @@ public class LoginSessionManagedBean {
 	}
 	
 	public String loginUser() {
-		if (!HandlerHelper.validateValidEmail(this.email) && !HandlerHelper.isBlankOrNull(this.password)) {
+		if (HandlerHelper.validateValidEmail(this.email) && !HandlerHelper.isBlankOrNull(this.password)) {
 			this.user = requestHandler.signin(this.email, this.password);
 			if (this.user != null) {
 				this.email = null;
@@ -102,7 +102,7 @@ public class LoginSessionManagedBean {
 	}
 	
 	public void validateEmailField(FacesContext context, UIComponent componentToValidate, Object value) throws ValidatorException {
-		if (!HandlerHelper.validateValidEmail(this.email)) {
+		if (!HandlerHelper.validateValidEmail((String) value)) {
 			throw new ValidatorException(new FacesMessage("Please input a valid e-mail"));
 		}
 	}

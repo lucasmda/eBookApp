@@ -86,7 +86,7 @@
 							</ui:repeat>
 						</div>
 						<div class="row">
-							<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">Todos os livros</h5>
+							<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">#{ebook.loja_todos_livros}</h5>
 							<ui:repeat var="book" value="#{homeManagedBean.bookList}">
 								<div class="col s12 m12 l4">
 									<div class="card horizontal" style="max-height:200px;">
@@ -119,7 +119,7 @@
 					</h:panelGroup>
 					<h:panelGroup rendered="#{!homeManagedBean.hidePanelListGroup}">
 						<div class="row">
-							<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">#{ebook.loja_todos_livros}</h5>
+							<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">#{ebook.busca_avancada}</h5>
 							<ui:repeat var="book" value="#{homeManagedBean.searchResultList}">
 								<div class="col s12 m12 l4">
 									<div class="card horizontal" style="max-height:200px;">

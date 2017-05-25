@@ -46,31 +46,31 @@
 								<hr/>
 								<div class="row">
 									<div class="col s12 m6 l6">
-										<b>Escolha o tipo de entraga:</b>
+										<b>#{ebook.loja_tipo_entrega}</b>
 										<br/>
 										<br/>
 										<p>
 									      <input name="frete" type="radio" id="pac" />
-									      <label for="pac">PAC - R$ 5,90</label>
+									      <label for="pac">#{ebook.loja_pac}</label>
 									      <input name="frete" type="radio" id="sedex" />
-									      <label for="sedex">SEDEX - R$ 7,65</label>
+									      <label for="sedex">#{ebook.loja_sedex}</label>
 									      <input name="frete" type="radio" id="sedex10"/>
-									      <label for="sedex10">SEDEX 10 - R$ 10,99</label>
+									      <label for="sedex10">#{ebook.loja_sedex_dez}</label>
 									    </p>
 									</div>
 									<div class="col s12 m6 l6">
-										<b>Insira o numero do cartao de credito:</b>
+										<b>#{ebook.loja_insira_cartao}</b>
 										<br/>
 										<div class="input-field col s12 m12 l8">
 											<i class="fa fa-credit-card-alt prefix"></i>
 											<h:inputText id="creditCard" required="true" type="number" />
-				          					<label for="creditCard">Cartao de Credito</label>
+				          					<label for="creditCard">#{ebook.loja_cartao_credito}</label>
 				        				</div>
 									</div>
 								</div>
 								<hr/>
 								<div class="row right">
-									<b>Valor total: #{cartManagedBean.totalPrice}</b>
+									<b>#{ebook.loja_valor_total} #{cartManagedBean.totalPrice}</b>
 									<div class="row">
 										<a class="waves-effect waves-light btn pink">#{ebook.finalizar}</a>
 									</div>

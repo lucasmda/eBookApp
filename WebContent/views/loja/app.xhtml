@@ -23,25 +23,25 @@
 								<h:inputText id="search" type="search" required="true" value="#{resultManagedBean.inputSearch}" style="width: 90%;">
 									<f:ajax event="change" listener="#{resultManagedBean.searchBookByField}"></f:ajax>
 								</h:inputText>
-								<label class="label-icon tooltipped" for="search" data-position="left" data-delay="50" data-tooltip="Search"><i class="fa fa-search"></i></label>
+								<label class="label-icon tooltipped" for="search" data-position="left" data-delay="50" data-tooltip="#{ebook.loja_search}"><i class="fa fa-search"></i></label>
 							</div>
 						</h:form>
 		      		</li>
 					<li>
 						<a href="desejo.jsf" class="tooltipped"
-							data-position="left" data-delay="50" data-tooltip="Desejo"><i
+							data-position="left" data-delay="50" data-tooltip="#{ebook.loja_desejo}"><i
 								class="fa fa-heart fa-2x"></i>
 						</a>
 					</li>
 					<li>
 						<a href="Carrinho.jsf" class="tooltipped"
-							data-position="bottom" data-delay="50" data-tooltip="Carrinho"><i
+							data-position="bottom" data-delay="50" data-tooltip="#{ebook.loja_carrinho}"><i
 								class="fa fa-shopping-cart fa-2x"></i></a>
 					</li>
 					<li>
 						<a href="login.jsf" class="tooltipped"
 							data-position="bottom" data-delay="50"
-							data-tooltip="Login"><i class="fa fa-sign-in fa-2x"></i></a>
+							data-tooltip="#{ebook.entrar}"><i class="fa fa-sign-in fa-2x"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -54,7 +54,7 @@
 			<div class="content">
 				<div class="card">
 					<div class="row">
-						<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">Livros em destaques</h5>
+						<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">#{ebook.loja_livros_destaque}</h5>
 						<ui:repeat var="book" value="#{homeManagedBean.bookWithDiscountList}">
 							<div class="col s12 m12 l4">
 								<div class="card horizontal" style="max-height:200px;">
@@ -113,7 +113,7 @@
 						</ui:repeat>
 					</div>
 					<div class="row">
-						<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">Todos os livros</h5>
+						<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">#{ebook.loja_todos_livros}</h5>
 						<ui:repeat var="book" value="#{homeManagedBean.bookList}">
 							<div class="col s12 m12 l4">
 								<div class="card horizontal" style="max-height:200px;">
@@ -149,12 +149,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s12 m12 l12 center">
-					<h6 class="white-text">Deseja pesquisar algo? <a class="white-text" style="text-decoration: underline;" href="busca.jsf">Aperte aqui!</a></h6>
+					<h6 class="white-text">#{ebook.loja_busca_avancada} <a class="white-text" style="text-decoration: underline;" href="busca.jsf">#{ebook.loja_aperte_aqui}</a></h6>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col s12 m4 l4 center">
-					<h6 class="white-text">Formas de Pagamento</h6>
+					<h6 class="white-text">#{ebook.loja_formas_pagamento}</h6>
 					<ul>
 						<li><a class="white-text fa fa-cc-visa fa-3x" href="https://www.visa.com.br"></a>
 						<a class="white-text fa fa-cc-amex fa-3x" href="https://www.americanexpress.com/br/"></a>
@@ -163,7 +163,7 @@
 					</ul>
 				</div>
 				<div class="col s12 m4 l4 center">
-					<h6 class="white-text">Redes Sociais</h6>
+					<h6 class="white-text">#{ebook.lojas_redes_sociais}</h6>
 					<ul>
 						<li><a class="white-text fa fa-facebook-square fa-3x" href="https://www.facebook.com.br"></a>
 						<a class="white-text fa fa-instagram fa-3x" href="https://www.instagram.com/br/"></a>
@@ -172,7 +172,7 @@
 					</ul>
 				</div>
 				<div class="col s12 m4 l4 center">
-					<h6 class="white-text">Idiomas</h6>
+					<h6 class="white-text">#{ebook.loja_idiomas}</h6>
 					<ul>
 						<li>
 							<a><i class="flag-icon flag-icon-br"></i></a>

@@ -19,7 +19,7 @@
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li>
 						<h:form>
-							<label class="label-icon tooltipped" data-position="left" data-delay="50" data-tooltip="Search" style="color: white; margin-right: 10px;"><i class="fa fa-search fa-2x"></i></label>
+							<label class="label-icon tooltipped" data-position="left" data-delay="50" data-tooltip="#{ebook.loja_search}" style="color: white; margin-right: 10px;"><i class="fa fa-search fa-2x"></i></label>
 							<div class="input-field col s12 m12 l12" style="display: inline-flex;">
 								<h:inputText id="search" type="search" value="#{homeManagedBean.inputSearch}" style="margin-top: 8%; background-color: white; color: #e91e63; padding: 0; border: 1px solid white; border-radius: 2px; height: 30px;">
 									<f:ajax execute="search"  event="change" listener="#{homeManagedBean.searchBookByField}" />
@@ -29,19 +29,19 @@
 		      		</li>
 					<li>
 						<a href="desejo.jsf" class="tooltipped"
-							data-position="left" data-delay="50" data-tooltip="Desejo"><i
+							data-position="left" data-delay="50" data-tooltip="#{ebook.loja_desejo}"><i
 								class="fa fa-heart fa-2x"></i>
 						</a>
 					</li>
 					<li>
 						<a href="Carrinho.jsf" class="tooltipped"
-							data-position="bottom" data-delay="50" data-tooltip="Carrinho"><i
+							data-position="bottom" data-delay="50" data-tooltip="#{ebook.loja_carrinho}"><i
 								class="fa fa-shopping-cart fa-2x"></i></a>
 					</li>
 					<li>
 						<a href="login.jsf" class="tooltipped"
 							data-position="bottom" data-delay="50"
-							data-tooltip="Login"><i class="fa fa-sign-in fa-2x"></i></a>
+							data-tooltip="#{ebook.entrar}"><i class="fa fa-sign-in fa-2x"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -55,11 +55,11 @@
 				<div class="card">
 					<h:panelGroup rendered="#{homeManagedBean.hidePanelListGroup}">
 						<div class="row">
-							<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">Livros em destaques</h5>
+							<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">#{ebook.loja_livros_destaque}</h5>
 							<ui:repeat var="book" value="#{homeManagedBean.bookWithDiscountList}">
 								<div class="col s12 m12 l4">
 									<div class="card horizontal" style="max-height:200px;">
-										<div class="card-image" style="height: 200px;; width: 30%;">
+										<div class="card-image" style="height: 200px; width: 30%;">
 											<h:form>
 												<h:commandLink action="#{bookDetailManagedBean.setBook(book)}">
 													<img src="#{book.image}" style="max-height: 200px;" width="100%" height="100%"></img>
@@ -70,17 +70,17 @@
 											<div class="card-content" style="padding-bottom: 0px;">
 												<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
 											</div>
-											<div class="container">
-												<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
-												<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
+												<div class="container">
+													<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
+													<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
+												</div>
+												<div class="card-action">
+													<h:form>
+														<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+														<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+													</h:form>
+												</div>
 											</div>
-											<div class="card-action">
-												<h:form>
-													<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-													<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-												</h:form>
-											</div>
-										</div>
 									</div>
 								</div>
 							</ui:repeat>
@@ -90,24 +90,28 @@
 							<ui:repeat var="book" value="#{homeManagedBean.bookList}">
 								<div class="col s12 m12 l4">
 									<div class="card horizontal" style="max-height:200px;">
-										<div class="card-image" style="height: 200px;; width: 30%;">
-											<img src="#{book.image}" width="100%" height="100%"></img>
+										<div class="card-image" style="height: 200px; width: 30%;">
+											<h:form>
+												<h:commandLink action="#{bookDetailManagedBean.setBook(book)}">
+													<img src="#{book.image}" style="max-height: 200px;" width="100%" height="100%"></img>
+												</h:commandLink>
+											</h:form>
 										</div>
 										<div class="card-stacked" style="width: 70%;">
 											<div class="card-content" style="padding-bottom: 0px;">
 												<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
 											</div>
-											<div class="container">
-												<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
-												<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
+												<div class="container">
+													<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
+													<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
+												</div>
+												<div class="card-action">
+													<h:form>
+														<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+														<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+													</h:form>
+												</div>
 											</div>
-											<div class="card-action">
-												<h:form>
-													<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-													<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-												</h:form>
-											</div>
-										</div>
 									</div>
 								</div>
 							</ui:repeat>
@@ -115,28 +119,32 @@
 					</h:panelGroup>
 					<h:panelGroup rendered="#{!homeManagedBean.hidePanelListGroup}">
 						<div class="row">
-							<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">Resultado da pesquisa</h5>
+							<h5 style="text-align: center; background: #e91e63 !important; color: white; padding: 10px;">#{ebook.loja_todos_livros}</h5>
 							<ui:repeat var="book" value="#{homeManagedBean.searchResultList}">
 								<div class="col s12 m12 l4">
 									<div class="card horizontal" style="max-height:200px;">
-										<div class="card-image" style="height: 200px;; width: 30%;">
-											<img src="#{book.image}" width="100%" height="100%"></img>
+										<div class="card-image" style="height: 200px; width: 30%;">
+											<h:form>
+												<h:commandLink action="#{bookDetailManagedBean.setBook(book)}">
+													<img src="#{book.image}" style="max-height: 200px;" width="100%" height="100%"></img>
+												</h:commandLink>
+											</h:form>
 										</div>
 										<div class="card-stacked" style="width: 70%;">
 											<div class="card-content" style="padding-bottom: 0px;">
 												<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
 											</div>
-											<div class="container">
-												<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
-												<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
+												<div class="container">
+													<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
+													<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
+												</div>
+												<div class="card-action">
+													<h:form>
+														<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+														<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+													</h:form>
+												</div>
 											</div>
-											<div class="card-action">
-												<h:form>
-													<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-													<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
-												</h:form>
-											</div>
-										</div>
 									</div>
 								</div>
 							</ui:repeat>
@@ -152,12 +160,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s12 m12 l12 center">
-					<h6 class="white-text">Deseja pesquisar algo? <a class="white-text" style="text-decoration: underline;" href="busca.jsf">Aperte aqui!</a></h6>
+					<h6 class="white-text">#{ebook.loja_busca_avancada} <a class="white-text" style="text-decoration: underline;" href="busca.jsf">#{ebook.loja_aperte_aqui}</a></h6>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col s12 m4 l4 center">
-					<h6 class="white-text">Formas de Pagamento</h6>
+					<h6 class="white-text">#{ebook.loja_formas_pagamento}</h6>
 					<ul>
 						<li><a class="white-text fa fa-cc-visa fa-3x" href="https://www.visa.com.br"></a>
 						<a class="white-text fa fa-cc-amex fa-3x" href="https://www.americanexpress.com/br/"></a>
@@ -166,7 +174,7 @@
 					</ul>
 				</div>
 				<div class="col s12 m4 l4 center">
-					<h6 class="white-text">Redes Sociais</h6>
+					<h6 class="white-text">#{ebook.lojas_redes_sociais}</h6>
 					<ul>
 						<li><a class="white-text fa fa-facebook-square fa-3x" href="https://www.facebook.com.br"></a>
 						<a class="white-text fa fa-instagram fa-3x" href="https://www.instagram.com/br/"></a>
@@ -175,7 +183,7 @@
 					</ul>
 				</div>
 				<div class="col s12 m4 l4 center">
-					<h6 class="white-text">Idiomas</h6>
+					<h6 class="white-text">#{ebook.loja_idiomas}</h6>
 					<ul>
 						<li>
 							<a><i class="flag-icon flag-icon-br"></i></a>

@@ -16,14 +16,37 @@
 	</nav>
 	<section style="flex: 1 0 auto;">
 		<div class="row">
-			<div class="s12 m12 l12">
-				<div class="card">
-					<div class="card-content">
-						<h4 class="pink-text thin center">#{ebook.loja_checkout}</h4>
-					</div>
-				</div>
-			</div>
-		</div>
+			<div class="col s12 m12 l12">
+				<ui:repeat var="book" value="#{homeManagedBean.bookList}">
+							<div class="col s12 m12 l4">
+								<div class="card horizontal" style="max-height:200px;">
+									<div class="card-image" style="height: 200px;; width: 30%;">
+										<h:form>
+											<h:commandLink action="#{bookDetailManagedBean.setBook(book)}">
+												<img src="#{book.image}" style="max-height: 200px;" width="100%" height="100%"></img>
+											</h:commandLink>
+										</h:form>
+									</div>
+									<div class="card-stacked" style="width: 70%;">
+										<div class="card-content" style="padding-bottom: 0px;">
+											<h5 style="margin: 0; height: 54px;">#{book.reducedName}</h5>
+										</div>
+										<div class="container">
+											<h5 style="float:left; text-decoration: line-through; color: #999;">R$#{book.price}</h5>
+											<h5 style="float: left; margin-left: 5px; font-size: 1.92rem">R$#{book.priceWithDiscount}</h5>
+										</div>
+										<div class="card-action">
+											<h:form>
+												<h:commandLink action="#{cartManagedBean.addToCart(book)}" class="fa fa-cart-plus fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+												<h:commandLink action="#{wishListManagedBean.addToWishList(book)}" class="fa fa-plus-circle fa-2x" style="cursor: pointer; float: right; color: #e91e63;"/>
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+				</ui:repeat>
+			</div>	
+         </div>
 	</section>
 	<footer class="page-footer pink">
 		<div class="container">
@@ -61,5 +84,5 @@
 		</footer>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="../../public/plugins/materialize/js/materialize.min.js"></script>
-</h:body> 
+</h:body>   
 </html>

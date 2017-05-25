@@ -3,8 +3,12 @@ package br.com.ebookapp.database.validation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class HandlerHelper {
+
+	private static Pattern emailPattern = Pattern.compile("^([\\w-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([\\w-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$");
+	
 	public static final boolean isBlankOrNull(String string)
 	{
 		return string == null || string.trim().length() == 0 || "null".equals(string);
@@ -31,5 +35,12 @@ public class HandlerHelper {
 				.append(date.substring(8, 10).toCharArray()).append("/")
 				.append(date.substring(5, 7).toCharArray()).append("/")
 				.append(date.substring(0, 4).toCharArray()).toString();
+	}
+	
+	public static boolean validateValidEmail(String email) {
+		if (HandlerHelper.isBlankOrNull(email)) {
+			return false;
+		}
+		return HandlerHelper.emailPattern.matcher(email).matches();
 	}
 }

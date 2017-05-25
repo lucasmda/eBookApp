@@ -11,7 +11,7 @@
 <h:body style="display: flex;min-height: 100vh;flex-direction: column;">
 	<nav class="indigo lighten-1">
    		<div class="nav-wrapper pink">
-			<a href="app.jsf" class="brand-logo indigo-text text-lighten-5 center">eBookApp</a>
+			<a href="app.jsf" class="brand-logo indigo-text text-lighten-5 center"><img src="../../public/image/logo_ebookapp.png" style="height: 55px; width: auto; margin: 5px;"/></a>
 		</div>
 	</nav>
 	<section style="flex: 1 0 auto;">
@@ -25,17 +25,17 @@
 							</div>
 							<div class="col s8 m8 l8">
 								<h4>#{bookDetailManagedBean.book.name}</h4>
-								<h6>Autor: #{bookDetailManagedBean.book.author.name} | Gênero: #{bookDetailManagedBean.book.subject.name} | Data: #{bookDetailManagedBean.book.stringReleaseDate}</h6>
+								<h6>#{ebook.autor}: #{bookDetailManagedBean.book.author.name} | #{ebook.genero}: #{bookDetailManagedBean.book.subject.name} | #{ebook.detalhe_data}: #{bookDetailManagedBean.book.stringReleaseDate}</h6>
 								<hr />
 								<div class="row">
 									<div class="col s12 m12 l5">
 										<di class="row">
-											<h5>Preço</h5>
-											<h4 style="text-decoration: line-through;">R$ #{bookDetailManagedBean.book.price}</h4>
+											<h5>#{ebook.preco}</h5>
+											<h4 style="ext-decoration: line-through;">R$ #{bookDetailManagedBean.book.price}</h4>
 										</di>
 										<hr />
 										<div class="row">
-											<h5>Com desconto</h5>
+											<h5>#{ebook.preco_desconto}</h5>
 											<h4 class="pink-text">R$ #{bookDetailManagedBean.book.priceWithDiscount}</h4>
 										</div>
 									</div>
@@ -46,7 +46,7 @@
 											<h:form>
 												<h:commandButton 
 												action="#{cartManagedBean.addToCart(bookDetailManagedBean.book)}"
-												value="Adicionar ao Carrinho" 
+												value="#{ebook.loja_adicionar_carrinho}" 
 												class="btn pink right waves-effect waves-light">
 												</h:commandButton>
 											</h:form>
@@ -55,7 +55,7 @@
 											<h:form>
 												<h:commandButton
 												action="#{wishListManagedBean.addToWishList(bookDetailManagedBean.book)}" 
-												value="Lista de Desejos" 
+												value="#{ebook.loja_lista_desejo}" 
 												class="btn pink right waves-effect waves-light">
 												</h:commandButton>
 											</h:form>
@@ -66,7 +66,7 @@
 						</div>
 						<div class="row">
 							<div class="col s12 m12 l12" style="text-align: justify;text-justify: inter-word;">
-								<h4 class="pink-text">Sinopse</h4>
+								<h4 class="pink-text">#{ebook.sinopse}</h4>
 								<p>#{bookDetailManagedBean.book.description}</p>
 							</div>
 						</div>
@@ -79,12 +79,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s12 m12 l12 center">
-					<h6 class="white-text">Deseja pesquisar algo? <a class="white-text" style="text-decoration: underline;" href="busca.jsf">Aperte aqui!</a></h6>
+					<h6 class="white-text">#{ebook.loja_busca_avancada} <a class="white-text" style="text-decoration: underline;" href="busca.jsf">#{ebook.loja_aperte_aqui}</a></h6>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col l6 s12 center">
-					<h6 class="white-text">Formas de Pagamento</h6>
+					<h6 class="white-text">#{ebook.loja_formas_pagamento}</h6>
 					<ul>
 						<li><a class="white-text fa fa-cc-visa fa-3x" href="https://www.visa.com.br"></a>
 						<a class="white-text fa fa-cc-amex fa-3x" href="https://www.americanexpress.com/br/"></a>
@@ -93,7 +93,7 @@
 					</ul>
 				</div>
 				<div class="col l4 offset-l2 s12 center">
-					<h6 class="white-text">Redes Sociais</h6>
+					<h6 class="white-text">#{ebook.lojas_redes_sociais}</h6>
 					<ul>
 						<li><a class="white-text fa fa-facebook-square fa-3x" href="https://www.facebook.com.br"></a>
 						<a class="white-text fa fa-instagram fa-3x" href="https://www.instagram.com/br/"></a>

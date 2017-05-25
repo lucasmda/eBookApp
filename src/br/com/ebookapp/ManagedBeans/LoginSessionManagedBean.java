@@ -1,7 +1,11 @@
 package br.com.ebookapp.ManagedBeans;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import br.com.ebookapp.database.validation.HandlerHelper;
 import br.com.ebookapp.database.validation.RequestValidator;
@@ -73,7 +77,7 @@ public class LoginSessionManagedBean {
 	}
 	
 	public String loginUser() {
-		if (!HandlerHelper.isBlankOrNull(this.email) && !HandlerHelper.isBlankOrNull(this.password)) {
+		if (!HandlerHelper.validateValidEmail(this.email) && !HandlerHelper.isBlankOrNull(this.password)) {
 			this.user = requestHandler.signin(this.email, this.password);
 			if (this.user != null) {
 				this.email = null;
@@ -95,5 +99,11 @@ public class LoginSessionManagedBean {
 			}
 		}
 		return "cadastroUsuario.jsf";
+	}
+	
+	public void validateEmailField(FacesContext context, UIComponent componentToValidate, Object value) throws ValidatorException {
+		if (!HandlerHelper.validateValidEmail(this.email)) {
+			throw new ValidatorException(new FacesMessage("Please input a valid e-mail"));
+		}
 	}
 }

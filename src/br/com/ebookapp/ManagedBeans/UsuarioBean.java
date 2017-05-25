@@ -2,7 +2,11 @@ package br.com.ebookapp.ManagedBeans;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import br.com.ebookapp.database.validation.HandlerHelper;
 import br.com.ebookapp.database.validation.RequestValidator;
@@ -124,6 +128,12 @@ public class UsuarioBean {
 		} catch (Exception e) {
 			this.error = e.getMessage();
 			return "error";
+		}
+	}
+	
+	public void validateEmailField(FacesContext context, UIComponent componentToValidate, Object value) throws ValidatorException {
+		if (!HandlerHelper.validateValidEmail(value.toString())) {
+			throw new ValidatorException(new FacesMessage("Please input a valid e-mail"));
 		}
 	}
 }

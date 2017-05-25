@@ -11,7 +11,7 @@
 <h:body>
 	<nav class="indigo lighten-1">
 	   <div class="nav-wrapper pink">
-	     <a href="app.jsf" class="brand-logo indigo-text text-lighten-5 center">eBookApp</a>
+	     <a href="app.jsf" class="brand-logo indigo-text text-lighten-5 center"><img src="../../public/image/logo_ebookapp.png" style="height: 55px; width: auto; margin: 5px;"/></a>
 	   </div>
 	</nav>
 	<section>
@@ -24,7 +24,7 @@
 								<h4 class="pink-text center thin">#{ebook.cadastrar_novo_usuario}</h4>
 								<div class="input-field col s12">
 									<i class="fa fa-user prefix"></i>
-									<h:inputText value="#{loginSessionManagedBean.user.name}" id="userName" required="true" requiredMessage="Name field must be required">
+									<h:inputText value="#{loginSessionManagedBean.user.name}" id="userName" required="true" requiredMessage="Name field must be required" validator="#{loginSessionManagedBean.validateEmailField}">
 										<f:validateLength minimum="1" maximum="255"/>
 									</h:inputText>
 									<h:message for="userName" styleClass="error"/>

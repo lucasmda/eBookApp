@@ -13,6 +13,7 @@ import br.com.ebookapp.book.bean.BookBean;
 @SessionScoped
 public class CartManagedBean {
 	private List<BookBean> cartList;
+	private String selectedValue;
 	private String response;
 	private String error;
 	
@@ -41,6 +42,14 @@ public class CartManagedBean {
 		this.cartList = cartList;
 	}
 
+	public String getSelectedValue() {
+		return selectedValue;
+	}
+
+	public void setSelectedValue(String selectedValue) {
+		this.selectedValue = selectedValue;
+	}
+
 	public String getResponse() {
 		return response;
 	}
@@ -67,5 +76,9 @@ public class CartManagedBean {
 		if (this.cartList != null && this.cartList.contains(book)) {
 			this.cartList.remove(book);
 		}
+	}
+	
+	public void finishCart() {
+		
 	}
 }
